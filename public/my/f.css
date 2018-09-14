@@ -1,0 +1,15 @@
+.container{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: goldenrod;
+    text-align: justify;
+    width: 70%;
+} 
+.container p{
+    font-family: 'Courier New', Courier, monospace;
+    color: gray;
+    text-align: justify; 
+    position: relative;
+} 
+.container h1{
+    color: brown;
+}
