@@ -14,4 +14,8 @@ class PagesController extends Controller
         $title='Our Services';
         return view('pages.service')->with('title',$title);
     }
+    public function login(){
+        $title='Login';
+        return view('pages.login')->with('title',$title);
+    }
 }

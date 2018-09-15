@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
         <!-- Brand/logo -->
         <a class="navbar-brand" >
           <img src="img/ic.png" alt="logo" style="width:50px;">
@@ -18,7 +18,7 @@
         </ul>
         <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><img src="img\icons8_Login_35px.png" >Login</a>
+                    <a class="nav-link" href="/login"><img src="img\icons8_Login_35px.png" >Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><img src="img\icons8_Add_User_Male_35px.png" >SignUp</a>

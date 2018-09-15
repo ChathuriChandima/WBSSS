@@ -17,3 +17,4 @@ Route::get('/', function () {
 */
 Route::get('/','PagesController@index');
 Route::get('/service','PagesController@service');
+Route::get('/login','PagesController@login');

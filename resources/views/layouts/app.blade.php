@@ -23,7 +23,7 @@
         }
     </style>
     </head>
-    <body>
+    <body data-spy="scroll" data-target=".navbar" data-offset="50">
         @include('inc.navbar')
         @yield('content')
         <h3>-----{{config('app.name','RAJAAN MOTORS')}}----</h3>
