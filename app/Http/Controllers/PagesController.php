@@ -18,4 +18,8 @@ class PagesController extends Controller
         $title='Login';
         return view('pages.login')->with('title',$title);
     }
+    public function contact(){
+        $title='Contact Us';
+        return view('pages.contact')->with('title',$title);
+    }
 }
