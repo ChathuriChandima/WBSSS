@@ -5,7 +5,8 @@
     <img src="img/ic.png" width="70px" >
       <h1><img src="img/contact.gif" width="200px" ></h1>
     <br><br><br>
-    <div class="container float-right" >
+    
+    <div class="container">
         <form action="/contact.blade.php" class="form-container border border-warning rounded" style="width:600px">
                <h1 style="color:goldenrod">LET'S GET IN TOUCH!</h1>
                <p>Feel free to contact us for more information</p>
