@@ -57,10 +57,10 @@
                       <!-- Authentication Links -->
                       @guest
                           <li class="nav-item">
-                              <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                              <a class="nav-link" href="{{ route('login') }}"><img src="img\icons8_Login_35px.png" >{{ __(' Login') }}</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                              <a class="nav-link" href="{{ route('register') }}"><img src="img\icons8_Add_User_Male_35px.png" >{{ __(' Register') }}</a>
                           </li>
                       @else
                           <li class="nav-item dropdown">
