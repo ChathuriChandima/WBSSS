@@ -12,6 +12,7 @@
 <title>{{config('app.name','RAJAAN MOTORS')}}</title>
 <style>
     body{
+        padding-top: 75px;
         background-color: black;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         color: white;
@@ -21,11 +22,12 @@
         font-size: small;
         color: darkgrey;
     }
+
 </style>
 </head>
 <body>
     <div id="app">
-      <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+      <nav class="navbar navbar-expand-sm bg-transparent navbar-dark fixed-top" >
           <div class="container">
             <!-- Brand/logo -->
             <a class="navbar-brand" href="/">
