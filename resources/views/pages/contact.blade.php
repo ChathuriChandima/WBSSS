@@ -26,7 +26,7 @@
                         <label for="name" style="color:goldenrod"><p style="text-align:left">Name : </label>
                         <input type="text" class="form-control form-control-lg text-white bg-dark border border-warning rounded" id="name" placeholder="Name">
                         <label for="contact" style="color:goldenrod">Contact No : </label>
-                        <input type="text" class="form-control form-control-lg text-white bg-dark border border-warning rounded" id="contact" placeholder="Phone numb
+                        <input type="text" class="form-control form-control-lg text-white bg-dark border border-warning rounded" id="contact" placeholder="Phone number">
                         <label for="email" style="color:goldenrod">Email : </label>
                         <input type="text" class="form-control form-control-lg text-white bg-dark border border-warning rounded" id="email" placeholder="Email">
 
