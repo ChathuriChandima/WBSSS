@@ -14,22 +14,13 @@
                         <input type="text" class="form-control form-control-lg text-white bg-dark border border-warning rounded" id="name" placeholder="Name">
                         <label for="contact" style="color:goldenrod">Contact No : </label>
                         <input type="text" class="form-control form-control-lg text-white bg-dark border border-warning rounded" id="contact" placeholder="Phone number">
-<<<<<<< HEAD
+
                         <label for="email" style="color:goldenrod">Email : </label>
                         <input type="text" class="form-control form-control-lg text-white bg-dark border border-warning rounded" id="email" placeholder="Email">
-                        <label for="address" style="color:goldenrod">Address : </label>
-                        <input type="text" class="form-control form-control-lg text-white bg-dark border border-warning rounded" id="address" placeholder="Address">
-=======
->>>>>>> 613f3861a3e2f0ca9c19c4d4fbfb757c12c4aa6e
+
                         <label for="subject" style="color:goldenrod">Subject :</label>
                         <textarea class="form-control form-control-lg text-white bg-dark border border-warning rounded" id="subject"  placeholder="Write something.." ></textarea><br>
                         <button type="submit" class="btn btn-warning float-right" >Submit</button>
         </form>
     </div>
-<<<<<<< HEAD
 @endsection
-            
-            
-=======
-@endsection
->>>>>>> 613f3861a3e2f0ca9c19c4d4fbfb757c12c4aa6e
