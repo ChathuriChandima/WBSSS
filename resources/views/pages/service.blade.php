@@ -42,7 +42,7 @@
                     <a class="btn btn-dark -toggle dropdown-toggle-split float-left" data-toggle="dropdown">MORE...</a>
                       <div class="dropdown-menu bg-info" style="width:75%">
                           <a class="dropdown-item text-light bg-info">Our prices are depend on your <br>vehicle. Following charge is <br>allowed for normal vehicle.</a>
-                          <h5><span class="badge badge-danger float-right">Price : Rs.12,000/=</span></h5>
+                          <h5><span class="badge badge-danger float-right">Price : Rs.20,000/=</span></h5>
                       </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                     <a class="btn btn-dark -toggle dropdown-toggle-split float-left" data-toggle="dropdown">MORE..</a>
                     <div class="dropdown-menu bg-info" style="width:115%">
                         <a class="dropdown-item text-light bg-info">Our car wash always,<br>- preserves vehicle paintwork<br>- protects from damaging environmental influences</a>
-                        <h5><span class="badge badge-danger float-right">Price : Rs.300-400/=</span></h5>
+                        <h5><span class="badge badge-danger float-right">Price : Rs.1000/=</span></h5>
                     </div>
               </div>
             </div>
@@ -81,9 +81,9 @@
                             <a class="btn btn-dark -toggle dropdown-toggle-split float-left" data-toggle="dropdown">MORE..</a>
                             <div class="dropdown-menu bg-info" style="width:120%">
                                 <a class="dropdown-item text-light bg-info">- Complete Undercarriage Pressure Wash Exterior Wash : </a>
-                                <h5><span class="badge badge-danger float-right">Price : Rs.250-300/=</span></h5>
+                                <h5><span class="badge badge-danger float-right">Price : Rs.1000/=</span></h5>
                                 <a class="dropdown-item text-light bg-info">- Special Package : </a>
-                                <h5><span class="badge badge-danger float-right">Price : Rs.800-1000/=</span></h5>
+                                <h5><span class="badge badge-danger float-right">Price : Rs.3000/=</span></h5>
                             </div>
                       </div>
                     </div>
@@ -96,7 +96,7 @@
                                 <a class="btn btn-dark -toggle dropdown-toggle-split float-left" data-toggle="dropdown">MORE..</a>
                                 <div class="dropdown-menu bg-info" style="width:70%">
                                     <a class="dropdown-item text-light bg-info">Our prices are depend on your <br>vehicle. Following charge is <br>allowed for normal vehicle.</a>
-                                    <h5><span class="badge badge-danger float-right">Price : Rs.500/=</span></h5>
+                                    <h5><span class="badge badge-danger float-right">Price : Rs.2000/=</span></h5>
                                 </div>
                           </div>
                         </div>
