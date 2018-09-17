@@ -43,13 +43,13 @@
       </div>  
       <div class ="container">    
         <h1><img src="img/ic.png" width="70px">{{$title}}</h1>
-        <ul><p>We at Rajaan Motors offer convenient and quality driven services for vehicle.From a basic exterior wash to more specialized interior detailing, our professionally trained staff deliver exceptional results on all types of vehicles.</p></ul>
+        <ul><p style="font-weight: bold">We at Rajaan Motors offer convenient and quality driven services for vehicle.From a basic exterior wash to more specialized interior detailing, our professionally trained staff deliver exceptional results on all types of vehicles.</p></ul>
         <br><br>
         <h2><img src="img\icons8_Eye_30px_3.png"> Our Vision</h2>
-        <ul><p>To be the most trusted, recognized and respected solution provider in the automobile industry in Sri Lanka</p></ul>
+        <ul><p style="font-weight: bold">To be the most trusted, recognized and respected solution provider in the automobile industry in Sri Lanka</p></ul>
         <br><br>
         <h2><img src="img\icons8_Action_30px.png"> Our Mission</h2>
-        <ul><p>We strive to provide the best quality automobile product and services through conveniently located Car Care Service Centre’s, at affordable prices by making our brand a consumers’ first choice for automobile product and service supports. Trust will be gained from consumers through the genuine support given to them by our skilled and dedicated service staff. We are committed to deliver our service values and we are proud of our customized service</p></ul>
+        <ul><p style="font-weight: bold">We strive to provide the best quality automobile product and services through conveniently located Car Care Service Centre’s, at affordable prices by making our brand a consumers’ first choice for automobile product and service supports. Trust will be gained from consumers through the genuine support given to them by our skilled and dedicated service staff. We are committed to deliver our service values and we are proud of our customized service</p></ul>
         <br><br>
       </div>
 @endsection
