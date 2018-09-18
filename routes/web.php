@@ -20,10 +20,13 @@ Route::get('/service','PagesController@service');
 Route::get('/login','PagesController@login');
 Route::get('/contact','PagesController@contact');
 
-
+//Route::resource('customer','customerController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/h', 'HomeController@change')->name('h');
+
+
 
 
 /* Route group with the access controled for the user types*/

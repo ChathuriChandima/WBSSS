@@ -28,9 +28,6 @@
                         <label for="email" style="color:goldenrod">Email : </label>
                         <input type="text" class="form-control form-control-lg text-white bg-dark border border-warning rounded" id="email" placeholder="Email">
 
-                        <label for="email" style="color:goldenrod">Email : </label>
-                        <input type="text" class="form-control form-control-lg text-white bg-dark border border-warning rounded" id="email" placeholder="Email">
-
                         <label for="subject" style="color:goldenrod">Subject :</label>
                         <textarea class="form-control form-control-lg text-white bg-dark border border-warning rounded" id="subject"  placeholder="Write something.." ></textarea><br>
                         <button type="submit" class="btn btn-warning float-right" >Submit</button>

@@ -31,19 +31,6 @@
                         </div>
 
                         <div class="form-group row">
-                                <label for="address" class="col-md-4 col-form-label text-md-justify" style="color:goldenrod">{{ __('Address') }}</label>
-                                <div class="col-md-6">
-                                        <input id="address" input type="text" class="form-control border border-warning rounded bg-dark text-light" id="address" placeholder=" ">
-                                </div>
-                        </div>
-                        <div class="form-group row">
-                                <label for="contactNo" class="col-md-4 col-form-label text-md-justify" style="color:goldenrod">{{ __('Contact No') }}</label>
-                                <div class="col-md-6">
-                                        <input id="contactNo" input type="text" class="form-control border border-warning rounded bg-dark text-light" id="contactNo" placeholder=" ">
-                                </div>
-                        </div>
-
-                        <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-justify" style="color:goldenrod">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
@@ -84,8 +71,10 @@
                                 <button type="submit" class="btn btn-warning" style="width:120px">
                                     {{ __('Register') }}
                                 </button>
+
                             </div>
                         </div>
+                        <br>
                     </form>
                 </div>
             </div>

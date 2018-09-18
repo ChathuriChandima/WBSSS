@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Customer;
 
 class customerController extends Controller
 {
@@ -13,7 +14,6 @@ class customerController extends Controller
      */
     public function index()
     {
-        
     }
 
     /**
@@ -23,7 +23,7 @@ class customerController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -34,7 +34,17 @@ class customerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       /* $this->validate($request,[
+        'address'=>'required',
+        ]);
+
+        $customer=new Customer;
+        $customer->name=$request->input('name');
+        $customer->address=$request->input('address');
+        $customer->email=$request->input('email');
+        $customer->save();
+
+        return redirect('/h')->with('success','Your details inserted.');*/
     }
 
     /**

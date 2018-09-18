@@ -42,10 +42,7 @@
                   <!-- Left Side Of Navbar -->
                   <ul class="navbar-nav" style="font-size:larger">
                     <li class="nav-item">
-                      <a class="nav-link" href="/home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="">Profile</a>
+                      <a class="nav-link" href="/home">Profile</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" >Status</a>
@@ -78,6 +75,7 @@
           </div>
       </nav>
         <main class="py-4">
+            @include('inc.msg')
             @yield('content')
         </main>
     </div>
