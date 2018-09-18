@@ -9,7 +9,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">Vehical</a>
+                    <a href="/my_vehical">Vehical</a>
                 </li>
                 <li>
                     <a href="#">Notification</a>

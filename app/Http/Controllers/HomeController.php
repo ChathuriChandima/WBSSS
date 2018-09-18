@@ -37,6 +37,9 @@ class HomeController extends Controller
     public function customer(Request $req){
       return view('middleware')->withMessage("Customer");
     }
+    public function myVehical(Request $req){
+      return view('pages.myVehical');
+    }
 
     /* Methods to handle accountant's requests for access pages*/
     public function accountant(Request $req){

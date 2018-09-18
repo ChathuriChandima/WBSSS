@@ -41,6 +41,8 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 Route::group(['middleware' => 'App\Http\Middleware\CustomerMiddleware'], function(){
 
     Route::match(['get','post'],'/customerOnlyPage','HomeController@customer');
+    Route::match(['get','post'],'/my_vehical','HomeController@myVehical');
+
 
 });
 
