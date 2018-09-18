@@ -27,4 +27,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public function assignCustomer($role)
+    {
+        return $this->customers()->sync(
+            [Customer::whereName($role)->firstOrFail()->name]
+        );
+    }
+    public function customers()
+    {
+        return $this->belongsToMany('App\customers', 'name', 'email');
+    }
 }

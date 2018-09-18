@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Customer;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -60,6 +61,8 @@ class RegisterController extends Controller
      *
      * @param  array  $data
      * @return \App\User
+     * @return \App\Customer
+     *
      */
     protected function create(array $data)
     {
@@ -70,4 +73,15 @@ class RegisterController extends Controller
             'role' => 'customer',
         ]);
     }
+    protected function createCustomer(array $dat)
+    {
+        return Customer::createCustomer([
+            'name' => $dat['name'],
+            'address'=> $dat['address'],
+            'contactNo'=> $dat['contactNo'],
+            'email' => $dat['email'],
+
+        ]);
+    }
+   
 }
