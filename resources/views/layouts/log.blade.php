@@ -78,7 +78,12 @@
           </div>
       </nav>
         <main class="py-4">
-            @yield('content')
+          <div>
+              @include('elements.sidebar')
+          </div>
+          <div id="wrapper">
+              @yield('content')
+        </div>
         </main>
     </div>
 </body>
