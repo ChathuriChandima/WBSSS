@@ -48,6 +48,20 @@
     margin-right: -250px;
 }
 
+
+/* Added style to apper things from bottom to top */
+
+#bottom-to-top {
+  position: absolute;
+  bottom: 0;
+}
+
+/*
+
+
+
+*/
+
 /* Sidebar Styles */
 
 .sidebar-nav {
