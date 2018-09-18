@@ -1,7 +1,6 @@
 
  @extends('layouts.log')
 @section('content')
-<div class  ="container">
+<p style="text-align:right"><b style="color:darkslategray">---You are logged in as {{ strtoupper(Auth::user()->role) }}---</p>
 
-</div>
 @endsection

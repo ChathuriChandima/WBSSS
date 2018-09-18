@@ -27,5 +27,28 @@ class HomeController extends Controller
     {
         return view('home');
     }
-   
+
+    public function admin(Request $req){
+      return view('middleware')->withMessage("Admin");
+    }
+
+    public function customer(Request $req){
+      return view('middleware')->withMessage("Customer");
+    }
+
+    public function accountant(Request $req){
+      return view('middleware')->withMessage("Accountant");
+    }
+
+    public function mechanic(Request $req){
+      return view('middleware')->withMessage("Mechanic");
+    }
+
+    public function user(Request $req){
+      return view('middleware')->withMessage("User");
+    }
+
+    public function staff(Request $req){
+      return view('middleware')->withMessage("Staff");
+    }
 }

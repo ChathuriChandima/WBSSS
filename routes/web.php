@@ -25,3 +25,53 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+/* Route group with the access controled for the user types*/
+
+/* Admins route group */
+
+Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function(){
+
+    Route::match(['get','post'],'/adminOnlyPage','HomeController@admin');
+
+});
+
+/* Customer route group */
+
+Route::group(['middleware' => 'App\Http\Middleware\CustomerMiddleware'], function(){
+
+    Route::match(['get','post'],'/customerOnlyPage','HomeController@customer');
+
+});
+
+/* Accountant route group */
+
+Route::group(['middleware' => 'App\Http\Middleware\AccountantMiddleware'], function(){
+
+    Route::match(['get','post'],'/accountantOnlyPage','HomeController@accountant');
+
+});
+
+/* Mechanic route group */
+
+Route::group(['middleware' => 'App\Http\Middleware\MechanicMiddleware'], function(){
+
+    Route::match(['get','post'],'/mechanicOnlyPage','HomeController@mechanic');
+
+});
+
+/* routes that all logged users can access */
+
+Route::group(['middleware' => 'App\Http\Middleware\UserMiddleware'], function(){
+
+    Route::match(['get','post'],'/userOnlyPage','HomeController@user');
+
+});
+
+/* routes that only staff (admin and employee) can access */
+
+Route::group(['middleware' => 'App\Http\Middleware\StaffMiddleware'], function(){
+
+    Route::match(['get','post'],'/staffOnlyPage','HomeController@staff');
+
+});
