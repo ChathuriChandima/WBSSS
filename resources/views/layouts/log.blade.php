@@ -42,13 +42,13 @@
                   <!-- Left Side Of Navbar -->
                   <ul class="navbar-nav" style="font-size:larger">
                     <li class="nav-item">
-                      <a class="nav-link" href="/h">Home</a>
+                      <a class="nav-link" href="/home">Home</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="">Profile</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="">Status</a>
+                      <a class="nav-link" >Status</a>
                     </li>
                   </ul>
 
