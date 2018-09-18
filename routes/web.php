@@ -75,3 +75,11 @@ Route::group(['middleware' => 'App\Http\Middleware\StaffMiddleware'], function()
     Route::match(['get','post'],'/staffOnlyPage','HomeController@staff');
 
 });
+
+/* routes that only higher staff (admin and accountant) can access */
+
+Route::group(['middleware' => 'App\Http\Middleware\ManagementMiddleware'], function(){
+
+
+
+});
