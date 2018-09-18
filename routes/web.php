@@ -20,8 +20,8 @@ Route::get('/service','PagesController@service');
 Route::get('/login','PagesController@login');
 Route::get('/contact','PagesController@contact');
 
-Route::resource('Customer','RegisterController');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+

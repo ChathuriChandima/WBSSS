@@ -10,8 +10,5 @@ class Customer extends Model
     public $primaryKey = 'Id';
     public $timestamps = true;
 
-    public function users()
-    {
-        return $this->belongsToMany('App\User', 'user_role', 'role_id', 'user_id');
-    }
+
 }

@@ -13,9 +13,9 @@
 <style>
     body{
         padding-top: 75px;
-        background-color: black;
+        background-color: white;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        color: white;
+        color: black;
         text-align: center;
     }
     body h3{
@@ -27,7 +27,7 @@
 </head>
 <body>
     <div id="app">
-      <nav class="navbar navbar-expand-sm bg-transparent navbar-dark fixed-top" >
+      <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top" >
           <div class="container">
             <!-- Brand/logo -->
             <a class="navbar-brand" href="/">
@@ -56,7 +56,7 @@
                   <ul class="navbar-nav ml-auto">
                       <!-- Authentication Links -->
                           <li class="nav-item dropdown">
-                              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                              <a id="navbarDropdown" class="nav-link dropdown-toggle" style="font-size:large" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                   {{ Auth::user()->name }} <span class="caret"></span>
                               </a>
                               <div class="card-body">

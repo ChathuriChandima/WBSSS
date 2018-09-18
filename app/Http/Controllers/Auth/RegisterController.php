@@ -73,15 +73,6 @@ class RegisterController extends Controller
             'role' => 'customer',
         ]);
     }
-    protected function createCustomer(array $dat)
-    {
-        return Customer::createCustomer([
-            'name' => $dat['name'],
-            'address'=> $dat['address'],
-            'contactNo'=> $dat['contactNo'],
-            'email' => $dat['email'],
-
-        ]);
-    }
+    
    
 }
