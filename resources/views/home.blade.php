@@ -1,6 +1,6 @@
 
  @extends('layouts.log')
-@section('content')
-
-</div>
-@endsection
+ @section('content')
+ 
+      @include('elements.homeContent')
+ @endsection

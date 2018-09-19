@@ -83,7 +83,9 @@
             @include('elements.logedNavbar')
         @endguest
         <main class="py-4">
-          
+          <div>
+              @include('elements.sidebar')
+          </div>
           <div id="wrapper">
               @yield('content')
           </div>
