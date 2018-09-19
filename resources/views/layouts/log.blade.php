@@ -77,6 +77,17 @@
         <main class="py-4">
             @include('inc.msg')
             @yield('content')
+        @guest
+            @include('elements.guestNavbar')
+        @else
+            @include('elements.logedNavbar')
+        @endguest
+        <main class="py-4">
+          
+          <div id="wrapper">
+              @yield('content')
+          </div>
+
         </main>
     </div>
 </body>

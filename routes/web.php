@@ -44,6 +44,8 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 Route::group(['middleware' => 'App\Http\Middleware\CustomerMiddleware'], function(){
 
     Route::match(['get','post'],'/customerOnlyPage','HomeController@customer');
+    Route::match(['get','post'],'/my_vehical','HomeController@myVehical');
+
 
 });
 
@@ -76,5 +78,13 @@ Route::group(['middleware' => 'App\Http\Middleware\UserMiddleware'], function(){
 Route::group(['middleware' => 'App\Http\Middleware\StaffMiddleware'], function(){
 
     Route::match(['get','post'],'/staffOnlyPage','HomeController@staff');
+
+});
+
+/* routes that only higher staff (admin and accountant) can access */
+
+Route::group(['middleware' => 'App\Http\Middleware\ManagementMiddleware'], function(){
+
+
 
 });
