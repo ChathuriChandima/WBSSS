@@ -27,6 +27,12 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function change()
+    {
+        return view('h');
+    }
+
+    
 
     /* Methods to handle admin's requests for access pages*/
     public function admin(Request $req){
@@ -36,6 +42,9 @@ class HomeController extends Controller
     /* Methods to handle customer's requests for access pages*/
     public function customer(Request $req){
       return view('middleware')->withMessage("Customer");
+    }
+    public function myVehical(Request $req){
+      return view('pages.myVehical');
     }
 
     /* Methods to handle accountant's requests for access pages*/

@@ -9,7 +9,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">Vehical</a>
+                    <a href="#">Vehicle</a>
                 </li>
                 <li>
                     <a href="#">Staff</a>

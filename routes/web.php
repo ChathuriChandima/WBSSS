@@ -20,12 +20,16 @@ Route::get('/service','PagesController@service');
 Route::get('/login','PagesController@login');
 Route::get('/contact','PagesController@contact');
 
-
+Route::resource('customer','customerController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/profile', 'customerController@index')->name('profile');
 Route::get('/bills', 'PostsController@index')->name('bills');
+Route::get('/invoice', 'PostsController@inv')->name('invoice');
+Route::get('/h', 'HomeController@change')->name('h');
+
 
 
 /* Route group with the access controled for the user types*/
@@ -43,6 +47,8 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 Route::group(['middleware' => 'App\Http\Middleware\CustomerMiddleware'], function(){
 
     Route::match(['get','post'],'/customerOnlyPage','HomeController@customer');
+    Route::match(['get','post'],'/my_vehical','HomeController@myVehical');
+
 
 });
 

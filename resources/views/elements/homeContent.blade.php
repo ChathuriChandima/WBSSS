@@ -6,4 +6,4 @@
     @include('elements.homecontent.accountantHomeContent')
 @else
     @include('elements.homecontent.customerHomeContent')
-@endif
+@endif 

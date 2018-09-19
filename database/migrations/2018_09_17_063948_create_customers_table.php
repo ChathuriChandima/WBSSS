@@ -17,7 +17,7 @@ class CreateCustomersTable extends Migration
             $table->increments('Id')->primary;
             $table->string('name');
             $table->string('address');
-            $table->integer('contactNo');
+            $table->string('contactNo');
             $table->string('email');
             $table->timestamps();
         });

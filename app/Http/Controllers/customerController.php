@@ -14,8 +14,7 @@ class customerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::all();
-        return view('pages.profile')->with('customers',$customers);
+
     }
 
     /**
@@ -25,7 +24,7 @@ class customerController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -36,7 +35,19 @@ class customerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+        'address'=>'required',
+        'contactNo'=>'required',
+        ]);
+
+        $customer=new Customer;
+        $customer->name=$request->input('name');
+        $customer->address=$request->input('address');
+        $customer->contactNo=$request->input('contactNo');
+        $customer->email=$request->input('email');
+        $customer->save();
+
+        return redirect('/h')->with('success','Your details inserted.');
     }
 
     /**
