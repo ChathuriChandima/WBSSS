@@ -1,4 +1,5 @@
 <p style="text-align:right"><b style="color:darkslategray">---You are logged in as {{ strtoupper(Auth::user()->role) }}---</p>
+<<<<<<< HEAD
     <link rel="stylesheet" href="{{asset('my/u.css')}}">
     <!-- Slideshow container -->
 <div class="slideshow-container">
@@ -74,3 +75,5 @@
         <ul><p style="font-weight: bold">We strive to provide the best quality automobile product and services through conveniently located Car Care Service Centre’s, at affordable prices by making our brand a consumers’ first choice for automobile product and service supports. Trust will be gained from consumers through the genuine support given to them by our skilled and dedicated service staff. We are committed to deliver our service values and we are proud of our customized service</p></ul>
         <br><br>
       </div>
+=======
+>>>>>>> 304799cbcb5c4c5f772d2f51da209f2e86fb165f

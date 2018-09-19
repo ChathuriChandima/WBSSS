@@ -1,5 +1,6 @@
 
  @extends('layouts.log')
+<<<<<<< HEAD
 @section('content')
 @include('elements.homeContent')
 <div class="container">
@@ -27,3 +28,9 @@
       {!! Form::close() !!}
       </div>
 @endsection
+=======
+ @section('content')
+ 
+      @include('elements.homeContent')
+ @endsection
+>>>>>>> 304799cbcb5c4c5f772d2f51da209f2e86fb165f
