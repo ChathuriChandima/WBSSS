@@ -24,6 +24,8 @@ Route::get('/contact','PagesController@contact');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profile', 'customerController@index')->name('profile');
+Route::get('/bills', 'PostsController@index')->name('bills');
 
 
 /* Route group with the access controled for the user types*/

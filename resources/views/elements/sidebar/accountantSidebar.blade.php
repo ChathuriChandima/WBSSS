@@ -9,10 +9,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">Vehical</a>
+                    <a href="#">Vehicles</a>
                 </li>
                 <li>
-                    <a href="#">Print Bills & Invoices</a>
+                    <a href="/bills">Print Bills & Invoices</a>
                 </li>
                 <li>
                     <a href="#">Reports</a>
