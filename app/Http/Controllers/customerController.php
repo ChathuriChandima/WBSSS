@@ -34,17 +34,19 @@ class customerController extends Controller
      */
     public function store(Request $request)
     {
-       /* $this->validate($request,[
+       $this->validate($request,[
         'address'=>'required',
+        'contactNo'=>'required',
         ]);
 
         $customer=new Customer;
         $customer->name=$request->input('name');
         $customer->address=$request->input('address');
         $customer->email=$request->input('email');
+        $customer->contactNo=$request->input('contactNo');
         $customer->save();
 
-        return redirect('/h')->with('success','Your details inserted.');*/
+        return redirect('/h')->with('success','Your details inserted.');
     }
 
     /**

@@ -27,11 +27,11 @@
 </head>
 <body>
     <div id="app">
-      <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top" >
+      <nav class="navbar navbar-expand-sm bg-transparent navbar-dark fixed-top" >
           <div class="container">
             <!-- Brand/logo -->
             <a class="navbar-brand" href="/">
-              <img src="img/ic.png" alt="logo" style="width:70px;">
+              <img src="img/ic.png" alt="logo" style="width:100px;">
             </a>
 
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -40,14 +40,6 @@
 
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <!-- Left Side Of Navbar -->
-                  <ul class="navbar-nav" style="font-size:larger">
-                    <li class="nav-item">
-                      <a class="nav-link" href="/home">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" >Status</a>
-                    </li>
-                  </ul>
 
                   <!-- Right Side Of Navbar -->
                   <ul class="navbar-nav ml-auto">
@@ -76,7 +68,6 @@
       </nav>
         <main class="py-4">
             @include('inc.msg')
-            @yield('content')
         @guest
             @include('elements.guestNavbar')
         @else
@@ -89,7 +80,7 @@
           <div id="wrapper">
               @yield('content')
           </div>
-
+        </main>
         </main>
     </div>
 </body>
