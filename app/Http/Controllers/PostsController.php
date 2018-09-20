@@ -14,9 +14,13 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $xx = Staff::all();
-        return view('staff.index')->with('staff',$xx);
+        return view('pages.accountant.bills');
     }
+    public function inv()
+    {
+        return view('pages.accountant.invoice');
+    }
+
 
     /**
      * Show the form for creating a new resource.

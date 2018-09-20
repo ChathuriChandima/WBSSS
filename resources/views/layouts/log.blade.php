@@ -27,7 +27,11 @@
 </head>
 <body>
     <div id="app">
+
       <nav class="navbar navbar-expand-sm bg-transparent navbar-dark fixed-top" >
+
+      <nav class="navbar navbar-expand-md bg-transparent navbar-dark fixed-top" >
+
           <div class="container">
             <!-- Brand/logo -->
             <a class="navbar-brand" href="/">
@@ -40,6 +44,7 @@
 
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <!-- Left Side Of Navbar -->
+
 
                   <!-- Right Side Of Navbar -->
                   <ul class="navbar-nav ml-auto">
@@ -67,6 +72,7 @@
           </div>
       </nav>
         <main class="py-4">
+            
             @include('inc.msg')
         @guest
             @include('elements.guestNavbar')
@@ -74,9 +80,15 @@
             @include('elements.logedNavbar')
         @endguest
         <main class="py-4">
+
+        <div>
+            @include('elements.sidebar')
+        </div>
+
           <div>
               @include('elements.sidebar')
           </div>
+
           <div id="wrapper">
               @yield('content')
           </div>

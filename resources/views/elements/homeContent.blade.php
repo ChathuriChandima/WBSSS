@@ -6,4 +6,8 @@
     @include('elements.homecontent.accountantHomeContent')
 @else
     @include('elements.homecontent.customerHomeContent')
+<<<<<<< HEAD
+@endif 
+=======
 @endif
+>>>>>>> 304799cbcb5c4c5f772d2f51da209f2e86fb165f

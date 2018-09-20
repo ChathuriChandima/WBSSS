@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <nav class="navbar navbar-expand-sm bg-transparent navbar-dark fixed-top" >
+=======
+<nav class="navbar navbar-expand-md bg-transparent navbar-dark fixed-top" >
+>>>>>>> d8d0b5e47b023a730386a8f1d16961295484cadf
   <div class="container">
     <!-- Brand/logo -->
     <a class="navbar-brand" href="/">
@@ -11,7 +15,11 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Left Side Of Navbar -->
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> d8d0b5e47b023a730386a8f1d16961295484cadf
           <!-- Right Side Of Navbar -->
           <ul class="navbar-nav ml-auto">
               <!-- Authentication Links -->

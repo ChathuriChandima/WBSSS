@@ -14,6 +14,7 @@ class customerController extends Controller
      */
     public function index()
     {
+
     }
 
     /**
@@ -34,7 +35,9 @@ class customerController extends Controller
      */
     public function store(Request $request)
     {
-       $this->validate($request,[
+
+        $this->validate($request,[
+
         'address'=>'required',
         'contactNo'=>'required',
         ]);
@@ -42,6 +45,7 @@ class customerController extends Controller
         $customer=new Customer;
         $customer->name=$request->input('name');
         $customer->address=$request->input('address');
+        $customer->contactNo=$request->input('contactNo');
         $customer->email=$request->input('email');
         $customer->contactNo=$request->input('contactNo');
         $customer->save();

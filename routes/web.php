@@ -24,8 +24,14 @@ Route::resource('customer','customerController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/h', 'HomeController@change')->name('h');
 
+
+Route::get('/profile', 'customerController@index')->name('profile');
+Route::get('/bills', 'PostsController@index')->name('bills');
+Route::get('/invoice', 'PostsController@inv')->name('invoice');
+Route::get('/h', 'HomeController@change')->name('h');
 
 
 

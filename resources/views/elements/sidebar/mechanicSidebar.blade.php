@@ -7,14 +7,13 @@
                        Home
                    </a>
                </li>
-              
-               <li>
-                   <a href="#">View Vehicle Status</a>
-               </li>
-               <li>
-                   <a href="#">Profile</a>
-               </li>
                
+               <li>
+                   <a href="#">Services</a>
+               </li>
+               <li>
+                   <a href="#">Contact</a>
+               </li>
            </ul>
        </div>
        <!-- /#sidebar-wrapper -->
