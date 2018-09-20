@@ -28,8 +28,6 @@
 <body>
     <div id="app">
 
-      <nav class="navbar navbar-expand-sm bg-transparent navbar-dark fixed-top" >
-
       <nav class="navbar navbar-expand-md bg-transparent navbar-dark fixed-top" >
 
           <div class="container">
@@ -84,10 +82,6 @@
         <div>
             @include('elements.sidebar')
         </div>
-
-          <div>
-              @include('elements.sidebar')
-          </div>
 
           <div id="wrapper">
               @yield('content')

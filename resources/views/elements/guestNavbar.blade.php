@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" >
+<nav class="navbar navbar-expand-sm bg-transparent navbar-dark fixed-top" >
     <div class="container">
       <!-- Brand/logo -->
       <a class="navbar-brand" href="/">

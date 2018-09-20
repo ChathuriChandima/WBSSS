@@ -39,7 +39,7 @@ class customerController extends Controller
         $this->validate($request,[
 
         'address'=>'required',
-        'contactNo'=>'required',
+        'contactNo'=> 'required|regex:/(0)[0-9]{9}/',
         ]);
 
         $customer=new Customer;
