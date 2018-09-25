@@ -7,7 +7,7 @@
 
 
 <div class = "container" style =  "margin-top: 40px">
-        <h2> Print Bills and Invoices  </h2>
+        <h2> Print Bills   </h2>
 </div>
 
 <div class="container" >
@@ -26,18 +26,22 @@
         <div class="span4 well">
             <table class="invoice-head">
                 <tbody>
+                       
                     <tr>
-                        <td class="pull-right"  style ="padding-right:30px"><strong>Supplier ID </strong></td>
-                        <td><input type="text"  ></td>
+                        <td class="pull-right"  style ="padding-right:40px"><strong>Customer Name </strong></td>
+                        <td><input type="text" style="margin-bottom: 10px"  ></td>
                     </tr>
+                        
+                   
                     <tr>
-                        <td class="pull-right"><strong>Invoice #</strong></td>
-                        <td><input type="text"  ></td>
+                        <td class="pull-right"><strong>Bill No.</strong></td>
+                        <td><input type="text"  style="margin-bottom: 10px" ></td>
                     </tr>
                     <tr>
                         <td class="pull-right"><strong>Date</strong></td>
-                        <td><input type="text"  ></td>
+                        <td><input type="text"  style="margin-bottom: 10px" ></td>
                     </tr>
+                    
                     
                 </tbody>
             </table>
@@ -46,14 +50,14 @@
     <br>
     <div class="row">
           <div class="span8 well invoice-body">
-              <table class="table table-bordered">
+              <table class="table table-bordered" style = "font-size:10px">
                 <thead>
                     <tr>
-                        <th>Description</th>
-                        <th>Date</th>
-                        <th>Quantity</th>
-                        <th>Unit Price</th>
-                        <th>Amount</th>
+                        <th>Service Description</th>
+                        <th>Date From</th>
+                        <th>Date To</th>
+                        <th>Vehicle No.</th>
+                        <th>Charges/Tax</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -88,12 +92,10 @@
               <strong>Email:</strong> <a href="https://accounts.google.com/ServiceLogin/signinchooser?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F%3Frli%3Dn4mf18sk0chx%26rld%3D1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin">raajan@gmail.com</a><br>
           <br>
             </div>
-          <button type="print" class="float-right" style="font-weight: bold">Print Invoice</button>
+          
 
       </div>
 </div>
 
 
-<a href="/invoice">
-        <button  type="print" class="float-right" style="margin-top:50px"> To Print bills</button>
-        </a>
+
