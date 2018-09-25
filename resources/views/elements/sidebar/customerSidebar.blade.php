@@ -1,18 +1,18 @@
 <div id="wrapper">
         <!-- Sidebar -->
        <div id="sidebar-wrapper">
-           <ul class="sidebar-nav">
-               <li class="sidebar-brand">
-                   <a href="#">
-                       Home
-                   </a>
+           <ul class="sidebar-nav" style="font-size:larger">
+               <br>
+               <p style="color:darkgoldenrod">Customer Navigation</p>
+               <li>
+                   <a href="#">Home</a>
                </li>
               
                <li>
                    <a href="#">View Vehicle Status</a>
                </li>
                <li>
-                   <a href="#">Profile</a>
+                   <a href="/profile">Profile</a>
                </li>
                
            </ul>

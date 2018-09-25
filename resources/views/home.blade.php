@@ -1,30 +1,43 @@
 
- @extends('layouts.log')
-
+@extends('layouts.log')
+<style>
+  input[type='number']::-webkit-inner-spin-button,input[type='number']::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+  }
+</style>
 @section('content')
-@include('elements.homeContent')
 <div class="container">
+  <div class="well">
     <h1>Your Details</h1>
 {!! Form::open(['action'=>'customerController@store', 'method'=>'POST']) !!}
         <div class="form-group">
-            <p style="text-align:left">{{Form::label('name','Name')}}</p>
+            <p style="text-align:left"><strong>{{Form::label('id','User Id')}} :</strong></p>
+            {{Form::text('id', Auth::user()->id ,['class'=>'form-control','placeholder'=>'User Id','readonly'])}}
+          </div>
+            <p style="text-align:left"><strong>{{Form::label('name','Name')}}  :</strong></p>
             {{Form::text('name', Auth::user()->name ,['class'=>'form-control','placeholder'=>'Name','readonly'])}}
           </div>
+          <br>
           <div class="form-group">
-            <p style="text-align:left">{{Form::label('address','Address')}}</p>
+            <p style="text-align:left"><strong>{{Form::label('address','Address')}} :</strong></p>
             {{Form::text('address','',['class'=>'form-control','placeholder'=>'Address'])}}
           </div>
+          <br>
           <div class="form-group">
-            <p style="text-align:left">{{Form::label('contactNo','Contact Number')}}</p>
+            <p style="text-align:left"><strong>{{Form::label('contactNo','Contact Number')}} :</strong></p>
             {{Form::input('number','contactNo',null,['class'=>'form-control','placeholder'=>'Contact Number'])}}
           </div>
-          <div class="form-group" aria-readonly="true">
-              <p style="text-align:left">{{Form::label('email','Email Address')}}</p>
+          <br>
+          <div class="form-group">
+              <p style="text-align:left"><strong>{{Form::label('email','Email Address')}} :</strong></p>
               {{Form::text('email', Auth::user()->email ,['class'=>'form-control','placeholder'=>'Email Address', 'readonly'])}}
             </div>
-            <div class="form-group float-left">
+            <br>
+            <div class="form-group float-right ">
             {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
             </div>
       {!! Form::close() !!}
-      </div>
+  </div>
+</div>
 @endsection

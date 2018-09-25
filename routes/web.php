@@ -23,12 +23,14 @@ Route::get('/contact','PagesController@contact');
 Route::resource('customer','customerController');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/home', 'HomeController@home')->name('home');
+Route::get('/loggedin', 'HomeController@index');
 Route::get('/h', 'HomeController@change')->name('h');
+Route::get('/profile', 'customerController@view');
+Route::get('/personal', 'customerController@editable');
 
 
-Route::get('/profile', 'customerController@index')->name('profile');
+
 Route::get('/bills', 'PostsController@index')->name('bills');
 Route::get('/invoice', 'PostsController@inv')->name('invoice');
 Route::get('/h', 'HomeController@change')->name('h');

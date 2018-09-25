@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Customer;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class customerController extends Controller
 {
@@ -43,11 +45,11 @@ class customerController extends Controller
         ]);
 
         $customer=new Customer;
+        $customer->Id=$request->input('id');
         $customer->name=$request->input('name');
         $customer->address=$request->input('address');
         $customer->contactNo=$request->input('contactNo');
         $customer->email=$request->input('email');
-        $customer->contactNo=$request->input('contactNo');
         $customer->save();
 
         return redirect('/h')->with('success','Your details inserted.');
@@ -62,6 +64,7 @@ class customerController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
@@ -72,7 +75,8 @@ class customerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $customer=Customer::find($id);
+        return view('pages.customer.personal');
     }
 
     /**
@@ -84,7 +88,18 @@ class customerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+
+            'address'=>'required',
+            'contactNo'=> 'required|regex:/(0)[0-9]{9}/',
+            ]);
+    
+            $customer=Customer::find($id);
+            $customer->address=$request->input('address');
+            $customer->contactNo=$request->input('contactNo');
+            $customer->save();
+    
+            return redirect('profile')->with('success','Your changes are saved.');
     }
 
     /**
@@ -97,4 +112,20 @@ class customerController extends Controller
     {
         //
     }
+
+     /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function view(){
+        return view('pages.customer.profile')
+        ->with('customer',Customer::find(Auth::user()->id));
+    }
+    public function editable(){
+        return view('pages.customer.personal')
+        ->with('customer',Customer::find(Auth::user()->id));
+    }
+
 }
