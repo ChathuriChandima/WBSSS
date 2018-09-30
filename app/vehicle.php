@@ -9,4 +9,8 @@ class vehicle extends Model
     protected $table = 'vehicles';
     public $primaryKey = 'vehicleNo';
     public $timestamps = true;
+
+    public function customerer(){
+        return $this->belongsTo('App\Customer');
+    }
 }

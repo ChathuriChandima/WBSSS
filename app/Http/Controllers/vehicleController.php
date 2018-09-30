@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Customer;
 
 class vehicleController extends Controller
 {
@@ -81,4 +82,5 @@ class vehicleController extends Controller
     {
         //
     }
+    
 }

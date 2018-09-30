@@ -12,7 +12,7 @@
                    <a href="#">View Vehicle Status</a>
                </li>
                <li>
-                   <a href="/profile">Profile</a>
+                   <a href="profile">Profile</a>
                </li>
                
            </ul>

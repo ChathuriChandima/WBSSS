@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Customer;
 use App\User;
+use App\vehicle;
 use Illuminate\Support\Facades\Auth;
 
 class customerController extends Controller
@@ -16,7 +17,7 @@ class customerController extends Controller
      */
     public function index()
     {
-
+        
     }
 
     /**
@@ -121,11 +122,11 @@ class customerController extends Controller
      */
     public function view(){
         return view('pages.customer.profile')
-        ->with('customer',Customer::find(Auth::user()->id));
+        ->with('customer',Customer::find(Auth::user()->id))
+        ->with('vehicle',vehicle::where('cId',Auth::user()->id)->first());
     }
     public function editable(){
         return view('pages.customer.personal')
         ->with('customer',Customer::find(Auth::user()->id));
     }
-
 }

@@ -26,7 +26,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/loggedin', 'HomeController@index');
 Route::get('/h', 'HomeController@change')->name('h');
-Route::get('/profile', 'customerController@view');
+Route::get('/profile', 'customerController@view')->name('profile');
 Route::get('/personal', 'customerController@editable');
 
 

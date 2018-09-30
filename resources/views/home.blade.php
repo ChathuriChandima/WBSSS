@@ -1,5 +1,5 @@
 
-@extends('layouts.log')
+@extends('layouts.new')
 <style>
   input[type='number']::-webkit-inner-spin-button,input[type='number']::-webkit-outer-spin-button{
     -webkit-appearance: none;
@@ -21,12 +21,12 @@
           <br>
           <div class="form-group">
             <p style="text-align:left"><strong>{{Form::label('address','Address')}} :</strong></p>
-            {{Form::text('address','',['class'=>'form-control','placeholder'=>'Address'])}}
+            {{Form::text('address','',['class'=>'form-control','placeholder'=>''])}}
           </div>
           <br>
           <div class="form-group">
             <p style="text-align:left"><strong>{{Form::label('contactNo','Contact Number')}} :</strong></p>
-            {{Form::input('number','contactNo',null,['class'=>'form-control','placeholder'=>'Contact Number'])}}
+            {{Form::input('number','contactNo',null,['class'=>'form-control','placeholder'=>''])}}
           </div>
           <br>
           <div class="form-group">

@@ -29,7 +29,7 @@ class HomeController extends Controller
     }
     public function change()
     {
-        return view('h');
+        return view('h')->with('customer',Customer::find(Auth::user()->id));
     }
     public function home()
     {

@@ -6,20 +6,6 @@
   }
 </style>
 @section('content')
-<div class="container mt-3">
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs">
-          <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href='#p'>Personal Details</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#v">Vehicle Details</a>
-          </li>
-        </ul>
-      
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <div id="p" class="container tab-pane active"><br>
             <h2><img src="img\icons8_User_Menu_Male_50px_2.png" >  Personal Profile </h2>
             <div class="container">
                 <div class="well">
@@ -34,7 +20,7 @@
                               <br>
                               <div class="form-group">
                                 <p style="text-align:left"><strong>{{Form::label('address','Address')}} :</strong></p>
-                                {{Form::text('address',$customer->address,['class'=>'form-control','placeholder'=>'Address'])}}
+                                {{Form::text('address',$customer->address,['class'=>'form-control','placeholder'=>''])}}
                               </div>
                               <div class="form-group" >
                                   <p style="text-align:left">{{Form::label('email','Email Address')}}</p>
@@ -42,7 +28,7 @@
                                 </div>
                                 <div class="form-group" >
                                     <p style="text-align:left">{{Form::label('contactNo','Contact Number')}}</p>
-                                    {{Form::text('contactNo', $customer->contactNo ,['class'=>'form-control','placeholder'=>'Contact Number'])}}
+                                    {{Form::text('contactNo', $customer->contactNo ,['class'=>'form-control','placeholder'=>''])}}
                                   </div>
                                 <br>
                                 <div class="form-group float-right form-inline">
@@ -56,10 +42,5 @@
                                 </div>
                           {!! Form::close() !!}
                       </div>
-            </div>
-          </div>
-          <div id="v" class="container tab-pane fade"><br>
-          </div>
-        </div>
-      </div>
+            </div>    
 @endsection
