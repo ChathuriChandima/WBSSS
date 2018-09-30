@@ -33,6 +33,7 @@ Route::get('/personal', 'customerController@editable');
 
 Route::get('/bills', 'PostsController@index')->name('bills');
 Route::get('/invoice', 'PostsController@inv')->name('invoice');
+Route::get('/vehicles','vehicleController@move')->name('vehicles');
 Route::get('/h', 'HomeController@change')->name('h');
 
 

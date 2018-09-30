@@ -16,6 +16,9 @@ class vehicleController extends Controller
     {
         //
     }
+    public function move(){
+        return view('pages.vehicle.vehicles');
+    }
 
     /**
      * Show the form for creating a new resource.
