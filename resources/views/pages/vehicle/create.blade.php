@@ -28,16 +28,16 @@
     @endif
     <div class="container" style="padding-right:50px">
     <form  class="form-container border border-warning rounded" style="width:1000px">
-    {!! Form::open(array('action' => 'vehicleController@store','method'=>'POST')) !!}
+    {!! Form::open(array('route' => 'vehicle.store','method'=>'POST')) !!}
     
     <div class="row">
 
 
-        <div class=" col-sm-12 col-md-12">
-            
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
                 <strong>Vehicle No:</strong>
                 {!! Form::text('vehicleNo', null, array('placeholder' => 'Vehicle No','class' => 'form-control')) !!}
-            
+            </div>
         </div>
     </div>
     <div class="row">

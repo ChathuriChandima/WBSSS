@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Customer;
 use app\vehicle;
-
+use Illuminate\Support\Facades\Input;
 class vehicleController extends Controller
 {
     /**
@@ -47,15 +47,9 @@ class vehicleController extends Controller
             'description' =>'required',
             'brand' => 'required'
         ]);
-        //create new vehicle
-        $vehicl = new vehicle;
-        $vehicl->vehicleNo = $request->input('vehicleNo');
-        $vehicl->type = $request->input('type');
-        $vehicl->description = $request->input('description');
-        $vehicl->brand = $request->input('brand');
-        $vehicl->save();
+        vehicle::create($request->all());
 
-        return redirect('pages.vehicle.vehicles')
+        return redirect()->route('vehicle.index')
                         ->with('success','Vehicle added successfully');
     }
 

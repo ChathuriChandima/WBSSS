@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class vehicle extends Model
 {
+
+    public $fillable = ['vehicleNo','type','description','brand'];
     protected $table = 'vehicles';
     public $primaryKey = 'vehicleNo';
     public $timestamps = true;

@@ -37,7 +37,7 @@ Route::get('/vehicles','vehicleController@move')->name('vehicles');
 Route::get('/loggedin', 'HomeController@index')->name('loggedin');
 Route::get('vehicle',['as'=>'vehicle.index','uses'=>'vehicleController@index']);
 Route::get('vehicle/create',['as'=>'vehicle.create','uses'=>'vehicleController@create']);
-Route::get('vehicle/store',['as'=>'vehicle.store','uses'=>'vehicleController@store']);
+Route::post('vehicle/store',['as'=>'vehicle.store','uses'=>'vehicleController@store']);
 
 /* Route group with the access controled for the user types*/
 
