@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Customer;
+use App\vehicle;
 
 class HomeController extends Controller
 {
@@ -55,7 +56,10 @@ class HomeController extends Controller
     public function accountant(Request $req){
       return view('middleware')->withMessage("Accountant");
     }
-
+    public function vehicles(Request $req){
+      return view('pages.vehicle.vehicles');
+    }
+   
     /* Methods to handle mechanic's requests for access pages*/
     public function mechanic(Request $req){
       return view('middleware')->withMessage("Mechanic");

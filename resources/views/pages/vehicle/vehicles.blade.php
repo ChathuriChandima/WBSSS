@@ -14,40 +14,50 @@
 </div> 
 @section('content')
 
-<div class="newrow">
+<div class="row">
     <div class="col-lg-12 margin-tb">
         <div >
-            <a class="btn btn-info" href="" style="font-size:20px" > Add New Vehicle</a> 
+            <br> <br>
+            <a class="btn btn-info" href="{{ route('vehicle.create') }}" style="font-size:20px" > Add New Vehicle</a> 
             <br> <br>
         </div>
     </div>
 </div>
+@section('content')
 
-<div class="newrow">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-down">
-            <a class="btn btn-info" href="" style="font-size:20px">View Vehicle</a>
-            <br> <br>
-        </div>
+@if ($message = Session::get('success'))
+    <div class="alert alert-success">
+        <p>{{ $message }}</p>
     </div>
-</div>
-<div class="newrow">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-down">
-            <a class="btn btn-info" href="" style="font-size:20px">Edit Vehicle</a>
-            <br> <br>
-        </div>
-    </div>
-</div> 
-<div class="newrow">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                    {!! Form::open(['method' => 'DELETE','style'=>'display:inline']) !!}
-                    {!! Form::submit('Delete Vehicle', ['class' => 'btn btn-danger']) !!}
-                    {!! Form::close() !!}
-                <br> <br>
-            </div>
-        </div>
-    </div> 
+@endif
+
+<table class="table table-bordered">
+        <tr>
+            <th>Vehicle No</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Brand</th>
+            <th width="280px">Action</th>
+        </tr>
+    
+    <tr>
+       
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            <a class="btn btn-info" href="">Show</a>
+            <a class="btn btn-primary" href="">Edit</a>
+
+ 
+            {!! Form::open(['method' => 'DELETE','style'=>'display:inline']) !!}
+            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+            {!! Form::close() !!}
+        </td>
+    </tr>
+   
+    </table>
+   
 @endsection
 

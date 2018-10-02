@@ -13,4 +13,7 @@ class vehicle extends Model
     public function customerer(){
         return $this->belongsTo('App\Customer');
     }
+    public function account(){
+        return $this->belongsTo('App\Staff');
+    }
 }
