@@ -9,7 +9,7 @@
                 <h1>Insert New Vehicle</h1>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="vehicle.vehicles" style="top-right: 30px"> Back</a>
+                <a class="btn btn-primary" href="/vehicles" style="top-right: 30px"> Back</a>
                 <br> <br>
             </div>
         </div>
@@ -28,7 +28,7 @@
     @endif
     <div class="container" style="padding-right:50px">
     <form  class="form-container border border-warning rounded" style="width:1000px">
-    {!! Form::open(array('route' => 'vehicle.store','method'=>'POST')) !!}
+    {!! Form::open(array('action' => 'vehicleController@store','method'=>'POST')) !!}
     
     <div class="row">
 
@@ -67,7 +67,7 @@
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Create</button>
                 <br> <br>
         </div>
     </div>

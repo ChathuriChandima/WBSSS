@@ -47,11 +47,15 @@ class vehicleController extends Controller
             'description' =>'required',
             'brand' => 'required'
         ]);
+        //create new vehicle
+        $vehicl = new vehicle;
+        $vehicl->vehicleNo = $request->input('vehicleNo');
+        $vehicl->type = $request->input('type');
+        $vehicl->description = $request->input('description');
+        $vehicl->brand = $request->input('brand');
+        $vehicl->save();
 
-
-        vehicle::create($request->all());
-
-        return redirect()->route('pages.vehicle.vehicles')
+        return redirect('pages.vehicle.vehicles')
                         ->with('success','Vehicle added successfully');
     }
 
