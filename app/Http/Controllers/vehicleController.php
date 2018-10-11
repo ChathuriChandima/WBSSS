@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Customer;
+
 use App\vehicle;
 
+
+use app\vehicle;
+use Illuminate\Support\Facades\Input;
 class vehicleController extends Controller
 {
     /**
@@ -41,7 +45,18 @@ class vehicleController extends Controller
      */
     public function store(Request $request)
     {
-    
+
+        $this->validate($request, [
+            'vehicleNo' => 'required',
+            'type' =>'required',
+            'description' =>'required',
+            'brand' => 'required'
+        ]);
+        vehicle::create($request->all());
+
+        return redirect()->route('vehicle.index')
+                        ->with('success','Vehicle added successfully');
+
     }
 
     /**
