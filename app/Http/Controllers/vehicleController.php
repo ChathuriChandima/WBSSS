@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Customer;
-use app\vehicle;
+use App\vehicle;
 
 class vehicleController extends Controller
 {
@@ -15,7 +15,7 @@ class vehicleController extends Controller
      */
     public function index(Request $request)
     {
-        $items = vehicle::orderBy('vehicleNo','type','description','brand')->paginate(5);
+        $items = vehicle::orderBy('vehicleNo','type','lastServiceDay','brand')->paginate(5);
         return view('vehicle.vehicles',compact('items'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
@@ -41,18 +41,7 @@ class vehicleController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'vehicleNo' => 'required',
-            'type' =>'required',
-            'description' =>'required',
-            'brand' => 'required'
-        ]);
-
-
-        vehicle::create($request->all());
-
-        return redirect()->route('pages.vehicle.vehicles')
-                        ->with('success','Vehicle added successfully');
+    
     }
 
     /**
@@ -63,8 +52,6 @@ class vehicleController extends Controller
      */
     public function show($id)
     {
-        $item = vehicle::find($id);
-        return view('pages.vehicle.show',compact('item'));
     }
 
     /**
@@ -75,8 +62,6 @@ class vehicleController extends Controller
      */
     public function edit($id)
     {
-        $item = vehicle::find($id);
-        return view('pages.vehicle.edit',compact('item'));
     }
 
     /**
@@ -88,15 +73,6 @@ class vehicleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'vehicleNo' => 'required',
-            
-        ]);
-
-        vehicle::find($id)->update($request->all());
-
-        return redirect()->route('pages.vehicle.vehicles')
-                        ->with('success','Vehicle Updated successfully');
     }
 
     /**
@@ -105,11 +81,9 @@ class vehicleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($vehicleNo)
     {
-        vehicle::find($id)->delete();
-        return redirect()->route('pages.vehicle.vehicles')
-                        ->with('success','Vehicle deleted successfully');
+        
     }
     
 }

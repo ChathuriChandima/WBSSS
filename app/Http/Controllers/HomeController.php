@@ -30,7 +30,7 @@ class HomeController extends Controller
     }
     public function change()
     {
-        return view('h')->with('customer',Customer::find(Auth::user()->id));
+      return view('h')->with('customer',Customer::find(Auth::user()->id));
     }
     public function home()
     {
@@ -58,6 +58,9 @@ class HomeController extends Controller
     }
     public function vehicles(Request $req){
       return view('pages.vehicle.vehicles');
+    }
+    public function services(Request $req){
+      return view('pages.accountant.services');
     }
    
     /* Methods to handle mechanic's requests for access pages*/

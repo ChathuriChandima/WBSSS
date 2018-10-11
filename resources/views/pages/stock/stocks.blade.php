@@ -1,6 +1,6 @@
 @extends('layouts.log')
 
-<link rel="stylesheet" href="{{asset('my/u.css')}}">
+<link rel="stylesheet" href="{{asset('my/m.css')}}">
 
 
 <div class="carousel-inner">
@@ -8,7 +8,7 @@
       <img src="img/p2.jpg" width="1600" height="300"style = "padding-left:250px">
       <div class="carousel-caption">
               <h1>RAJAAN MOTORS</h1>
-              <h2>Vehicle Details</h2>
+              <h2>Stock Details</h2>
               
       </div>
 </div> 
@@ -18,7 +18,7 @@
     <div class="col-lg-12 margin-tb">
         <div >
             <br> <br>
-            <a class="btn btn-info" href="" style="font-size:20px" > Add New Vehicle</a> 
+            <a class="btn btn-info" href="" style="font-size:20px" > Add Stock</a> 
             <br> <br>
         </div>
     </div>
@@ -33,16 +33,20 @@
 
 <table class="table table-bordered">
         <tr>
-            <th>Vehicle No</th>
+            <th>Code</th>
+            <th>Name</th>
             <th>Type</th>
-            <th>Description</th>
-            <th>Brand</th>
-            <th>C ID</th>
+            <th>Available Stock</th>
+            <th>Purchased Stock</th>
+            <th>Sold Stock</th>
+            <th>Price</th>
             <th width="280px">Action</th>
         </tr>
     
     <tr>
        
+        <td></td>
+        <td></td>
         <td></td>
         <td></td>
         <td></td>
@@ -62,4 +66,3 @@
     </table>
    
 @endsection
-
