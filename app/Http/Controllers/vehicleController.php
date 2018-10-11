@@ -4,11 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Customer;
-
 use App\vehicle;
-
-
-use app\vehicle;
 use Illuminate\Support\Facades\Input;
 class vehicleController extends Controller
 {

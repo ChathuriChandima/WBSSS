@@ -1,6 +1,6 @@
 @extends('layouts.log')
 
-<link rel="stylesheet" href="{{asset('my/u.css')}}">
+<link rel="stylesheet" href="{{asset('my/m.css')}}">
 
 
 <div class="carousel-inner">
