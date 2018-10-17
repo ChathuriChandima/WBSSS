@@ -28,7 +28,7 @@
                 <input type="text" class="form-control" id="email" placeholder={{$customer->email}} disabled><br>
                 <p style="text-align:left"><label for="contact"><strong style="font-size:large">Contact Number :</strong></label></p>
                 <input type="number" class="form-control" id="contact" placeholder={{$customer->contactNo}} disabled><br>
-            <a href="personal" type="submit" class="btn btn-primary float-right " style="width:70px"  id="edit" ><strong>Edit</strong></a>
+            <a href="personal" type="submit" class="btn btn-primary float-right " style="width:70px"  id="edit" title="Edit"><strong>Edit</strong></a>
             </form>
             </div>
 

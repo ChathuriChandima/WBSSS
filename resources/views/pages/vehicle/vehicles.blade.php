@@ -17,9 +17,9 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div >
-            <br> <br>
-            <a class="btn btn-info" href="" style="font-size:20px" > Add New Vehicle</a> 
-            <br> <br>
+            <br>
+            <a class="btn float-right" href="" title="New Vehicle"> <img src="img\icons8_Add_New_50px_1.png"  /></a> 
+            <br>
         </div>
     </div>
 </div>
@@ -49,12 +49,13 @@
         <td></td>
         <td></td>
         <td>
-            <a class="btn btn-info" href="">Show</a>
-            <a class="btn btn-primary" href="">Edit</a>
+            <a class="btn" href="" title="View"><img src="img\icons8_Eye_25px_1.png" /></a>
+            <a class="btn" href="" title="Edit"><img src="img\icons8_Edit_25px.png" /></a>
+            <a class="btn" href="" title="Delete"><img src="img\icons8_Delete_25px_6.png" /></a>
 
  
-            {!! Form::open(['method' => 'DELETE','style'=>'display:inline']) !!}
-            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+            <!--{!! Form::open(['method' => 'DELETE','style'=>'display:inline']) !!}
+            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}-->
             {!! Form::close() !!}
         </td>
     </tr>
