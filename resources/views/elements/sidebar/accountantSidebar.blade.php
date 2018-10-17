@@ -15,7 +15,7 @@
                </li>
                <li>
                   
-                   <a href="/bills">Print Bills & Invoices</a>
+                   <a href="/bills">Bills & Invoices</a>
                </li>
                <li>
                   
@@ -24,11 +24,11 @@
                
                
                <li>
-                   <a href="#">Services</a>
+                   <a href="/services">Services</a>
                </li>
                <li>
                    
-                   <a href="#">Notification</a>
+                   <a href="/stocks">Stock Management</a>
                </li>
            </ul>
        </div>

@@ -13,7 +13,8 @@ class stockController extends Controller
      */
     public function index()
     {
-        //
+        $stocks = stock::orderBy('code','name','type','availableStock','purchasedStock','soldStock','price')->paginate(10);
+        return view('stock.index')->with('stocks',$stocks);
     }
 
     /**
@@ -23,7 +24,7 @@ class stockController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.stock.stocks');
     }
 
     /**

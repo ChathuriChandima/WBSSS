@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Customer;
-
+use App\vehicle;
+use Illuminate\Support\Facades\Input;
 class vehicleController extends Controller
 {
     /**
@@ -12,9 +13,11 @@ class vehicleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $items = vehicle::orderBy('vehicleNo','type','lastServiceDay','brand')->paginate(5);
+        return view('vehicle.vehicles',compact('items'))
+            ->with('i', ($request->input('page', 1) - 1) * 5);
     }
     public function move(){
         return view('pages.vehicle.vehicles');
@@ -27,7 +30,7 @@ class vehicleController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.vehicle.create');
     }
 
     /**
@@ -38,7 +41,18 @@ class vehicleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $this->validate($request, [
+            'vehicleNo' => 'required',
+            'type' =>'required',
+            'description' =>'required',
+            'brand' => 'required'
+        ]);
+        vehicle::create($request->all());
+
+        return redirect()->route('vehicle.index')
+                        ->with('success','Vehicle added successfully');
+
     }
 
     /**
@@ -49,7 +63,6 @@ class vehicleController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -60,7 +73,6 @@ class vehicleController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -72,7 +84,6 @@ class vehicleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**
@@ -81,9 +92,9 @@ class vehicleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($vehicleNo)
     {
-        //
+        
     }
     
 }

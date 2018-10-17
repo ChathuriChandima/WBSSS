@@ -20,7 +20,10 @@ class PostsController extends Controller
     {
         return view('pages.accountant.invoice');
     }
-
+    public function servc()
+    {
+        return view('pages.accountant.services');
+    }
 
     /**
      * Show the form for creating a new resource.

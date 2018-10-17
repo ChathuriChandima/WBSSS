@@ -16,6 +16,7 @@
       <div id="p" class="container tab-pane active"><br>
             <h2><img src="img\icons8_User_Menu_Male_50px_2.png" >  Personal Profile </h2>
             <div class="container">
+             
             <form>
                 <p style="text-align:left"><label for="userid"><strong style="font-size:large">Customer Id :</strong></label></p>
                 <input type="text" class="form-control" id="userid" placeholder={{$customer->Id}} disabled><br>
@@ -30,8 +31,10 @@
             <a href="personal" type="submit" class="btn btn-primary float-right " style="width:70px"  id="edit" ><strong>Edit</strong></a>
             </form>
             </div>
+
         </div>
         <div id="v" class="container tab-pane fade"><br>
+
             @if($vehicle!=null)
             <div class="well">
               <h2><img src="img\icons8_Maintenance_50px_1.png" >  Vehicle Profile </h2>
@@ -48,10 +51,11 @@
               </form>
               </div>
             </div>
-            @else
-            <p>No more details found!</p>
-            @endif
-        </div>
+          </div>
+          @else
+          <p>No more details found!</p>
+          @endif
       </div>
     </div>
-@endsection
+  </div>
+@endsection 

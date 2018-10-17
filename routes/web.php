@@ -34,9 +34,13 @@ Route::get('/personal', 'customerController@editable');
 Route::get('/bills', 'PostsController@index')->name('bills');
 Route::get('/invoice', 'PostsController@inv')->name('invoice');
 Route::get('/vehicles','vehicleController@move')->name('vehicles');
-Route::get('/h', 'HomeController@change')->name('h');
+Route::get('/stocks','stockController@create')->name('stocks');
+Route::get('/services', 'PostsController@servc')->name('services');
+Route::get('/loggedin', 'HomeController@index')->name('loggedin');
 
 
+Route::get('vehicle/vehicles',['as'=>'vehicle.index','uses'=>'vehicleController@index']);
+Route::get('vehicle/create',['as'=>'vehicle.create','uses'=>'vehicleController@create']);
 
 /* Route group with the access controled for the user types*/
 
@@ -63,8 +67,9 @@ Route::group(['middleware' => 'App\Http\Middleware\CustomerMiddleware'], functio
 Route::group(['middleware' => 'App\Http\Middleware\AccountantMiddleware'], function(){
 
     Route::match(['get','post'],'/accountantOnlyPage','HomeController@accountant');
-
-});
+    Route::match(['get','post'],'/vehicles','HomeController@vehicles');
+    Route::match(['get','post'],'/services','HomeController@services');
+   });
 
 /* Mechanic route group */
 
