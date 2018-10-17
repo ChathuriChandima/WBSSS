@@ -10,7 +10,7 @@ class vehicle extends Model
     public $primaryKey = 'vehicleNo';
     public $timestamps = true;
 
-    public function customerer(){
+    public function customer(){
         return $this->belongsTo('App\Customer');
     }
 }

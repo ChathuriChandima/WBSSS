@@ -5,7 +5,7 @@
                <br>
                <p style="color:darkgoldenrod">Customer Navigation</p>
                <li>
-                   <a href="#">Home</a>
+                   <a href="/loggedin">Home</a>
                </li>
               
                <li>

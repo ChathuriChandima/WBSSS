@@ -32,7 +32,7 @@
             </div>
         </div>
         <div id="v" class="container tab-pane fade"><br>
-            @if(count($vehicle)>0)
+            @if($vehicle!=null)
             <div class="well">
               <h2><img src="img\icons8_Maintenance_50px_1.png" >  Vehicle Profile </h2>
               <div class="container">
