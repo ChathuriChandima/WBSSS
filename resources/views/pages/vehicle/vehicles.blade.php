@@ -28,17 +28,16 @@
             <th style="text-align:center">Type</th>
             <th style="text-align:center">Description</th>
             <th style="text-align:center">Brand</th>
-            <th style="text-align:center">C ID</th>
+            <th style="text-align:center">CID</th>
             <th width="200px" style="text-align:center">Action</th>
         </tr>
-    
+    @foreach ($vehicle as $v)
     <tr>
-       
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>{{$v->vehicleNo}}</td>
+        <td>{{$v->type}}</td>
+        <td>{{$v->lastServiceDay}}</td>
+        <td>{{$v->brand}}</td>
+        <td>{{$v->cId}}</td>
         <td>
             <a class="btn" href="" title="View"><img src="img\icons8_Eye_25px_1.png" /></a>
             <a class="btn" href="" title="Edit"><img src="img\icons8_Edit_25px.png" /></a>
@@ -49,7 +48,9 @@
             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}-->
             {!! Form::close() !!}
         </td>
+        @endforeach
     </tr>
+    
    
     </table>
 </div>

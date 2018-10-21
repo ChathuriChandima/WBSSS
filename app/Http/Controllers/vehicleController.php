@@ -22,7 +22,9 @@ class vehicleController extends Controller
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
     public function move(){
-        return view('pages.vehicle.vehicles');
+        return view('pages.vehicle.vehicles')
+        ->with('vehicle',vehicle::all())
+        ->with('customer',Customer::all());
     }
 
     /**
@@ -71,8 +73,12 @@ class vehicleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,$cid)
     {
+        return view('pages.vehicle.show')
+        ->with('customer',Customer::find($cid))
+        ->with('vehicle',vehicle::find($id));
+
     }
 
     /**
