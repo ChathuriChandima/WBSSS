@@ -1,7 +1,4 @@
-@extends('layouts.log')
-
 <link rel="stylesheet" href="{{asset('my/u.css')}}">
-
 
 <div class="carousel-inner">
     <div class="carousel-item active">

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Customer;
 use App\vehicle;
+use App\User;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
 class vehicleController extends Controller
 {
     /**
@@ -30,7 +32,8 @@ class vehicleController extends Controller
      */
     public function create()
     {
-        return view('pages.vehicle.create');
+        return view('pages.vehicle.add')
+        ->with('customer',Customer::all());
     }
 
     /**
@@ -45,14 +48,21 @@ class vehicleController extends Controller
         $this->validate($request, [
             'vehicleNo' => 'required',
             'type' =>'required',
-            'description' =>'required',
-            'brand' => 'required'
+            'lastServiceDay'=>'required',
+            'brand' => 'required',
+            'cId'=>'required'
         ]);
-        vehicle::create($request->all());
+        $vehicle=new vehicle;
+        $vehicle->vehicleNo=$request->input('vehicleNo');
+        $vehicle->type=$request->input('type');
+        $vehicle->lastServiceDay=$request->input('lastServiceDay');
+        $vehicle->brand=$request->input('brand');
+        $vehicle->cId=$request->input('cId');
+        $vehicle->save();
 
-        return redirect()->route('vehicle.index')
-                        ->with('success','Vehicle added successfully');
-
+        return redirect('vehicles')->with('success','Your changes are saved.');
+        
+        
     }
 
     /**
@@ -96,5 +106,6 @@ class vehicleController extends Controller
     {
         
     }
+
     
 }

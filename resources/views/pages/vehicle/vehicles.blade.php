@@ -16,29 +16,20 @@
 
 <div class="row">
     <div class="col-lg-12 margin-tb">
-        <div >
-            <br>
-            <a class="btn float-right" href="" title="New Vehicle"> <img src="img\icons8_Add_New_50px_1.png"  /></a> 
-            <br>
-        </div>
+            <a href="add" class="btn float-right"  title="New Vehicle"> <img src="img\icons8_Add_New_50px_1.png"  /></a> 
     </div>
 </div>
 @section('content')
 
-@if ($message = Session::get('success'))
-    <div class="alert alert-success">
-        <p>{{ $message }}</p>
-    </div>
-@endif
-
+<div class="container">
 <table class="table table-bordered">
         <tr>
-            <th>Vehicle No</th>
-            <th>Type</th>
-            <th>Description</th>
-            <th>Brand</th>
-            <th>C ID</th>
-            <th width="280px">Action</th>
+            <th style="text-align:center">Vehicle No</th>
+            <th style="text-align:center">Type</th>
+            <th style="text-align:center">Description</th>
+            <th style="text-align:center">Brand</th>
+            <th style="text-align:center">C ID</th>
+            <th width="200px" style="text-align:center">Action</th>
         </tr>
     
     <tr>
@@ -61,6 +52,7 @@
     </tr>
    
     </table>
+</div>
    
 @endsection
 

@@ -5,6 +5,8 @@
   max-width: 1000px;
   position: relative;
   margin: auto;
+  margin-top: -20px;
+  opacity: 0.6;
 }
 
 /* Hide the images by default */

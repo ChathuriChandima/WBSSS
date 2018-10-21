@@ -12,15 +12,12 @@
               
       </div>
 </div> 
+</div>
 @section('content')
 
 <div class="row">
     <div class="col-lg-12 margin-tb">
-        <div >
-            <br> <br>
-            <a class="btn btn-info" href="" style="font-size:20px" > Add Stock</a> 
-            <br> <br>
-        </div>
+            <a class="btn float-right" href="" title="New Stock Item"> <img src="img\icons8_Add_New_50px_1.png"  /></a>  
     </div>
 </div>
 @section('content')
@@ -30,7 +27,7 @@
         <p>{{ $message }}</p>
     </div>
 @endif
-
+<div class="container">
 <table class="table table-bordered">
         <tr>
             <th>Code</th>
@@ -40,7 +37,7 @@
             <th>Purchased Stock</th>
             <th>Sold Stock</th>
             <th>Price</th>
-            <th width="280px">Action</th>
+            <th width="200px">Action</th>
         </tr>
     
     <tr>
@@ -53,16 +50,17 @@
         <td></td>
         <td></td>
         <td>
-            <a class="btn btn-info" href="">Show</a>
-            <a class="btn btn-primary" href="">Edit</a>
-
+            <a class="btn" href="" title="View"><img src="img\icons8_Eye_25px_1.png" /></a>
+            <a class="btn" href="" title="Edit"><img src="img\icons8_Edit_25px.png" /></a>
+            <a class="btn" href="" title="Delete"><img src="img\icons8_Delete_25px_6.png" /></a>
  
-            {!! Form::open(['method' => 'DELETE','style'=>'display:inline']) !!}
+            <!--{!! Form::open(['method' => 'DELETE','style'=>'display:inline']) !!}
             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-            {!! Form::close() !!}
+            {!! Form::close() !!}-->
         </td>
     </tr>
    
     </table>
+</div>
    
 @endsection
