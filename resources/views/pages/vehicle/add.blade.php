@@ -14,6 +14,7 @@
                                 <p style="text-align:left"><strong>{{Form::label('vehicleNo','Vehicle No')}} :</strong></p>
                                 {{Form::text('vehicleNo','',['class'=>'form-control','placeholder'=>''])}}
                               </div>
+                              <div class="form-group">
                                 <p style="text-align:left"><strong>{{Form::label('type','Type')}}  :</strong></p>
                                 {{Form::text('type','',['class'=>'form-control','placeholder'=>''])}}
                               </div>

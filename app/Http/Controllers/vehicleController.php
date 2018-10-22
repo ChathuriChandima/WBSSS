@@ -73,10 +73,9 @@ class vehicleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id,$cid)
+    public function show($id)
     {
         return view('pages.vehicle.show')
-        ->with('customer',Customer::find($cid))
         ->with('vehicle',vehicle::find($id));
 
     }
@@ -112,6 +111,15 @@ class vehicleController extends Controller
     {
         
     }
-
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function find($id)
+    {
+        $vehicle=vehicle::find($id);
+    }
     
 }
