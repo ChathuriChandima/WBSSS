@@ -17,16 +17,12 @@
 
 <div class="row">
     <div class="col-lg-12 margin-tb">
-            <a class="btn float-right" href="" title="New Stock Item"> <img src="img\icons8_Add_New_50px_1.png"  /></a>  
+            <a class="btn float-right" href="add" title="New Stock Item"> <img src="img\icons8_Add_New_50px_1.png"  /></a>  
     </div>
 </div>
 @section('content')
 
-@if ($message = Session::get('success'))
-    <div class="alert alert-success">
-        <p>{{ $message }}</p>
-    </div>
-@endif
+
 <div class="container">
 <table class="table table-bordered">
         <tr>
@@ -35,7 +31,7 @@
             <th>Type</th>
             <th>Available Stock</th>
             <th>Purchased Stock</th>
-            <th>Sold Stock</th>
+            <th>Sales</th>
             <th>Price</th>
             <th width="200px">Action</th>
         </tr>
@@ -50,7 +46,7 @@
         <td></td>
         <td></td>
         <td>
-            <a class="btn" href="" title="View"><img src="img\icons8_Eye_25px_1.png" /></a>
+            
             <a class="btn" href="" title="Edit"><img src="img\icons8_Edit_25px.png" /></a>
             <a class="btn" href="" title="Delete"><img src="img\icons8_Delete_25px_6.png" /></a>
  

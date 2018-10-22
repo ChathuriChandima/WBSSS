@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\stock;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
 
 class stockController extends Controller
 {
@@ -14,7 +16,7 @@ class stockController extends Controller
     public function index()
     {
         $stocks = stock::orderBy('code','name','type','availableStock','purchasedStock','soldStock','price')->paginate(10);
-        return view('stock.index')->with('stocks',$stocks);
+        return view('pages.stock.stocks')->with('stocks',$stocks);
     }
 
     /**
@@ -24,7 +26,7 @@ class stockController extends Controller
      */
     public function create()
     {
-        return view('pages.stock.stocks');
+        return view('pages.stock.add');
     }
 
     /**
@@ -35,7 +37,26 @@ class stockController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'code' => 'required',
+            'name' => 'required',
+            'type' =>'required',
+            'availableStock'=>'required',
+            'purchasedStock' => 'required',
+            'soldStock'=>'required',
+            'price' => 'required'
+        ]);
+        $stock=new stock;
+        $stock->code=$request->input('code');
+        $stock->name=$request->input('name');
+        $stock->type=$request->input('type');
+        $stock->availableStock=$request->input('availableStock');
+        $stock->purchasedStock=$request->input('purchasedStock');
+        $stock->soldStock=$request->input('soldStock');
+        $stock->price=$request->input('price');
+        $stock->save();
+
+        return redirect('stocks')->with('success','Your changes are saved.');
     }
 
     /**
