@@ -71,6 +71,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AccountantMiddleware'], funct
     Route::match(['get','post'],'/invoice', 'PostsController@inv')->name('invoice');
     Route::match(['get','post'],'/vehicles','vehicleController@move')->name('vehicles');
     Route::match(['get','post'],'/stocks','stockController@index')->name('stocks');
+    Route::match(['get','post'],'/stocks','stockController@move')->name('stocks');
     Route::match(['get','post'],'/services', 'PostsController@servc')->name('services');
     Route::match(['get','post'],'/add', 'vehicleController@create');
     Route::match(['get','post'],'/show', 'vehicleController@show'); 

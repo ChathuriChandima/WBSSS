@@ -36,15 +36,15 @@
             <th width="200px">Action</th>
         </tr>
     
-    <tr>
-       
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        @foreach ($stock as $s)
+        <tr>
+            <td>{{$s->code}}</td>
+            <td>{{$s->name}}</td>
+            <td>{{$s->type}}</td>
+            <td>{{$s->availableStock}}</td>
+            <td>{{$s->purchasedStock}}</td>
+            <td>{{$s->soldStock}}</td>
+            <td>{{$s->price}}</td>
         <td>
             
             <a class="btn" href="" title="Edit"><img src="img\icons8_Edit_25px.png" /></a>
@@ -54,6 +54,7 @@
             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
             {!! Form::close() !!}-->
         </td>
+        @endforeach
     </tr>
    
     </table>
