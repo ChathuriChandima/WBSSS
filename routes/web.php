@@ -22,6 +22,7 @@ Route::get('/contact','PagesController@contact');
 
 Route::resource('customer','customerController');
 Route::resource('vehicle','vehicleController');
+Route::resource('stock','stockController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@home')->name('home');
@@ -31,6 +32,10 @@ Route::get('/h', 'HomeController@change')->name('h');
 
 Route::get('vehicle/vehicles',['as'=>'vehicle.index','uses'=>'vehicleController@index']);
 Route::get('vehicle/create',['as'=>'vehicle.create','uses'=>'vehicleController@create']);
+
+
+Route::get('stock/stocks',['as'=>'stock.index','uses'=>'stockController@index']);
+Route::get('stock/add',['as'=>'stock.create','uses'=>'stockController@create']);
 
 /* Route group with the access controled for the user types*/
 
@@ -65,10 +70,15 @@ Route::group(['middleware' => 'App\Http\Middleware\AccountantMiddleware'], funct
     Route::match(['get','post'],'/bills', 'PostsController@index')->name('bills');
     Route::match(['get','post'],'/invoice', 'PostsController@inv')->name('invoice');
     Route::match(['get','post'],'/vehicles','vehicleController@move')->name('vehicles');
-    Route::match(['get','post'],'/stocks','stockController@create')->name('stocks');
+    Route::match(['get','post'],'/stocks','stockController@index')->name('stocks');
     Route::match(['get','post'],'/services', 'PostsController@servc')->name('services');
     Route::match(['get','post'],'/add', 'vehicleController@create');
+
     //Route::match(['get','post'],'/show', 'vehicleController@show'); 
+
+    Route::match(['get','post'],'/show', 'vehicleController@show'); 
+    Route::match(['get','post'],'/add', 'stockController@create');
+
    });
 
 /* Mechanic route group */
