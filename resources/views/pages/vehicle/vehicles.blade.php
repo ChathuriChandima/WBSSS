@@ -67,14 +67,20 @@
                             </div>
                             <div class="form-group" >
                                 <strong>{{Form::label('cId','Owner')}}  :</strong>
-                                {{Form::text('cId',$v->cId,['class'=>'form-control','placeholder'=>'','readonly'])}}
+                                {{Form::text('cId',$v->cId,['class'=>'form-control','id'=>'cId','placeholder'=>''])}}
                                 <br>
-                                <a href="#" title="Select" data-toggle="popover" data-content="Some content">Change Owner</a><br>
+                                <select name="c" class="form-control" disabled>
+                                        @foreach($customer as $owner)
+                                      <option value="{{$owner->Id}}">{{$owner->name}}</option>
+                                      @endforeach
+                                      </select>
+                                <button onclick="myFunction()">Copy Text</button>
                                 <script>
-                                        $(document).ready(function(){
-                                            $('[data-toggle="popover"]').popover();   
-                                        });
-                                </script>
+                                    
+                                        function myFunction() {
+                                            document.getElementById("field2").value = document.getElementById("field1").value;
+                                        }
+                                        </script>
                               </div>
                             
                     </div>

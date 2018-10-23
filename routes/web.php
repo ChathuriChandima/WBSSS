@@ -77,7 +77,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AccountantMiddleware'], funct
     //Route::match(['get','post'],'/show', 'vehicleController@show'); 
 
     Route::match(['get','post'],'/show', 'vehicleController@show'); 
-    Route::match(['get','post'],'/add', 'stockController@create');
+    Route::match(['get','post'],'/create', 'stockController@create');
 
    });
 

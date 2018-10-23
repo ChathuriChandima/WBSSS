@@ -17,7 +17,7 @@
 
 <div class="row">
     <div class="col-lg-12 margin-tb">
-            <a class="btn float-right" href="add" title="New Stock Item"> <img src="img\icons8_Add_New_50px_1.png"  /></a>  
+            <a class="btn float-right" href="create" title="New Stock Item"> <img src="img\icons8_Add_New_50px_1.png"  /></a>  
     </div>
 </div>
 @section('content')

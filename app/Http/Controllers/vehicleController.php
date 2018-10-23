@@ -24,7 +24,8 @@ class vehicleController extends Controller
     public function move(){
         return view('pages.vehicle.vehicles')
         ->with('vehicle',vehicle::all())
-        ->with('customer',Customer::all());
+        ->with('customer',Customer::all())
+        ->with('c',null);
     }
 
     /**

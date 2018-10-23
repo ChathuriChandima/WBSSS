@@ -26,7 +26,7 @@ class stockController extends Controller
      */
     public function create()
     {
-        return view('pages.stock.add');
+        return view('pages.stock.create');
     }
 
     /**
