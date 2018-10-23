@@ -9,16 +9,16 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">Vehicle</a>
+                    <a href="/vehicles">Vehicle</a>
                 </li>
                 <li>
-                    <a href="#">Staff</a>
+                    <a href="/staff">Staff</a>
                 </li>
                 <li>
-                    <a href="#">Customers</a>
+                    <a href="/customers">Customers</a>
                 </li>
                 <li>
-                    <a href="#">Stock</a>
+                    <a href="/stocks">Stock</a>
                 </li>
                 <li>
                     <a href="#">Reports</a>
@@ -31,4 +31,3 @@
         <!-- /#sidebar-wrapper -->
     </div>
     <!-- /#wrapper -->
-

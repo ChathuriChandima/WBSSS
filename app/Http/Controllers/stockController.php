@@ -59,6 +59,10 @@ class stockController extends Controller
         return redirect('stocks')->with('success','Your changes are saved.');
     }
 
+    public function move(){
+        return view('pages.stock.stocks')
+        ->with('stock',stock::all());
+    }
     /**
      * Display the specified resource.
      *

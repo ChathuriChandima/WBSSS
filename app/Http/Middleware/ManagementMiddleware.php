@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Response;
 
 class ManagementMiddleware
 {
@@ -15,9 +16,9 @@ class ManagementMiddleware
      */
     public function handle($request, Closure $next)
     {
-      if ($request->user() && ($request->user()->role != 'accountant' || $request->user()->role != 'admin')){
-        return new Response(view('unauthorized')->with('role','MANAGEMENT'));
-      }
+      if ($request->user() && ($request->user()->role == 'accountant' || $request->user()->role == 'admin')){
         return $next($request);
+      }
+        return new Response(view('unauthorized')->with('role','MANAGEMENT'));
     }
 }

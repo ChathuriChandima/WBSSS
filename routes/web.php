@@ -44,6 +44,8 @@ Route::get('stock/add',['as'=>'stock.create','uses'=>'stockController@create']);
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function(){
 
     Route::match(['get','post'],'/adminOnlyPage','HomeController@admin');
+    Route::match(['get','post'],'/staff', 'HomeController@staffPage')->name('staff');
+    Route::match(['get','post'],'/customers', 'HomeController@customerPage')->name('customers');
 
 });
 
@@ -69,15 +71,26 @@ Route::group(['middleware' => 'App\Http\Middleware\AccountantMiddleware'], funct
     //Route::match(['get','post'],'/services','HomeController@services');
     Route::match(['get','post'],'/bills', 'PostsController@index')->name('bills');
     Route::match(['get','post'],'/invoice', 'PostsController@inv')->name('invoice');
-    Route::match(['get','post'],'/vehicles','vehicleController@move')->name('vehicles');
-    Route::match(['get','post'],'/stocks','stockController@index')->name('stocks');
-    Route::match(['get','post'],'/services', 'PostsController@servc')->name('services');
-    Route::match(['get','post'],'/add', 'vehicleController@create');
 
-    //Route::match(['get','post'],'/show', 'vehicleController@show'); 
+    // ** Note That Moved the routes of Stock and Vechicle to Heiger level Staff **
+    // ** As both Accountant and Admin has same functionality within those PagesController
+    // ** And also change the vehicle add and stock add routes as add_vehicle and add_stock
+    // ** Otherwise they overlap and does not perform the expected navigation
+
+    Route::match(['get','post'],'/services', 'PostsController@servc')->name('services');
+    // ** Moved add vehicle path to user level because it can be also used,
+    // ** As the template for customers add vehicle funtionality
+
+    //Route::match(['get','post'],'/show', 'vehicleController@show');
+
 
     Route::match(['get','post'],'/show', 'vehicleController@show'); 
     Route::match(['get','post'],'/create', 'stockController@create');
+
+    Route::match(['get','post'],'/show', 'vehicleController@show');
+    // ** Moved the add_stock path to heigher level staff route group
+    // ** accourding to the same reason above states
+
 
    });
 
@@ -95,6 +108,7 @@ Route::group(['middleware' => 'App\Http\Middleware\UserMiddleware'], function(){
 
     Route::match(['get','post'],'/userOnlyPage','HomeController@user');
     Route::match(['get','post'],'/loggedin', 'HomeController@index');
+    Route::match(['get','post'],'/add_vehicle', 'vehicleController@create');
 
 });
 
@@ -110,6 +124,9 @@ Route::group(['middleware' => 'App\Http\Middleware\StaffMiddleware'], function()
 
 Route::group(['middleware' => 'App\Http\Middleware\ManagementMiddleware'], function(){
 
-
+    Route::match(['get','post'],'/vehicles','vehicleController@move')->name('vehicles');
+    Route::match(['get','post'],'/stocks','stockController@index')->name('stocks');
+    Route::match(['get','post'],'/stocks','stockController@move')->name('stocks');
+    Route::match(['get','post'],'/add_stock', 'stockController@create');
 
 });

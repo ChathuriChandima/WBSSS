@@ -8,14 +8,14 @@
       <div class="carousel-caption">
               <h1>RAJAAN MOTORS</h1>
               <h2>Vehicle Details</h2>
-              
+
       </div>
-</div> 
+</div>
 @section('content')
 
 <div class="row">
     <div class="col-lg-12 margin-tb">
-            <a href="add" class="btn float-right"  title="New Vehicle"> <img src="img\icons8_Add_New_50px_1.png"  /></a> 
+            <a href="add_vehicle" class="btn float-right"  title="New Vehicle"> <img src="img\icons8_Add_New_50px_1.png"  /></a> 
     </div>
 </div>
 @section('content')
@@ -37,10 +37,10 @@
         <td>{{$v->brand}}</td>
         <td>
             <button type="button" class="btn" title="Edit" data-toggle="modal" data-target="#myModal" ><img src="img\icons8_Edit_25px.png" /></button>
-            
+
             <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog">
-                
+
                   <!-- Modal content-->
                   <div class="modal-content">
                     <div class="modal-header">
@@ -76,34 +76,39 @@
                                       </select>
                                 <button onclick="myFunction()">Copy Text</button>
                                 <script>
+
                                     
                                         function myFunction() {
                                             document.getElementById("field2").value = document.getElementById("field1").value;
                                         }
-                                        </script>
+
+                                        $(document).ready(function(){
+                                            $('[data-toggle="popover"]').popover();
+                                        });
+                                </script>
+
                               </div>
-                            
+
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                   </div>
-                  
+
                 </div>
               </div>
             <a class="btn" href="" title="Delete"><img src="img\icons8_Delete_25px_6.png" /></a>
-            
- 
+
+
             <!--{!! Form::open(['method' => 'DELETE','style'=>'display:inline']) !!}
             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}-->
             {!! Form::close() !!}
         </td>
         @endforeach
     </tr>
-    
-   
+
+
     </table>
 </div>
-   
-@endsection
 
+@endsection
