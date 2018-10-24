@@ -78,19 +78,14 @@ Route::group(['middleware' => 'App\Http\Middleware\AccountantMiddleware'], funct
     // ** Otherwise they overlap and does not perform the expected navigation
 
     Route::match(['get','post'],'/services', 'PostsController@servc')->name('services');
-    // ** Moved add vehicle path to user level because it can be also used,
+    // ** Moved add vehicle path to higher admin because it can be also used,
     // ** As the template for customers add vehicle funtionality
 
     //Route::match(['get','post'],'/show', 'vehicleController@show');
 
-
-    Route::match(['get','post'],'/show', 'vehicleController@show'); 
-    Route::match(['get','post'],'/create', 'stockController@create');
-
     Route::match(['get','post'],'/show', 'vehicleController@show');
     // ** Moved the add_stock path to heigher level staff route group
     // ** accourding to the same reason above states
-
 
    });
 
@@ -108,7 +103,6 @@ Route::group(['middleware' => 'App\Http\Middleware\UserMiddleware'], function(){
 
     Route::match(['get','post'],'/userOnlyPage','HomeController@user');
     Route::match(['get','post'],'/loggedin', 'HomeController@index');
-    Route::match(['get','post'],'/add_vehicle', 'vehicleController@create');
 
 });
 
@@ -128,5 +122,6 @@ Route::group(['middleware' => 'App\Http\Middleware\ManagementMiddleware'], funct
     Route::match(['get','post'],'/stocks','stockController@index')->name('stocks');
     Route::match(['get','post'],'/stocks','stockController@move')->name('stocks');
     Route::match(['get','post'],'/add_stock', 'stockController@create');
+    Route::match(['get','post'],'/add_vehicle', 'vehicleController@create');
 
 });
