@@ -84,6 +84,8 @@ Route::group(['middleware' => 'App\Http\Middleware\AccountantMiddleware'], funct
     //Route::match(['get','post'],'/show', 'vehicleController@show');
 
     Route::match(['get','post'],'/show', 'vehicleController@show');
+    Route::match(['get','post'],'/create', 'stockController@create');
+    Route::match(['get','post'],'/show', 'vehicleController@show');
     // ** Moved the add_stock path to heigher level staff route group
     // ** accourding to the same reason above states
 
