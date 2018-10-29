@@ -46,6 +46,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::match(['get','post'],'/adminOnlyPage','HomeController@admin');
     Route::match(['get','post'],'/staff', 'HomeController@staffPage')->name('staff');
     Route::match(['get','post'],'/customers', 'HomeController@customerPage')->name('customers');
+    Route::match(['get','post'],'/addStaff', 'StaffController@addStaff');
 
 });
 
