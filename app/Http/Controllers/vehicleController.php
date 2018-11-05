@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Customer;
 use App\vehicle;
 use App\User;
+use Alert;
+use DB; 
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 class vehicleController extends Controller
@@ -62,8 +64,8 @@ class vehicleController extends Controller
         $vehicle->brand=$request->input('brand');
         $vehicle->cId=$request->input('cId');
         $vehicle->save();
-
-        return redirect('vehicles')->with('success','Your changes are saved.');
+        Alert::success('Your changes are saved.','Done!');
+        return redirect('vehicles');
         
         
     }
@@ -108,19 +110,12 @@ class vehicleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($vehicleNo)
+    public function destroy($id)
     {
-        
-    }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function find($id)
-    {
-        $vehicle=vehicle::find($id);
+        $v=vehicle::find($id);
+        $v->delete();
+        Alert::success('Deleted Successfully','Done!');
+        return redirect('vehicles');
     }
     
 }

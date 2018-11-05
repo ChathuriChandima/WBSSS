@@ -28,7 +28,7 @@
                                 </div>
                                 <div class="form-group" >
                                     <p style="text-align:left">{{Form::label('contactNo','Contact Number')}}</p>
-                                    {{Form::text('contactNo', $customer->contactNo ,['class'=>'form-control','placeholder'=>''])}}
+                                    {{Form::number('contactNo', $customer->contactNo ,['class'=>'form-control','placeholder'=>''])}}
                                   </div>
                                 <br>
                                 <div class="form-group float-right form-inline">
@@ -40,7 +40,7 @@
                                     <a href="profile" class="btn btn-danger float-right " style="margin:5px"  id="cl" ><strong>Cancel</strong></a>
                                   </div>
                                 </div>
-                          {!! Form::close() !!}
+                          {!! Form::close()!!}
                       </div>
             </div>    
 @endsection

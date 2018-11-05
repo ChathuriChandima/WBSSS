@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Customer;
 use App\vehicle;
-
+use Alert;
 class HomeController extends Controller
 {
     /**
@@ -17,6 +17,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        Alert::message('You are logging successfully!');
     }
 
     /**

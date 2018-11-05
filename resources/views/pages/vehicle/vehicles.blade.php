@@ -97,17 +97,11 @@
 
                 </div>
               </div>
-            <a class="btn" href="" title="Delete"><img src="img\icons8_Delete_25px_6.png" /></a>
-
-
-            <!--{!! Form::open(['method' => 'DELETE','style'=>'display:inline']) !!}
-            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}-->
-            {!! Form::close() !!}
+              <!-- delete vehicle-->
+              <a href="{{route('delete', $v->vehicleNo)}}" class="btn" role="button" style="background-color:silver"><img src="img\icons8_Trash_25px_1.png" /></a> 
         </td>
         @endforeach
     </tr>
-
-
     </table>
 </div>
 

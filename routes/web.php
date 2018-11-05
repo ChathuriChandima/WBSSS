@@ -34,6 +34,7 @@ Route::get('vehicle/vehicles',['as'=>'vehicle.index','uses'=>'vehicleController@
 Route::get('vehicle/create',['as'=>'vehicle.create','uses'=>'vehicleController@create']);
 
 
+
 Route::get('stock/stocks',['as'=>'stock.index','uses'=>'stockController@index']);
 Route::get('stock/add',['as'=>'stock.create','uses'=>'stockController@create']);
 
@@ -71,7 +72,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AccountantMiddleware'], funct
     //Route::match(['get','post'],'/services','HomeController@services');
     Route::match(['get','post'],'/bills', 'PostsController@index')->name('bills');
     Route::match(['get','post'],'/invoice', 'PostsController@inv')->name('invoice');
-
+    Route::match(['get','post'],'/delete/{id}','vehicleController@destroy')->name('delete');
     // ** Note That Moved the routes of Stock and Vechicle to Heiger level Staff **
     // ** As both Accountant and Admin has same functionality within those PagesController
     // ** And also change the vehicle add and stock add routes as add_vehicle and add_stock
@@ -86,8 +87,6 @@ Route::group(['middleware' => 'App\Http\Middleware\AccountantMiddleware'], funct
 
     Route::match(['get','post'],'/show', 'vehicleController@show'); 
     Route::match(['get','post'],'/create', 'stockController@create');
-
-    Route::match(['get','post'],'/show', 'vehicleController@show');
     // ** Moved the add_stock path to heigher level staff route group
     // ** accourding to the same reason above states
 

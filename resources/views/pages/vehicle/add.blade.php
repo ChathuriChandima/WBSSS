@@ -10,29 +10,49 @@
             <div class="container">
                 <div class="well">
                     {!! Form::open(['action'=>'vehicleController@store','method'=>'POST']) !!}
-                            <div class="form-group">
+                            <div class="form-group" style="margin-left:20px">
+                              <div class="row">
                                 <p style="text-align:left"><strong>{{Form::label('vehicleNo','Vehicle No')}} :</strong></p>
-                                {{Form::text('vehicleNo','',['class'=>'form-control','placeholder'=>''])}}
-                              </div>
-                              <div class="form-group">
-                                <p style="text-align:left"><strong>{{Form::label('type','Type')}}  :</strong></p>
-                                {{Form::text('type','',['class'=>'form-control','placeholder'=>''])}}
-                              </div>
-                              <div class="form-group" >
-                                <p style="text-align:left"><strong>{{Form::label('lastServiceDay','Last Service Day')}}  :</strong></p>
-                                {{Form::text('lastServiceDay','',['class'=>'form-control','placeholder'=>''])}}
-                              </div>
-                              <div class="form-group" >
-                                  <p style="text-align:left"><strong>{{Form::label('brand','Brand')}}  :</strong></p>
-                                  {{Form::text('brand','',['class'=>'form-control','placeholder'=>''])}}
+                                <div class="col-sm-10 " style="margin-left:40px">
+                                  {{Form::text('vehicleNo','',['class'=>'form-control float-right','placeholder'=>''])}}
                                 </div>
-                                <div class="form-group" >
+                              </div>
+                              </div>
+                              <div class="form-group" style="margin-left:20px">
+                                <div class="row">
+                                <p style="text-align:left"><strong>{{Form::label('type','Type')}}  :</strong></p>
+                                <div class="col-sm-10 " style="margin-left:80px">
+                                {{Form::text('type','',['class'=>'form-control','placeholder'=>''])}}
+                                </div>
+                              </div>
+                              </div>
+                              <div class="form-group" style="margin-left:20px">
+                                <div class="row">
+                                <p style="text-align:left"><strong>{{Form::label('lastServiceDay','Last Service Day')}}  :</strong></p>
+                                <div class="col-sm-10 ">
+                                {{Form::text('lastServiceDay','',['class'=>'form-control','placeholder'=>''])}}
+                                </div>
+                              </div>
+                              </div>
+                              <div class="form-group" style="margin-left:20px">
+                                  <div class="row">
+                                  <p style="text-align:left"><strong>{{Form::label('brand','Brand')}}  :</strong></p>
+                                  <div class="col-sm-10 " style="margin-left:75px">
+                                  {{Form::text('brand','',['class'=>'form-control','placeholder'=>''])}}
+                                  </div>
+                                </div>
+                                </div>
+                                <div class="form-group" style="margin-left:20px">
+                                    <div class="row">
                                     <p style="text-align:left"><label for="cId"><strong>Owner :</strong></label></p>
+                                    <div class="col-sm-10 " style="margin-left:71px">
                                     <select name="cId" class="form-control">
                                       @foreach($customer as $owner)
                                     <option value="{{$owner->Id}}">{{$owner->name}}</option>
                                     @endforeach
                                     </select>
+                                    </div>
+                                  </div>
                                   </div>
                                 <br>
                                 <div class="form-group float-right form-inline">
