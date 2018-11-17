@@ -124,7 +124,8 @@ class customerController extends Controller
     public function view(){
         return view('pages.customer.profile')
         ->with('customer',Customer::find(Auth::user()->id))
-        ->with('vehicle',vehicle::where('cId',Auth::user()->id)->first());
+        ->with('vehicle',vehicle::all())
+        ->with('i',0);
         
     }
     public function editable(){

@@ -74,6 +74,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AccountantMiddleware'], funct
     Route::match(['get','post'],'/bills', 'PostsController@index')->name('bills');
     Route::match(['get','post'],'/invoice', 'PostsController@inv')->name('invoice');
     Route::match(['get','post'],'/delete/{id}','vehicleController@destroy')->name('delete');
+    //Route::match(['get','post'],'/update/{id}','vehicleController@update')->name('update');
     // ** Note That Moved the routes of Stock and Vechicle to Heiger level Staff **
     // ** As both Accountant and Admin has same functionality within those PagesController
     // ** And also change the vehicle add and stock add routes as add_vehicle and add_stock

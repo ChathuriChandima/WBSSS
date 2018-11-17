@@ -35,26 +35,30 @@
         </div>
         <div id="v" class="container tab-pane fade"><br>
 
-            @if($vehicle!=null)
             <div class="well">
               <h2><img src="img\icons8_Maintenance_50px_1.png" >  Vehicle Profile </h2>
-              <div class="container">
-              <form>
-                  <p style="text-align:left"><label for="vid"><strong style="font-size:large">Vehicle Number :</strong></label></p>
-                  <input type="text" class="form-control" id="vid" placeholder={{$vehicle->vehicleNo}} disabled><br>
-                  <p style="text-align:left"><label for="type"><strong style="font-size:large">Type :</strong></label></p>
-                  <input type="text" class="form-control" id="type" placeholder={{$vehicle->type}} disabled><br>
-                  <p style="text-align:left"><label for="brand"><strong style="font-size:large">Brand :</strong></label></p>
-                  <input type="text" class="form-control" id="brand" placeholder={{$vehicle->brand}}  disabled><br>
-                  <p style="text-align:left"><label for="lday"><strong style="font-size:large">Last Service Day :</strong></label></p>
-                  <input type="text" class="form-control" id="lday" placeholder={{$vehicle->lastServiceDay}} disabled><br>
-              </form>
+              <div class="container" style="text-align:left">
+                <h3 style="font-size:large"><p style="color:blueviolet"><b> Your Vehicles</b></p></h3><br>
+                  @foreach ($vehicle as $v)
+                  @if($v->cId==$customer->Id)
+                <div class="panel-group" id="accordion">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title" style="font-size:medium">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">{{$v->vehicleNo}}</a>
+                      </h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse in">
+                      <div class="panel-body">
+                        
+                      </div>
+                    </div>
+                  </div> 
               </div>
+              @endif
+              @endforeach
             </div>
           </div>
-          @else
-          <p>No more details found!</p>
-          @endif
       </div>
     </div>
   </div>

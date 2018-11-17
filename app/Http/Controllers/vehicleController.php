@@ -63,6 +63,7 @@ class vehicleController extends Controller
         $vehicle->lastServiceDay=$request->input('lastServiceDay');
         $vehicle->brand=$request->input('brand');
         $vehicle->cId=$request->input('cId');
+        $vehicle->status=$request->input('status');
         $vehicle->save();
         Alert::success('Your changes are saved.','Done!');
         return redirect('vehicles');
@@ -86,11 +87,20 @@ class vehicleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+     * *@param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
+        $this->validate($request, [
+            'status'=>'required'
+        ]);
+            $vehicle=vehicle::find($id);
+            $vehicle->status=$request->input('status');
+            $vehicle->save();
+            Alert::success('Your changes are saved.','Done!');
+            return redirect('vehicles');
     }
 
     /**
@@ -102,6 +112,16 @@ class vehicleController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'lastServiceDay'=>'required',
+            'cId'=>'required'
+        ]);
+            $vehicle=vehicle::find($id);
+            $vehicle->lastServiceDay=$request->input('lastServiceDay');
+            $vehicle->cId=$request->input('cId');
+            $vehicle->save();
+            Alert::success('Your changes are saved.','Done!');
+            return redirect('vehicles');
     }
 
     /**

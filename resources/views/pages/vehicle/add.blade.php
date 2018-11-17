@@ -54,8 +54,19 @@
                                     </div>
                                   </div>
                                   </div>
-                                <br>
-                                <div class="form-group float-right form-inline">
+                                <div class="form-group" style="margin-left:20px">
+                                  <div class="row">
+                                  <p style="text-align:left"><label for="status"><strong>Status :</strong></label></p>
+                                  <div class="col-sm-10 " style="margin-left:71px">
+                                  <select name="status" class="form-control">
+                                  <option value="0">Not at service station</option>
+                                  <option value="1">Servicing</option>
+                                  <option value="2">Finished Service</option>
+                                  </select>
+                                  </div>
+                                </div>
+                                </div>
+                                <div class="form-group float-right form-inline" style="margin-right:50px">
                                 <div class="form-group">
                                   
                                 {{Form::submit('Add',['class'=>'btn btn-success'] )}}
