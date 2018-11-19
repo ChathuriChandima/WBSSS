@@ -8,7 +8,7 @@
       <img src="img/p2.jpg" width="1600" height="300"style = "padding-left:250px">
       <div class="carousel-caption">
               <h1>RAJAAN MOTORS</h1>
-              <h2>Stock Details</h2>
+              <h2>Rajaan Motors Staff</h2>
 
       </div>
 </div>

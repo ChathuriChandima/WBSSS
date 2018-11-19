@@ -71,7 +71,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AccountantMiddleware'], funct
     Route::match(['get','post'],'/accountantOnlyPage','HomeController@accountant');
     //Route::match(['get','post'],'/vehicles','HomeController@vehicles');
     //Route::match(['get','post'],'/services','HomeController@services');
-    Route::match(['get','post'],'/bills', 'PostsController@index')->name('bills');
+    Route::match(['get','post'],'/bills', 'billController@index')->name('bills');
     Route::match(['get','post'],'/invoice', 'PostsController@inv')->name('invoice');
     Route::match(['get','post'],'/delete/{id}','vehicleController@destroy')->name('delete');
     //Route::match(['get','post'],'/update/{id}','vehicleController@update')->name('update');

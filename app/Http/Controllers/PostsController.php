@@ -14,7 +14,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('pages.accountant.bills');
+        
     }
     public function inv()
     {
