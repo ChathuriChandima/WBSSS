@@ -28,7 +28,7 @@ class AddUserIdToNotifications extends Migration
     public function down()
     {
         //
-        Schema::table('vehicles', function (Blueprint $table) {
+        Schema::table('notifications', function (Blueprint $table) {
             $table->dropColumn('userId');
             $table->dropColumn('userType');
         });
