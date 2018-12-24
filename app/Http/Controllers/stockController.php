@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\stock;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,23 @@ class stockController extends Controller
      */
     public function create()
     {
-        return view('pages.stock.create');
+        $l= DB::table('stocks')->latest()->first();
+        $n=substr($l->code,1);
+        $i=(int)$n;
+        $j=++$i;
+        $h=(string)$j;
+        $d=strlen($h);
+        if($d==1){
+            $id='S00'.$h;
+        }elseif($d==2){
+            $id='S0'.$h;
+        }else{
+            $id='S'.$h;
+        }
+        
+
+        return view('pages.stock.create')
+        ->with('id',$id);
     }
 
     /**

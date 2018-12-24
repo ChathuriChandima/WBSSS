@@ -1,11 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Customer;
 use App\vehicle;
 use App\User;
+use Alert;
+use DB; 
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 class vehicleController extends Controller
@@ -61,9 +61,10 @@ class vehicleController extends Controller
         $vehicle->lastServiceDay=$request->input('lastServiceDay');
         $vehicle->brand=$request->input('brand');
         $vehicle->cId=$request->input('cId');
+        $vehicle->status=$request->input('status');
         $vehicle->save();
-
-        return redirect('vehicles')->with('success','Your changes are saved.');
+        Alert::success('Your changes are saved.','Done!');
+        return redirect('vehicles');
         
         
     }
@@ -84,11 +85,20 @@ class vehicleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+     * *@param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
+        $this->validate($request, [
+            'status'=>'required'
+        ]);
+            $vehicle=vehicle::find($id);
+            $vehicle->status=$request->input('status');
+            $vehicle->save();
+            Alert::success('Your changes are saved.','Done!');
+            return redirect('vehicles');
     }
 
     /**
@@ -100,6 +110,16 @@ class vehicleController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'lastServiceDay'=>'required',
+            'cId'=>'required'
+        ]);
+            $vehicle=vehicle::find($id);
+            $vehicle->lastServiceDay=$request->input('lastServiceDay');
+            $vehicle->cId=$request->input('cId');
+            $vehicle->save();
+            Alert::success('Your changes are saved.','Done!');
+            return redirect('vehicles');
     }
 
     /**
@@ -108,19 +128,12 @@ class vehicleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($vehicleNo)
+    public function destroy($id)
     {
-        
-    }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function find($id)
-    {
-        $vehicle=vehicle::find($id);
+        $v=vehicle::find($id);
+        $v->delete();
+        Alert::success('Deleted Successfully','Done!');
+        return redirect('vehicles');
     }
     
 }

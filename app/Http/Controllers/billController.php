@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\bill;
 use Illuminate\Http\Request;
 
 class billController extends Controller
@@ -13,7 +13,7 @@ class billController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.bill.bills');
     }
 
     /**

@@ -11,14 +11,15 @@
         <h2> Print Bills   </h2>
 </div>
 
+
 <div class="container" >
     
     <form  class="form-container border border-warning rounded" style="width:600px">
     <div class="row">
         <div class="span4">
-            <img src="img/logo.png" class="img-rounded logo">
+            <img src="img/ic.png" width="50px" height="50px">
             <address>
-                <strong>Raajan Motors</strong><br>
+                
                 No.210/5 <br>
                 Weerangala South<br>
                 Yakkala <br>
@@ -97,6 +98,3 @@
 
       </div>
 </div>
-
-
-

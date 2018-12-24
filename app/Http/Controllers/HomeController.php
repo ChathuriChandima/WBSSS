@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Customer;
 use App\vehicle;
-
+use Alert;
 class HomeController extends Controller
 {
     /**

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Customer;
 use App\User;
 use App\vehicle;
+use Alert;
 use Illuminate\Support\Facades\Auth;
 
 class customerController extends Controller
@@ -52,8 +53,8 @@ class customerController extends Controller
         $customer->contactNo=$request->input('contactNo');
         $customer->email=$request->input('email');
         $customer->save();
-
-        return redirect('/h')->with('success','Your details inserted.');
+        Alert::success('Your details inserted.','Done!');
+        return redirect('/h');
     }
 
     /**
@@ -99,8 +100,8 @@ class customerController extends Controller
             $customer->address=$request->input('address');
             $customer->contactNo=$request->input('contactNo');
             $customer->save();
-    
-            return redirect('profile')->with('success','Your changes are saved.');
+            Alert::success('Your changes are saved.','Done!');
+            return redirect('profile');
     }
 
     /**
@@ -123,7 +124,8 @@ class customerController extends Controller
     public function view(){
         return view('pages.customer.profile')
         ->with('customer',Customer::find(Auth::user()->id))
-        ->with('vehicle',vehicle::where('cId',Auth::user()->id)->first());
+        ->with('vehicle',vehicle::all())
+        ->with('i',0);
         
     }
     public function editable(){
