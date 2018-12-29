@@ -1,5 +1,10 @@
 <link rel="stylesheet" href="{{asset('my/u.css')}}">
-
+<style>
+.carousel-inner{
+        margin-bottom: -50px;
+        margin-top:-65px;
+}
+</style>
 <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="img/accnt.jpg" width="100%" height ="600px" >

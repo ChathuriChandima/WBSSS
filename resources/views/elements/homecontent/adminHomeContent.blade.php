@@ -1,5 +1,11 @@
 <!--<p style="text-align:right"><b style="color:darkslategray">---You are logged in as {{ strtoupper(Auth::user()->role) }}---</p>
 -->
+<style>
+.carousel-inner{
+        margin-bottom: -50px;
+        margin-top:-65px;
+}
+</style>
 
 <link rel="stylesheet" href="{{asset('my/u.css')}}">
 

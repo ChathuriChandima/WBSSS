@@ -1,22 +1,14 @@
 @extends('layouts.log')
 
-<link rel="stylesheet" href="{{asset('my/m.css')}}">
-
-<div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="img/p2.jpg" width="1600" height="300"style = "padding-left:250px">
-      <div class="carousel-caption">
-              <h1>RAJAAN MOTORS</h1>
-              <h2>Vehicle Details</h2>
-
-      </div>
-</div>
+<link rel="stylesheet" href="{{asset('my/v.css')}}">
 @section('content')
-
+<div class="container">
 <div class="row">
     <div class="col-lg-12 margin-tb">
-            <a href="add_vehicle" class="btn float-right"  title="New Vehicle"> <img src="img\icons8_Add_New_50px_1.png"  /></a> 
+        <a href="search_vehicle" class="btn float-right" title="Search Vehicle" style="width:40px; height:40px; margin-left:10px;"><img src="img\search.png" style="margin-top:-12px; margin-left:-18px;"/></a>
+      <a href="add_vehicle" class="btn float-right" title="New Vehicle" style="width:40px; height:40px;"><img src="img\icons8_Add_New_50px_1.png" style="margin-top:-12px; margin-left:-18px;"/></a> 
     </div>
+</div>
 </div>
 @section('content')
 <div class="container mt-3">
@@ -44,7 +36,7 @@
             <th style="text-align:center">Last Service Date</th>
             <th style="text-align:center">Brand</th>
             <th style="text-align:center">Owner</th>
-            <th width="200px" style="text-align:center">Action</th>
+            <th width="150px" style="text-align:center">Action</th>
         </tr>
     @foreach ($vehicle as $v)
     <tr>
@@ -58,65 +50,30 @@
         @endif
         @endforeach
         <td>
-        <button type="button" class="btn" title="Edit" data-toggle="modal" data-target="#myModal" data-mytitle="{{$v->vehicleNo}}" data-myday="{{$v->lastServiceDay}}" data-mytype="{{$v->type}}" data-mybrand="{{$v->brand}}" data-myname="{{$owner->name}}"><img src="img\icons8_Edit_25px.png" /></button>
+        <a href="edit/{{$v->vehicleNo}}" class="btn" title="Edit" style="background-color:lavender;"><img src="img\icons8_Edit_25px.png" /></a>
+            
+              <!-- delete vehicle-->
+              <button type="button" class="btn" title="Delete" data-toggle="modal" data-target="#myModal4-{{$v->vehicleNo}}" data-mytitle="{{$v->vehicleNo}}"><img src="img\icons8_Trash_25px_1.png" /></button>
 
-            <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-
-                  <!-- Modal content-->
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h4 class="modal-title">Edit Vehicle Details</h4>
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        {!! Form::open(['action'=>['vehicleController@update',$v->vehicleNo],'method'=>'POST']) !!}
-                        <div class="form-group">
-                            <p style="text-align:left"><strong>{{Form::label('vehicleNo','Vehicle No')}} :</strong></p>
-                            {{Form::text('vehicleNo',$v->vehicleNo,['class'=>'form-control','placeholder'=>'','readonly'])}}
-                          </div>
-                          <div class="form-group">
-                            <p style="text-align:left"><strong>{{Form::label('type','Type')}}  :</strong></p>
-                            {{Form::text('type',$v->type,['class'=>'form-control','placeholder'=>'','readonly'])}}
-                          </div>
-                          <div class="form-group" >
-                            <p style="text-align:left"><strong>{{Form::label('lastServiceDay','Last Service Day')}}  :</strong></p>
-                            {{Form::text('lastServiceDay',$v->lastServiceDay,['class'=>'form-control','placeholder'=>''])}}
-                          </div>
-                          <div class="form-group" >
-                              <p style="text-align:left"><strong>{{Form::label('brand','Brand')}}  :</strong></p>
-                              {{Form::text('brand',$v->brand,['class'=>'form-control','placeholder'=>'','readonly'])}}
-                            </div>
-                            <div class="form-group" >
-                                <strong>{{Form::label('cId','Owner')}}  :</strong>
-                                <select name="cId" class="form-control" >
-                                @foreach($customer as $owner)
-                                @if($owner->Id==$v->cId)
-                                <option value="{{$owner->Id}}">{{$owner->name}}</option>
-                                @endif
-                                @endforeach
-                                        @foreach($customer as $owner)
-                                        @if($owner->Id!=$v->cId)
-                                      <option value="{{$owner->Id}}">{{$owner->name}}</option>
-                                      @endif
-                                      @endforeach
-                                      </select>
-
-                              </div>
-                              <div class="form-group float-right form-inline">
-                                    <div class="form-group">
-                                      {{Form::hidden('_method','PUT')}}
-                                    {{Form::button('<img src="img\icons8_Edit_25px.png" />',['type'=>'submit','class'=>'btn'] )}}
-                                    </div>
-                                    </div>
-                              {!! Form::close()!!}
+              <div class="modal fade" id="myModal4-{{$v->vehicleNo}}" role="dialog">
+                  <div class="modal-dialog">
+  
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title" style="margin-left:200px;"><img src="img\warning.png" /></h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                      <div class="modal-body" style="text-align:center;">
+                        <h5>Are you sure??? Do you want to delete {{$v->vehicleNo}}?</h5>
+                        <h3>If you delete it, it won't be exists anymore!...</h3>
+                        <a href="{{route('delete', $v->vehicleNo)}}" class="btn" role="button" style="background-color:bisque"><img src="img\icons8_Trash_25px_1.png" /></a>
+                        </div>
+                      </div>
+    
                     </div>
                   </div>
 
-                </div>
-              </div>
-              <!-- delete vehicle-->
-              <a href="{{route('delete', $v->vehicleNo)}}" class="btn" role="button" style="background-color:bisque"><img src="img\icons8_Trash_25px_1.png" /></a> 
         </td>
         @endforeach
     </tr>
@@ -131,7 +88,7 @@
                 <th style="text-align:center">Last Service Date</th>
                 <th style="text-align:center">Brand</th>
                 <th style="text-align:center">Owner</th>
-                <th width="200px" style="text-align:center">Action</th>
+                <th width="150px" style="text-align:center">Action</th>
             </tr>
         @foreach ($vehicle as $v)
         @if($v->status=="1")
@@ -194,7 +151,7 @@
                 <th style="text-align:center">Last Service Date</th>
                 <th style="text-align:center">Brand</th>
                 <th style="text-align:center">Owner</th>
-                <th width="200px" style="text-align:center">Action</th>
+                <th width="150px" style="text-align:center">Action</th>
             </tr>
         @foreach ($vehicle as $v)
         @if($v->status=="2")
@@ -216,7 +173,7 @@
                       <!-- Modal content-->
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h4 class="modal-title">Select Option</h4>
+                        <h4 class="modal-title">Select Option</h4>
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
@@ -253,20 +210,4 @@
       </div>
     </div>
 </div>
-<script>
-    $('#myModal').on('show.bs.modal',function(event){
-        var button=$(event.relatedTarget)
-        var vehicleNo=button.data('mytitle')
-        var lastServiceDay=button.data('myday')
-        var type=button.data('mytype')
-        var brand=button.data('mybrand')
-        var modal=$(this)
-
-        modal.find('.modal-body #vehicleNo').val(vehicleNo);
-        modal.find('.modal-body #lastServiceDay').val(lastServiceDay);
-        modal.find('.modal-body #type').val(type);
-        modal.find('.modal-body #brand').val(brand);
-
-    })
-</script>
 @endsection

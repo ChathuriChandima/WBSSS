@@ -7,12 +7,12 @@
     <br><br><br>
     <img src="img/email.jpg" width="60px" >
     <style>
-       div{ font-size: 20px;
+       .container1{ font-size: 20px;
             text-align: center;
             }
 
     </style>
-        <div class="container">
+        <div class="container1">
             Contact No : 033-22-77616<br> 
             Email  :raajan@gmail.com<br>
             Address :No. 210/5, <br>

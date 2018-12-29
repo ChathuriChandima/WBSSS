@@ -2,6 +2,13 @@
         <!-- Sidebar -->
        <div id="sidebar-wrapper">
            <ul class="sidebar-nav" style="font-size:larger">
+            <!-- Brand/logo -->
+            <br>
+            <p>
+                <a class="navbar-brand float-center" >
+                    <img src="img/ic.png" alt="logo" style="width:70px"> 
+                </a>
+            </p>
                <br>
                <p style="color:darkgoldenrod">Customer Navigation</p>
                <li>

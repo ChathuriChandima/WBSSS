@@ -1,7 +1,7 @@
 @extends('layouts.app')
 <link rel="stylesheet" href="{{asset('my/f.css')}}">
 @section('content')
-<div id="demo" class="carousel slide carousel-fade" data-ride="carousel" data-interval="5000">
+<div id="demo" class="carousel slide carousel-fade" data-ride="carousel" data-interval="5000" style="margin-top: -100px;">
         <!-- Indicators -->
         <ul class="carousel-indicators">
           <li data-target="#demo" data-slide-to="0" class="active"></li>

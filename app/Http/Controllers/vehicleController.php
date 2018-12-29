@@ -117,7 +117,7 @@ class vehicleController extends Controller
             'cId'=>'required'
         ]);
             $vehicle=vehicle::find($id);
-            $vehicle->lastServiceDay=$request->input('lastServiceDay');
+            $vehicle->lastServiceDay=date('Y-m-d',strtotime($request->input('lastServiceDay')));
             $vehicle->cId=$request->input('cId');
             $vehicle->save();
             Alert::success('Your changes are saved.','Done!');
@@ -134,8 +134,20 @@ class vehicleController extends Controller
     {
         $v=vehicle::find($id);
         $v->delete();
-        Alert::success('Deleted Successfully','Done!');
+        Alert::success('Deleted successfully.','Done!');
         return redirect('vehicles');
     }
-    
+
+    public function search()
+    {
+        return view('pages.vehicle.search')
+        ->with('vehicle',vehicle::all());
+    }
+    public function find($id)
+    {
+        $v=vehicle::find($id);
+        return view('pages.vehicle.edit')
+        ->with('customer',Customer::all())
+        ->with('vehicle',$v);
+    }
 }

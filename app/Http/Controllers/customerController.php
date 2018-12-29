@@ -7,6 +7,7 @@ use App\Customer;
 use App\User;
 use App\vehicle;
 use Alert;
+use Image;
 use Illuminate\Support\Facades\Auth;
 
 class customerController extends Controller
@@ -54,7 +55,7 @@ class customerController extends Controller
         $customer->email=$request->input('email');
         $customer->save();
         Alert::success('Your details inserted.','Done!');
-        return redirect('/h');
+        return redirect('/loggedin');
     }
 
     /**
@@ -125,11 +126,34 @@ class customerController extends Controller
         return view('pages.customer.profile')
         ->with('customer',Customer::find(Auth::user()->id))
         ->with('vehicle',vehicle::all())
+        ->with('user',Auth::user())
         ->with('i',0);
         
     }
     public function editable(){
         return view('pages.customer.personal')
         ->with('customer',Customer::find(Auth::user()->id));
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function change(Request $request){
+        
+        if($request->hasFile('pic')){
+ 
+            $pic = $request->file('pic');
+            $filename = time().'.'.$pic->getClientOriginalExtension();
+            Image::make($pic)->resize(200, 200)->save( public_path('img\\'. $filename));
+
+            $user=Auth::user();
+            $user->pic=$filename;
+            $user->save();
+            Alert::success('Your profile picture is updated!','Done!');
+        }
+
+        return redirect('profile');
     }
 }

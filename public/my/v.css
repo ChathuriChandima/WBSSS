@@ -1,0 +1,5 @@
+.nav-tabs .nav-link.active {
+    -webkit-text-fill-color: white;
+    background-color:#6198d3 !important;
+    border-color: transparent !important;
+}

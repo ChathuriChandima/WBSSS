@@ -29,15 +29,6 @@ Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/h', 'HomeController@change')->name('h');
 
 
-
-Route::get('vehicle/vehicles',['as'=>'vehicle.index','uses'=>'vehicleController@index']);
-Route::get('vehicle/create',['as'=>'vehicle.create','uses'=>'vehicleController@create']);
-
-
-
-Route::get('stock/stocks',['as'=>'stock.index','uses'=>'stockController@index']);
-Route::get('stock/add',['as'=>'stock.create','uses'=>'stockController@create']);
-
 /* Route group with the access controled for the user types*/
 
 /* Admins route group */
@@ -59,6 +50,8 @@ Route::group(['middleware' => 'App\Http\Middleware\CustomerMiddleware'], functio
     Route::match(['get','post'],'/my_vehical','HomeController@myVehical');
     Route::match(['get','post'],'/profile', 'customerController@view')->name('profile');
     Route::match(['get','post'],'/personal', 'customerController@editable');
+    Route::match(['get','post'],'/picture', 'customerController@change');
+
 
 
 
@@ -131,5 +124,7 @@ Route::group(['middleware' => 'App\Http\Middleware\ManagementMiddleware'], funct
     Route::match(['get','post'],'/stocks','stockController@move')->name('stocks');
     Route::match(['get','post'],'/add_stock', 'stockController@create');
     Route::match(['get','post'],'/add_vehicle', 'vehicleController@create');
+    Route::match(['get','post'],'/search_vehicle', 'vehicleController@search');
+    Route::match(['get','post'],'/edit/{id}', 'vehicleController@find');
 
 });

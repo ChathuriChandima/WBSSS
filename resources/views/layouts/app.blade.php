@@ -9,23 +9,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>{{config('app.name','RAJAAN MOTORS')}}</title>
-<style>
-    body{
-        padding-top: 75px;
-        background-color: black;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        color: white;
-        text-align: center;
-    }
-    body h3{
-        font-size: small;
-        color: darkgrey;
-    }
-
-</style>
 </head>
-<body>
+<style>
+    body h3{
+    font-size: small;
+    color: darkgrey;
+}
+</style>
+<body style="background-color:black; padding-top: 75px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; color: white; text-align: center;">
     <div id="app">
         @guest
             @include('elements.guestNavbar')

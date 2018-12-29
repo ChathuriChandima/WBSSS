@@ -10,25 +10,45 @@
             <div class="container">
                 <div class="well">
                     {!! Form::open(['action'=>['customerController@update',$customer->Id], 'method'=>'POST']) !!}
-                            <div class="form-group">
-                                <p style="text-align:left"><strong>{{Form::label('id','User Id')}} :</strong></p>
-                                {{Form::text('id', $customer->Id ,['class'=>'form-control','placeholder'=>'User Id','readonly'])}}
-                              </div>
-                                <p style="text-align:left"><strong>{{Form::label('name','Name')}}  :</strong></p>
+                              <div class="form-group">
+                              <div class="row">
+                                  <div class="col-md-4 col-form-label text-md-right">
+                                <strong>{{Form::label('name','Name')}}  :</strong>
+                                  </div>
+                                  <div class="col-md-6">
                                 {{Form::text('name', $customer->name ,['class'=>'form-control','placeholder'=>'Name','readonly'])}}
                               </div>
-                              <br>
+                            </div>
+                              </div>
                               <div class="form-group">
-                                <p style="text-align:left"><strong>{{Form::label('address','Address')}} :</strong></p>
+                                  <div class="row">
+                                      <div class="col-md-4 col-form-label text-md-right">
+                                <strong>{{Form::label('address','Address')}} :</strong>
+                                      </div>
+                                      <div class="col-md-6">
                                 {{Form::text('address',$customer->address,['class'=>'form-control','placeholder'=>''])}}
                               </div>
+                            </div>
+                              </div>
                               <div class="form-group" >
-                                  <p style="text-align:left">{{Form::label('email','Email Address')}}</p>
+                                  <div class="row">
+                                      <div class="col-md-4 col-form-label text-md-right">
+                                  <strong>{{Form::label('email','Email Address')}}</strong>
+                                      </div>
+                                      <div class="col-md-6">
                                   {{Form::text('email', $customer->email ,['class'=>'form-control','placeholder'=>'Email Address', 'readonly'])}}
                                 </div>
+                              </div>
+                                </div>
                                 <div class="form-group" >
-                                    <p style="text-align:left">{{Form::label('contactNo','Contact Number')}}</p>
-                                    {{Form::number('contactNo', $customer->contactNo ,['class'=>'form-control','placeholder'=>''])}}
+                                    <div class="row">
+                                        <div class="col-md-4 col-form-label text-md-right">
+                                    <strong>{{Form::label('contactNo','Contact Number')}}</strong>
+                                        </div>
+                                        <div class="col-md-6">
+                                    {{Form::number('contactNo', '0'.$customer->contactNo ,['class'=>'form-control','placeholder'=>''])}}
+                                  </div>
+                                </div>
                                   </div>
                                 <br>
                                 <div class="form-group float-right form-inline">
