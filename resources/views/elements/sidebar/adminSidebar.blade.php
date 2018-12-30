@@ -3,13 +3,13 @@
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                    <br>
+                <br>
                     <div class="sidebar-brand">
                         <a class="navbar-brand float-center" >
                             <img src="/img/ic.png" alt="logo" style="width:70px"> 
                         </a>
                     </div>
-                    <br>
+    
                        <p style="color:darkgoldenrod">Admin Navigation</p>
                 <li>
                     <a href="/loggedin">

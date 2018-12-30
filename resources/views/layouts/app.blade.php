@@ -19,7 +19,7 @@
     color: darkgrey;
 }
 </style>
-<body style="background-color:black; padding-top: 75px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; color: white; text-align: center;">
+<body style="background-color:black; padding-top: 75px; font-family:Georgia, 'Times New Roman', Times, serif; color: white; text-align: center;">
     <div id="app">
         @guest
             @include('elements.guestNavbar')

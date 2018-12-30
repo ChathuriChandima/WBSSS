@@ -5,8 +5,19 @@
 <div class="container">
 <div class="row">
     <div class="col-lg-12 margin-tb">
-        <a href="search_vehicle" class="btn float-right" title="Search Vehicle" style="width:40px; height:40px; margin-left:10px;"><img src="img\search.png" style="margin-top:-12px; margin-left:-18px;"/></a>
+        
       <a href="add_vehicle" class="btn float-right" title="New Vehicle" style="width:40px; height:40px;"><img src="img\icons8_Add_New_50px_1.png" style="margin-top:-12px; margin-left:-18px;"/></a> 
+    <form action="/search" method="POST" role="search" style="margin-left:140px; margin-right:150px;">
+      {{ csrf_field() }}
+      <div class="input-group">
+        <input type="text" class="form-control" name="q" placeholder="Search....">
+        <span class="input-group-btn" >
+            <button type="submit" class="btn btn-default">
+              <span><img src="/img/Search1.png" /></span>
+            </button>
+        </span>
+      </div>
+    </form>
     </div>
 </div>
 </div>
