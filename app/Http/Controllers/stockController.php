@@ -72,8 +72,8 @@ class stockController extends Controller
         $stock->soldStock=$request->input('soldStock');
         $stock->price=$request->input('price');
         $stock->save();
-
-        return redirect('stocks')->with('success','Your changes are saved.');
+        Alert::success('Your changes are saved.','Done!');
+            return redirect('stocks');
     }
 
     public function move(){
@@ -112,6 +112,20 @@ class stockController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'purchasedStock'=>'required',
+            'availableStock'=>'required',
+            'soldStock' => 'required',
+            'price' => 'required'
+        ]);
+            $stock=stock::find($id);
+            $stock->purchasedStock=$request->input('purchasedStock');
+            $stock->soldStock=$request->input('soldStock');
+            $stock->availableStock=$request->input('availableStock');
+            $stock->price=$request->input('price');
+            $stock->save();
+            Alert::success('Your changes are saved.','Done!');
+            return redirect('stocks');
     }
 
     /**
@@ -123,5 +137,11 @@ class stockController extends Controller
     public function destroy($id)
     {
         //
+        $stock = stock::findOrFail($id);
+        $stock->delete();
+
+        return response()->json($stock);
+        Alert::success('Deleted successfully.','Done!');
+        return redirect('stocks');
     }
 }

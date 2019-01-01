@@ -130,6 +130,7 @@ class vehicleController extends Controller
      */
     public function destroy($id)
     {
+        
         $v=vehicle::find($id);
         $v->delete();
         Alert::success('Deleted successfully.','Done!');
