@@ -137,4 +137,5 @@ Route::group(['middleware' => 'App\Http\Middleware\ManagementMiddleware'], funct
     Route::match(['get','post'],'/add_vehicle', 'vehicleController@create');
     Route::match(['get','post'],'/edit/{id}', 'vehicleController@find');
     Route::match(['get','post'],'/search', 'vehicleController@search');
+    Route::match(['get','post'],'/user', 'customerController@user');
 });

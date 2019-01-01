@@ -8,7 +8,9 @@ use App\User;
 use App\vehicle;
 use Alert;
 use Image;
+use DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class customerController extends Controller
 {
@@ -27,8 +29,37 @@ class customerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        $this->validate($request,[
+
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'address'=>'required',
+            'contactNo'=> 'required|regex:/(0)[0-9]{9}/',
+            ]);
+            $l= DB::table('users')->latest()->first();
+            $m=$l->id;
+            $n=$m+1;
+            $password=$request->input('name').'@raajan';
+            $user=new User;
+            $user->Id=$n;
+            $user->name=$request->input('name');
+            $user->email=$request->input('email');
+            $user->password=Hash::make($password);
+            $user->role='customer';
+            $user->save();
+
+            $customer=new Customer;
+            $customer->Id=$n;
+            $customer->name=$request->input('name');
+            $customer->address=$request->input('address');
+            $customer->contactNo=$request->input('contactNo');
+            $customer->email=$request->input('email');
+            $customer->save();
+            Alert::success('Your details inserted.','Done!');
+            return redirect('/add_vehicle');
+            
         
     }
 
@@ -156,4 +187,9 @@ class customerController extends Controller
 
         return redirect('profile');
     }
+
+    public function user(){
+        return view('pages.customer.user');
+    }
+
 }

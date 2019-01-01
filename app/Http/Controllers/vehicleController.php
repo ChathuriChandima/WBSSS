@@ -58,7 +58,7 @@ class vehicleController extends Controller
         $vehicle=new vehicle;
         $vehicle->vehicleNo=$request->input('vehicleNo');
         $vehicle->type=$request->input('type');
-        $vehicle->lastServiceDay=$request->input('lastServiceDay');
+        $vehicle->lastServiceDay=date('Y-m-d',strtotime($request->input('lastServiceDay')));
         $vehicle->brand=$request->input('brand');
         $vehicle->cId=$request->input('cId');
         $vehicle->status=$request->input('status');
