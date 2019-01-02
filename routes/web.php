@@ -24,6 +24,7 @@ Route::resource('customer','customerController');
 Route::resource('vehicle','vehicleController');
 Route::resource('stock','stockController');
 Route::resource('Staff','staffController');
+Route::resource('Service','ServicesController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@home')->name('home');
@@ -77,14 +78,14 @@ Route::group(['middleware' => 'App\Http\Middleware\AccountantMiddleware'], funct
     //Route::match(['get','post'],'/services','HomeController@services');
     Route::match(['get','post'],'/bills', 'billController@index')->name('bills');
     Route::match(['get','post'],'/invoice', 'PostsController@inv')->name('invoice');
-    Route::match(['get','post'],'/delete/{id}','vehicleController@destroy')->name('delete');
+    //Route::match(['get','post'],'/delete/{id}','vehicleController@destroy')->name('delete');
     //Route::match(['get','post'],'/update/{id}','vehicleController@update')->name('update');
     // ** Note That Moved the routes of Stock and Vechicle to Heiger level Staff **
     // ** As both Accountant and Admin has same functionality within those PagesController
     // ** And also change the vehicle add and stock add routes as add_vehicle and add_stock
     // ** Otherwise they overlap and does not perform the expected navigation
 
-    Route::match(['get','post'],'/services', 'PostsController@servc')->name('services');
+    //Route::match(['get','post'],'/services', 'PostsController@servc')->name('services');
     // ** Moved add vehicle path to higher admin because it can be also used,
     // ** As the template for customers add vehicle funtionality
 
@@ -136,6 +137,13 @@ Route::group(['middleware' => 'App\Http\Middleware\ManagementMiddleware'], funct
     Route::match(['get','post'],'/add_stock', 'stockController@create');
     Route::match(['get','post'],'/add_vehicle', 'vehicleController@create');
     Route::match(['get','post'],'/edit/{id}', 'vehicleController@find');
+    Route::match(['get','post'],'/delete/{id}','vehicleController@destroy')->name('delete');
     Route::match(['get','post'],'/search', 'vehicleController@search');
     Route::match(['get','post'],'/user', 'customerController@user');
+    Route::match(['get','post'],'/services','ServicesController@index');
+    Route::match(['get','post'],'/addService', 'ServicesController@create');
+    Route::match(['get','post'],'/editservice/{id}', 'ServicesController@find');
+    Route::match(['get','post'],'/searchservice', 'ServicesController@search');
+    Route::match(['get','post'],'/deleteservice/{id}','ServicesController@destroy')->name('deleteservice');
+    Route::match(['get','post'],'/searchstock', 'stockController@search');
 });

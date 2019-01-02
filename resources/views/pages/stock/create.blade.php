@@ -6,62 +6,76 @@
   }
 </style>
 @section('content')
-            <h2><img src="img\stock.jpg">  New Stock </h2>
-            <div class="container">
+            <div class="container" style="margin-top:-60px;">
+                <h2><img src="img\stock.jpg" style="height:100px; width:100px;">  New Stock </h2>
                 <div class="well">
                     {!! Form::open(['action'=>'stockController@store','method'=>'POST']) !!}
-                            <div class="form-group" style="margin-left:20px">
+                            <div class="form-group" >
                                 <div class="row">
-                                <p style="text-align:left"><strong>{{Form::label('code','Stock Code')}} :</strong></p>
-                                <div class="col-sm-10 " style="margin-left:40px">
+                                    <div class="col-md-4 col-form-label text-md-right">
+                                <strong>{{Form::label('code','Stock Code')}} :</strong>
+                                    </div>
+                                <div class="col-md-6">
                                 {{Form::text('code',$id,['class'=>'form-control','placeholder'=>'','readonly'])}}
                               </div>
                             </div>
                               </div>
-                              <div class="form-group" style="margin-left:20px">
+                              <div class="form-group" >
                                   <div class="row">
-                                <p style="text-align:left"><strong>{{Form::label('type','Type')}}  :</strong></p>
-                                <div class="col-sm-10 " style="margin-left:80px">
+                                      <div class="col-md-4 col-form-label text-md-right">
+                                <strong>{{Form::label('type','Type')}}  :</strong>
+                                      </div>
+                                <div class="col-md-6">
                                 {{Form::text('type','',['class'=>'form-control','placeholder'=>''])}}
                               </div>
                             </div>
                               </div>
-                              <div class="form-group" style="margin-left:20px">
+                              <div class="form-group" >
                                   <div class="row">
-                                <p style="text-align:left"><strong>{{Form::label('name','Name')}}  :</strong></p>
-                                <div class="col-sm-10 " style="margin-left:76px">
+                                      <div class="col-md-4 col-form-label text-md-right">
+                                <strong>{{Form::label('name','Name')}}  :</strong>
+                                      </div>
+                                <div class="col-md-6">
                                 {{Form::text('name','',['class'=>'form-control','placeholder'=>''])}}
                               </div>
                             </div>
                               </div>
-                              <div class="form-group" style="margin-left:20px">
+                              <div class="form-group" >
                                   <div class="row">
-                                  <p style="text-align:left"><strong>{{Form::label('availableStock','Available Stock')}}  :</strong></p>
-                                  <div class="col-sm-10 " style="margin-left:12px">
+                                      <div class="col-md-4 col-form-label text-md-right">
+                                  <strong>{{Form::label('availableStock','Available Stock')}}  :</strong>
+                                      </div>
+                                  <div class="col-md-6">
                                   {{Form::text('availableStock','',['class'=>'form-control','placeholder'=>''])}}
                                 </div>
                               </div>
                                 </div>
-                                <div class="form-group" style="margin-left:20px">
+                                <div class="form-group" >
                                     <div class="row">
-                                        <p style="text-align:left"><strong>{{Form::label('purchasedStock','Purchased Stock')}}  :</strong></p>
-                                        <div class="col-sm-10 " style="margin-left:5px">
+                                        <div class="col-md-4 col-form-label text-md-right">
+                                        <strong>{{Form::label('purchasedStock','Purchased Stock')}}  :</strong>
+                                        </div>
+                                        <div class="col-md-6">
                                         {{Form::text('purchasedStock','',['class'=>'form-control','placeholder'=>''])}}
                                       </div>
                                     </div>
                                       </div>
-                                <div class="form-group" style="margin-left:20px">
+                                <div class="form-group" >
                                     <div class="row">
-                                        <p style="text-align:left"><strong>{{Form::label('soldStock','Stock Sales')}}  :</strong></p>
-                                        <div class="col-sm-10 " style="margin-left:43px">      
+                                        <div class="col-md-4 col-form-label text-md-right">
+                                        <strong>{{Form::label('soldStock','Stock Sales')}}  :</strong>
+                                        </div>
+                                        <div class="col-md-6">      
                                         {{Form::text('soldStock','',['class'=>'form-control','placeholder'=>''])}}
                                       </div>
                                     </div>
                                               </div>
-                                <div class="form-group" style="margin-left:20px">
+                                <div class="form-group" >
                                     <div class="row">
-                                        <p style="text-align:left"><strong>{{Form::label('price','Unit Price')}}  :</strong></p>
-                                        <div class="col-sm-10 " style="margin-left:47px">     
+                                        <div class="col-md-4 col-form-label text-md-right">
+                                        <strong>{{Form::label('price','Unit Price')}}  :</strong>
+                                        </div>
+                                        <div class="col-md-6">     
                                         {{Form::text('price','',['class'=>'form-control','placeholder'=>''])}}
                                         </div>
                                       </div>

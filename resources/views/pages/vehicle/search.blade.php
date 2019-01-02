@@ -2,7 +2,8 @@
 @section('content')
 <div class="row">
         <div class="col-lg-12 margin-tb">
-        <form action="/search" method="POST" role="search" style="margin-left:300px; margin-right:150px;">
+            <a href="/vehicles" class="btn btn-info float-left" style="margin-left:300px;"> Back</a>
+        <form action="/search" method="POST" role="search" style="margin-left:400px; margin-right:150px;">
           {{ csrf_field() }}
           <div class="input-group">
             <input type="text" class="form-control" name="q" placeholder="Search....">
