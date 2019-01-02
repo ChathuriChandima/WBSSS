@@ -5,9 +5,10 @@ use App\Customer;
 use App\vehicle;
 use App\User;
 use Alert;
-use DB; 
+use DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\SingleUser;
 class vehicleController extends Controller
 {
     /**
@@ -65,8 +66,8 @@ class vehicleController extends Controller
         $vehicle->save();
         Alert::success('Your changes are saved.','Done!');
         return redirect('vehicles');
-        
-        
+
+
     }
 
     /**
@@ -98,6 +99,9 @@ class vehicleController extends Controller
             $vehicle->status=$request->input('status');
             $vehicle->save();
             Alert::success('Your changes are saved.','Done!');
+            if ($vehicle->status == '2'){
+              $this->searviceFinishNotifier($vehicle);
+            }
             return redirect('vehicles');
     }
 
@@ -120,6 +124,10 @@ class vehicleController extends Controller
             $vehicle->status=$request->input('status');
             $vehicle->save();
             Alert::success('Your changes are saved.','Done!');
+            // Notifying user if service Finished
+            if ($vehicle->status == '2'){
+              searviceFinishNotifier($vehicle);
+            }
             return redirect('vehicles');
     }
 
@@ -131,7 +139,7 @@ class vehicleController extends Controller
      */
     public function destroy($id)
     {
-        
+
         $v=vehicle::find($id);
         $v->delete();
         Alert::success('Deleted successfully.','Done!');
@@ -173,5 +181,16 @@ class vehicleController extends Controller
             Alert::info('Try to search Again.....','Not Found!');
             return redirect('vehicles');
         }
+    }
+
+    public function searviceFinishNotifier($vehicle){
+      // Getting the user to notify
+      $user = User::find($vehicle->cId);
+
+      // Creating the subject and the msg of the Notification
+      $subject = "One of your Vehicle service Finished!";
+      $msg = "Your Vehicle with No. $vehicle->vehicleNo has been finished servicing.";
+      // Nofifying the User
+      $user->notify(new SingleUser($subject,$msg));
     }
 }

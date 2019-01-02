@@ -6,19 +6,24 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+//use App\Providers\User;
 
 class SingleUser extends Notification implements ShouldQueue
 {
     use Queueable;
 
+
+      protected $subject;
+      protected $msg;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct($subject,$msg)
     {
-        $this->user = $user;
+        $this->subject = $subject;
+        $this->msg = $msg;
     }
 
     /**
@@ -41,8 +46,9 @@ class SingleUser extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+                    ->subject($this->subject)
+                    ->line($this->msg)
+                    ->action('Visit Now', url('/'))
                     ->line('Thank you for using our application!');
     }
 
