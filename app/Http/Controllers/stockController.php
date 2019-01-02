@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\stock;
 use DB;
+use Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
@@ -143,5 +144,16 @@ class stockController extends Controller
         return response()->json($stock);
         Alert::success('Deleted successfully.','Done!');
         return redirect('stocks');
+    }
+
+    public function search(){
+        $q=Input::get('q');
+        $stock=stock::where('code','LIKE','%'.$q.'%')->orWhere('name','LIKE','%'.$q.'%')->orWhere('type','LIKE','%'.$q.'%')->get();
+        if(count($stock)>0){
+            return view('pages.stock.searchstock')->withDetails($stock);
+        }else{
+            Alert::info('Try to search Again.....','Not Found!');
+            return redirect('/stocks');
+        }
     }
 }

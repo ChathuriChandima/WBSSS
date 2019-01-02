@@ -47,6 +47,20 @@
             </div>
           </div>
           </div>
+          <div class="form-group">
+            <div class="row">
+            <div class="col-md-4 col-form-label text-md-right">
+            <label for="status"><strong>Status :</strong></label>
+            </div>
+            <div class="col-md-6">
+            <select name="status" class="form-control">
+            <option value="0">Not at service station</option>
+            <option value="1">Servicing</option>
+            <option value="2">Finished Service</option>
+            </select>
+            </div>
+          </div>
+          </div>
           <br>
           <div class="form-group float-right form-inline " style="margin-right:180px;">
           <div class="form-group">

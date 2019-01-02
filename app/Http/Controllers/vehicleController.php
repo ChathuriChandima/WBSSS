@@ -117,6 +117,7 @@ class vehicleController extends Controller
             $vehicle=vehicle::find($id);
             $vehicle->lastServiceDay=date('Y-m-d',strtotime($request->input('lastServiceDay')));
             $vehicle->cId=$request->input('cId');
+            $vehicle->status=$request->input('status');
             $vehicle->save();
             Alert::success('Your changes are saved.','Done!');
             return redirect('vehicles');

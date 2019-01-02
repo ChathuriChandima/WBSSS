@@ -1,7 +1,7 @@
 @extends('layouts.log')
 @section('content')
-<link rel="stylesheet" href="{{asset('my/s.css')}}">
-<div class="container mt-3">
+<link rel="stylesheet" href="{{asset('my/v.css')}}">
+<div class="container">
     <!-- Nav tabs -->
     <ul class="nav nav-tabs">
       <li class="nav-item">
