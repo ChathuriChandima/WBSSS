@@ -138,14 +138,17 @@ class stockController extends Controller
     public function destroy($id)
     {
         //
-        $stock = stock::findOrFail($id);
-        $stock->delete();
-
-        return response()->json($stock);
+        $s=stock::find($id);
+        $s->delete();
         Alert::success('Deleted successfully.','Done!');
         return redirect('stocks');
     }
-
+    public function find($id)
+    {
+        $s=stock::find($id);
+        return view('pages.stock.editStock')
+        ->with('stock',$s);
+    }
     public function search(){
         $q=Input::get('q');
         $stock=stock::where('code','LIKE','%'.$q.'%')->orWhere('name','LIKE','%'.$q.'%')->orWhere('type','LIKE','%'.$q.'%')->get();
