@@ -142,10 +142,7 @@ class customerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+    
 
      /**
      * Remove the specified resource from storage.
@@ -190,6 +187,31 @@ class customerController extends Controller
 
     public function user(){
         return view('pages.customer.user');
+    }
+
+    public function move(){
+        return view('pages.adminOnlyPages.customer')
+        ->with('customer',Customer::all())
+        ->with('c',null);
+    }
+
+    public function find($id)
+    {
+        $cu=customer::find($id);
+        return view('pages.adminOnlyPages.customerEdit')
+        /*->with('customer',Customer::all())*/
+        ->with('customer',$cu);
+    }
+
+    public function destroy($id)
+    {
+
+        $v=User::find($id);
+        $v->delete();
+        $v=Customer::find($id);
+        $v->delete();
+        Alert::success('Deleted successfully.','Done!');
+        return redirect('customers');
     }
 
 }
