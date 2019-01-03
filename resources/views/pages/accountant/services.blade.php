@@ -39,7 +39,7 @@
             <td>
                 <a href="editservice/{{$s->sid}}" class="btn" title="Edit" style="background-color:lavender;"><img src="img\icons8_Edit_25px.png" /></a>
             
-              <!-- delete vehicle-->
+              <!-- delete service-->
               <button type="button" class="btn" title="Delete" data-toggle="modal" data-target="#myModal4-{{$s->sid}}" data-mytitle="{{$s->sid}}"><img src="img\icons8_Trash_25px_1.png" /></button>
               <div class="modal fade" id="myModal4-{{$s->sid}}" role="dialog">
                 <div class="modal-dialog">

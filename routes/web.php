@@ -25,6 +25,7 @@ Route::resource('vehicle','vehicleController');
 Route::resource('stock','stockController');
 Route::resource('Staff','staffController');
 Route::resource('Service','ServicesController');
+Route::resource('bill','billController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@home')->name('home');
@@ -77,9 +78,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AccountantMiddleware'], funct
     Route::match(['get','post'],'/accountantOnlyPage','HomeController@accountant');
     //Route::match(['get','post'],'/vehicles','HomeController@vehicles');
     //Route::match(['get','post'],'/services','HomeController@services');
-    Route::match(['get','post'],'/bills', 'billController@index')->name('bills');
     Route::match(['get','post'],'/invoice', 'PostsController@inv')->name('invoice');
-    Route::match(['get','post'],'/bill', 'billController@view');
     //Route::match(['get','post'],'/delete/{id}','vehicleController@destroy')->name('delete');
     //Route::match(['get','post'],'/update/{id}','vehicleController@update')->name('update');
     // ** Note That Moved the routes of Stock and Vechicle to Heiger level Staff **
@@ -152,4 +151,10 @@ Route::group(['middleware' => 'App\Http\Middleware\ManagementMiddleware'], funct
     Route::match(['get','post'],'/searchstock', 'stockController@search');
     Route::match(['get','post'],'/editstock/{id}', 'stockController@find');
     Route::match(['get','post'],'/deletestock/{id}','stockController@destroy')->name('deletestock');
+    Route::match(['get','post'],'/bills','billController@index');
+    Route::match(['get','post'],'/addBill', 'billController@create');
+    Route::match(['get','post'],'/editbill/{id}', 'billController@find');
+    Route::match(['get','post'],'/searchbill', 'billController@search');
+    Route::match(['get','post'],'/deletebill/{id}','billController@destroy')->name('deletebill');
+    Route::match(['get','post'],'/printbill/{id}', 'billController@print');
 });

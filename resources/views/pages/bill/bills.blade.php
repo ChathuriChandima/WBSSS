@@ -1,94 +1,77 @@
 @extends('layouts.log')
 <link rel="stylesheet" href="{{asset('my/l.css')}}">
 @section('content')
-
-<div class = "container" style =  "margin-top: 40px">
-        <h2> Print Bills   </h2>
-</div>
-
-
-<div class="container" >
-    
-    <form  class="form-container border border-warning rounded" style="width:600px">
-    <div class="row">
-        <div class="span4">
-            <img src="img/ic.png" width="50px" height="50px">
-            <address>
+<div class="container">
+        <div class="row">
+            <div class="col-lg-12 margin-tb">
                 
-                No.210/5 <br>
-                Weerangala South<br>
-                Yakkala <br>
-            </address>
-        </div>
-        <div class="span4 well">
-            <table class="invoice-head">
-                <tbody>
-                       
-                    <tr>
-                        <td class="pull-right"  style ="padding-right:40px"><strong>Customer Name </strong></td>
-                        <td><input type="text" style="margin-bottom: 10px"  ></td>
-                    </tr>
-                        
-                   
-                    <tr>
-                        <td class="pull-right"><strong>Bill No.</strong></td>
-                        <td><input type="text"  style="margin-bottom: 10px" ></td>
-                    </tr>
-                    <tr>
-                        <td class="pull-right"><strong>Date</strong></td>
-                        <td><input type="text"  style="margin-bottom: 10px" ></td>
-                    </tr>
-                    
-                    
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-          <div class="span8 well invoice-body">
-              <table class="table table-bordered" style = "font-size:10px">
-                <thead>
-                    <tr>
-                        <th>Service Description</th>
-                        <th>Date From</th>
-                        <th>Date To</th>
-                        <th>Vehicle No.</th>
-                        <th>Charges/Tax</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    
-                    </tr><tr>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td><strong>Total</strong></td>
-                        <td contenteditable="true"><strong></strong></td>
-                    </tr>
-                </tbody>
-            </table>
-          </div>
-      </div>
-      <div class="row">
-          <div class="span8 well invoice-thank">
-              <h5 style="text-align:center;">Thank You!</h5>
-          </div>
-      </div>
-      <div class="row">
-          <div class="span3" style="padding-right:50px">
-              <strong>Phone:</strong> <a href="tel:033-22-77616">033-22-77616</a>
-          </div>
-          <div class="span3" style ="padding-right:80px">
-              <strong>Email:</strong> <a href="https://accounts.google.com/ServiceLogin/signinchooser?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F%3Frli%3Dn4mf18sk0chx%26rld%3D1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin">raajan@gmail.com</a><br>
-          <br>
+              <a href="/addBill" class="btn float-right" title="New Bill" style="width:40px; height:40px;"><img src="img\icons8_Add_New_50px_1.png" style="margin-top:-12px; margin-left:-22px;"/></a>
+              <form action="/searchbill" method="POST" role="search" style="margin-left:140px; margin-right:150px;">
+                {{ csrf_field() }}
+                <div class="input-group">
+                  <input type="text" class="form-control" name="q" placeholder="Search....">
+                  <span class="input-group-btn" >
+                      <button type="submit" class="btn btn-default">
+                        <span><img src="/img/Search1.png" /></span>
+                      </button>
+                  </span>
+                </div>
+              </form>
             </div>
+        </div>
+        </div>
+        @section('content')
+        <div class="container">
+            <table class="table table-bordered">
+                    <tr>
+                        <th>Bill No</th>
+                        <th>Date</th>
+                        <th>Customer Name</th>
+                        <th>Vehicle No</th>
+                        <th>Service Description</th>
+                        <th>Spare Parts Added</th>
+                        <th>Price</th>
+                        <th width="200px">Action</th>
+                    </tr>
+            
+                    @foreach ($bill as $b)
+                    <tr>
+                        <td>{{$b->billNo}}</td>
+                        <td>{{$b->date}}</td>
+                        <td>{{$b->customerName}}</td>
+                        <td>{{$b->vehicleNo}}</td>
+                        <td>{{$b->serviceDescription}}</td>
+                        <td>{{$b->addedParts}}</td>
+                        <td>{{$b->price}}</td>
+                    <td>
+                        <a href="editbill/{{$b->billNo}}" class="btn" title="Edit" style="background-color:lavender;"><img src="img\icons8_Edit_25px.png" /></a>
+                    
+                      <!-- delete bill-->
+                      <button type="button" class="btn" title="Delete" data-toggle="modal" data-target="#myModal-{{$b->billNo}}" data-mytitle="{{$b->billNo}}"><img src="img\icons8_Trash_25px_1.png" /></button>
+                      <div class="modal fade" id="myModal-{{$b->billNo}}" role="dialog">
+                        <div class="modal-dialog">
+        
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 class="modal-title" style="margin-left:200px;"><img src="img\warning.png" /></h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body" style="text-align:center;">
+                              <h5>Are you sure??? Do you want to delete {{$b->billNo}}?</h5>
+                              <h3>If you delete it, it won't be exists anymore!...</h3>
+                              <a href="{{route('deletebill', $b->billNo)}}" class="btn" role="button" style="background-color:bisque"><img src="img\icons8_Trash_25px_1.png" /></a>
+                              </div>
+                            </div>
           
-
-      </div>
+                          </div>
+                        </div>
+                        <a href="printbill/{{$b->billNo}}" class="btn" title="print" style="background-color:lavender;"><img src="img\print.png" /></a>
+                    </td>
+                    
+                    @endforeach
+                </tr>
+            
+                </table>
+            </div>
+        @endsection
