@@ -48,8 +48,28 @@
             <td>{{$s->soldStock}}</td>
             <td>{{$s->price}}</td>
         <td>
-            <button type="button" class="edit-modal btn" title="Edit" data-toggle="modal" data-target="#editModal" data-mytitle="{{$s->code}}" ><img src="img\icons8_Edit_25px.png"></button>
-            <button type="button" class="delete-modal btn" title="Delete" data-toggle="modal" data-target="#deleteModal" data-mytitle="0"><img src="img\icons8_Trash_25px_1.png"></button>    
+            <a href="editstock/{{$s->code}}" class="btn" title="Edit" style="background-color:lavender;"><img src="img\icons8_Edit_25px.png" /></a>
+            
+              <!-- delete vehicle-->
+              <button type="button" class="btn" title="Delete" data-toggle="modal" data-target="#myModal4-{{$s->code}}" data-mytitle="{{$s->code}}"><img src="img\icons8_Trash_25px_1.png" /></button>
+              <div class="modal fade" id="myModal4-{{$s->code}}" role="dialog">
+                <div class="modal-dialog">
+
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title" style="margin-left:200px;"><img src="img\warning.png" /></h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body" style="text-align:center;">
+                      <h5>Are you sure??? Do you want to delete {{$s->code}}?</h5>
+                      <h3>If you delete it, it won't be exists anymore!...</h3>
+                      <a href="{{route('deletestock', $s->code)}}" class="btn" role="button" style="background-color:bisque"><img src="img\icons8_Trash_25px_1.png" /></a>
+                      </div>
+                    </div>
+  
+                  </div>
+                </div>
         </td>
         
         @endforeach

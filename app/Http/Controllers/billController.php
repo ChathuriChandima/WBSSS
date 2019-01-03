@@ -16,6 +16,11 @@ class billController extends Controller
         return view('pages.bill.bills');
     }
 
+    public function view()
+    {
+        return view('pages.bill.bill');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
