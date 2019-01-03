@@ -114,12 +114,17 @@ class stockController extends Controller
     {
         //
         $this->validate($request, [
+            'code' => 'required',
+            'name' => 'required',
+            'type' =>'required',
             'purchasedStock'=>'required',
             'availableStock'=>'required',
             'soldStock' => 'required',
             'price' => 'required'
         ]);
             $stock=stock::find($id);
+            $stock->name=$request->input('name');
+            $stock->type=$request->input('type');
             $stock->purchasedStock=$request->input('purchasedStock');
             $stock->soldStock=$request->input('soldStock');
             $stock->availableStock=$request->input('availableStock');
@@ -137,18 +142,12 @@ class stockController extends Controller
      */
     public function destroy($id)
     {
-        //
         $s=stock::find($id);
         $s->delete();
         Alert::success('Deleted successfully.','Done!');
-        return redirect('stocks');
+        return redirect('/stocks');
     }
-    public function find($id)
-    {
-        $s=stock::find($id);
-        return view('pages.stock.editStock')
-        ->with('stock',$s);
-    }
+    
     public function search(){
         $q=Input::get('q');
         $stock=stock::where('code','LIKE','%'.$q.'%')->orWhere('name','LIKE','%'.$q.'%')->orWhere('type','LIKE','%'.$q.'%')->get();
@@ -158,5 +157,11 @@ class stockController extends Controller
             Alert::info('Try to search Again.....','Not Found!');
             return redirect('/stocks');
         }
+    }
+
+    public function find($id){
+        $s=stock::find($id);
+        return view('pages.stock.editstock')
+        ->with('stock',$s);
     }
 }
