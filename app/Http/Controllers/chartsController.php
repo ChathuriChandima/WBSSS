@@ -49,25 +49,9 @@ class chartsController extends Controller
 
         $line_chart = Charts::database($income, 'line', 'highcharts')
 
-			      ->title("Monthly new Register Vehicles")
+			      ->title("Monthly income flow")
 
-			      ->elementLabel("Total Vehicles")
-
-			      ->dimensions(500, 350)
-
-			      ->responsive(false)
-
-                  ->groupByMonth(date('Y'), true);
-
-        $staff = bill::where(DB::raw("price"),date('Y'))
-
-        ->get();
-
-        $pie_chart = Charts::database($staff, 'pie', 'highcharts')
-
-			      ->title("Monthly new Register Vehicles")
-
-			      ->elementLabel("Total Vehicles")
+			      //->elementLabel("Total Vehicles")
 
 			      ->dimensions(500, 350)
 
@@ -75,8 +59,7 @@ class chartsController extends Controller
 
                   ->groupByMonth(date('Y'), true);
 
-                  
-
+        
         return view('pages/adminOnlyPages/charts',compact('bar_chart','line_chart','pie_chart'));
 
     }
