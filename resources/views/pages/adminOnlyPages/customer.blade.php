@@ -65,7 +65,7 @@
 <div class="container">
 <table class="table table-bordered">
         <tr>
-            <th style="text-align:center">Name</th>
+            <th style="text-align:center">Id</th>
             <th style="text-align:center">Name</th>
             <th style="text-align:center">Address</th>
             <th style="text-align:center">Contact No</th>

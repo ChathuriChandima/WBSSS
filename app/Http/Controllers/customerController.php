@@ -218,4 +218,22 @@ class customerController extends Controller
         return redirect('customers');
     }
 
+    public function updateCustomer(Request $request, $id)
+    {
+        $this->validate($request, [
+            'Id'=>'required'
+        ]);
+            $customer=Customer::find($id);
+            $customer->Id=$request->input('Id');
+            $customer->name=$request->input('name');
+            $customer->adress=$request->input('address');
+            $customer->contactNo=$request->input('contactNo');            
+            $customer->email=$request->input('email');
+            $customer->save();
+            Alert::success('Your changes are saved.','Done!');
+            // Notifying user if service Finished
+            
+            return redirect('/pages/adminOnlyPages/customer');
+    }
+
 }
