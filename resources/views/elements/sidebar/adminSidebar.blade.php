@@ -12,7 +12,7 @@
     
                        <p style="color:darkgoldenrod">Admin Navigation</p>
                 <li>
-                    <a href="/loggedin">
+                    <a href="/charts">
                         Home
                     </a>
                 </li>
