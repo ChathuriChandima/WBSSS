@@ -147,7 +147,7 @@ class stockController extends Controller
         Alert::success('Deleted successfully.','Done!');
         return redirect('/stocks');
     }
-
+    
     public function search(){
         $q=Input::get('q');
         $stock=stock::where('code','LIKE','%'.$q.'%')->orWhere('name','LIKE','%'.$q.'%')->orWhere('type','LIKE','%'.$q.'%')->get();
