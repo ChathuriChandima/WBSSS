@@ -29,7 +29,12 @@ class stockController extends Controller
     public function create()
     {
         $l= DB::table('stocks')->latest()->first();
-        $n=substr($l->code,1);
+        // Here a error comes when the db is empty so adding a condition
+        if ($l != null){
+            $n=substr($l->sid,3);
+        }else{
+            $n = '0'; //This will prevent a error if the db is empty
+        }
         $i=(int)$n;
         $j=++$i;
         $h=(string)$j;
@@ -41,7 +46,7 @@ class stockController extends Controller
         }else{
             $id='S'.$h;
         }
-        
+
 
         return view('pages.stock.create')
         ->with('id',$id);
@@ -147,7 +152,7 @@ class stockController extends Controller
         Alert::success('Deleted successfully.','Done!');
         return redirect('/stocks');
     }
-    
+
     public function search(){
         $q=Input::get('q');
         $stock=stock::where('code','LIKE','%'.$q.'%')->orWhere('name','LIKE','%'.$q.'%')->orWhere('type','LIKE','%'.$q.'%')->get();

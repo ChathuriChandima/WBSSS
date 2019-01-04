@@ -1,20 +1,26 @@
 @extends('layouts.log')
-<link rel="stylesheet" href="{{asset('my/m.css')}}">
 
-
-
-
-
-<!--<div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="img/p2.jpg" width="1600" height="300"style = "padding-left:250px">
-      <div class="carousel-caption">
-              <h1>RAJAAN MOTORS</h1>
-              <h2>Add Customers</h2>
-
+<link rel="stylesheet" href="{{asset('my/v.css')}}">
+@section('content')
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 margin-tb">
+        
+      
+    <form action="/searchCustomer" method="POST" role="search" style="margin-left:140px; margin-right:150px;">
+      {{ csrf_field() }}
+      <div class="input-group">
+        <input type="text" class="form-control" name="q" placeholder="Search....">
+        <span class="input-group-btn" >
+            <button type="submit" class="btn btn-default">
+              <span><img src="/img/Search1.png" /></span>
+            </button>
+        </span>
       </div>
+    </form>
+    </div>
 </div>
-</div>-->
+</div>
 @section('content')
 
 <div class="row">

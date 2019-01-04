@@ -57,8 +57,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::match(['get','post'],'/charts', 'chartsController@index');
     Route::match(['get','post'],'/editCustomer/{id}', 'customerController@find');
     Route::match(['get','post'],'/deletee/{id}','customerController@destroy')->name('delete');
-
-
+    Route::match(['get','post'],'/searchCustomer', 'customerController@search');
 
 });
 

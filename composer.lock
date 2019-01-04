@@ -4,8 +4,55 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+
     "content-hash": "aaf7ed8b9a794bf147a52be50e31c898",
+
+    "content-hash": "e19cb03e340185b4092c05aafe7e296b",
+
     "packages": [
+        {
+            "name": "balping/json-raw-encoder",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/balping/json-raw-encoder.git",
+                "reference": "c404b7fc0e04ddf5d298e53105c5fc306f523195"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/balping/json-raw-encoder/zipball/c404b7fc0e04ddf5d298e53105c5fc306f523195",
+                "reference": "c404b7fc0e04ddf5d298e53105c5fc306f523195",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Balping\\JsonRaw\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "Balázs Dura-Kovács"
+                }
+            ],
+            "description": "Encode arrays to json with raw JS objects (eg. callbacks) in them",
+            "keywords": [
+                "callback",
+                "encode",
+                "json"
+            ],
+            "time": "2018-05-04T15:38:02+00:00"
+        },
         {
             "name": "barryvdh/laravel-dompdf",
             "version": "v0.8.3",
@@ -64,6 +111,7 @@
         },
         {
             "name": "consoletvs/charts",
+<<<<<<< HEAD
             "version": "5.4.0",
             "source": {
                 "type": "git",
@@ -82,12 +130,32 @@
                 "jenssegers/date": "v3.*",
                 "jlawrence/eos": "3.*",
                 "php": ">=7.0.0"
+=======
+            "version": "6.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ConsoleTVs/Charts.git",
+                "reference": "37763eb404524296d6adc1bcfba11e01882cc11b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ConsoleTVs/Charts/zipball/37763eb404524296d6adc1bcfba11e01882cc11b",
+                "reference": "37763eb404524296d6adc1bcfba11e01882cc11b",
+                "shasum": ""
+            },
+            "require": {
+                "balping/json-raw-encoder": "^1.0",
+                "illuminate/console": "5.*",
+                "illuminate/support": "5.*",
+                "php": ">=7.0"
+>>>>>>> a528f8e7f2c77083f1bef275ba397be03d92b509
             },
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
                         "ConsoleTVs\\Charts\\ChartsServiceProvider"
+<<<<<<< HEAD
                     ],
                     "aliases": {
                         "Charts": "ConsoleTVs\\Charts\\Facades\\Charts"
@@ -138,12 +206,18 @@
                 "laravel": {
                     "providers": [
                         "ConsoleTVs\\Support\\SupportServiceProvider"
+=======
+>>>>>>> a528f8e7f2c77083f1bef275ba397be03d92b509
                     ]
                 }
             },
             "autoload": {
                 "psr-4": {
+<<<<<<< HEAD
                     "ConsoleTVs\\Support\\": "."
+=======
+                    "ConsoleTVs\\Charts\\": "src/"
+>>>>>>> a528f8e7f2c77083f1bef275ba397be03d92b509
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -152,12 +226,21 @@
             ],
             "authors": [
                 {
+<<<<<<< HEAD
                     "name": "Erik Campobadal",
                     "email": "soc@erik.cat"
                 }
             ],
             "description": "ConsoleTVs support library",
             "time": "2017-12-15T07:30:36+00:00"
+=======
+                    "name": "Èrik Campobadal Forés",
+                    "email": "soc@erik.cat"
+                }
+            ],
+            "description": "The laravel charting package",
+            "time": "2018-10-13T12:27:03+00:00"
+>>>>>>> a528f8e7f2c77083f1bef275ba397be03d92b509
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3975,16 +4058,16 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v2.5.1",
+            "version": "v2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "8abb4f9aa89ddea9d52112c65bbe8d0125e2fa8e"
+                "reference": "cfd5dc225767ca154853752abc93aeec040fcf36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/8abb4f9aa89ddea9d52112c65bbe8d0125e2fa8e",
-                "reference": "8abb4f9aa89ddea9d52112c65bbe8d0125e2fa8e",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/cfd5dc225767ca154853752abc93aeec040fcf36",
+                "reference": "cfd5dc225767ca154853752abc93aeec040fcf36",
                 "shasum": ""
             },
             "require": {
@@ -4021,7 +4104,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2018-07-29T20:33:41+00:00"
+            "time": "2018-10-30T17:29:25+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",

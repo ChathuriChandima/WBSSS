@@ -63,7 +63,7 @@
           {{Form::submit('Save',['class'=>'btn btn-success'] )}}
           </div>
           <div class="form-group">
-              <a href="/vehicles" class="btn btn-danger float-right " style="margin:5px"  id="cl" ><strong>Cancel</strong></a>
+              <a href="/customers" class="btn btn-danger float-right " style="margin:5px"  id="cl" ><strong>Cancel</strong></a>
             </div>
           </div>
       {!! Form::close() !!}

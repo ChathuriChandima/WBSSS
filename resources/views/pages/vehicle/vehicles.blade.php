@@ -5,8 +5,8 @@
 <div class="container">
 <div class="row">
     <div class="col-lg-12 margin-tb">
-        
-      <a href="add_vehicle" class="btn float-right" title="New Vehicle" style="width:40px; height:40px;"><img src="img\icons8_Add_New_50px_1.png" style="margin-top:-12px; margin-left:-18px;"/></a> 
+
+      <a href="add_vehicle" class="btn float-right" title="New Vehicle" style="width:40px; height:40px;"><img src="img\icons8_Add_New_50px_1.png" style="margin-top:-12px; margin-left:-18px;"/></a>
     <form action="/search" method="POST" role="search" style="margin-left:140px; margin-right:150px;">
       {{ csrf_field() }}
       <div class="input-group">
@@ -35,7 +35,7 @@
         <a class="nav-link" data-toggle="tab" href="#f">Completed</a>
       </li>
     </ul>
-  
+
     <!-- Tab panes -->
     <div class="tab-content">
       <div id="p" class="container tab-pane active"><br>
@@ -49,32 +49,37 @@
             <th style="text-align:center">Owner</th>
             <th width="150px" style="text-align:center">Action</th>
         </tr>
-        
+
     @foreach ($vehicle as $v)
     <tr>
         <td>{{$v->vehicleNo}}</td>
         <td>{{$v->type}}</td>
         <td>{{$v->lastServiceDay}}</td>
         <td>{{$v->brand}}</td>
+        <!-- flag of customer found -->
+        {{$found = false}}
+        
         @foreach($customer as $owner)
         @if($owner->Id==$v->cId)
         <td>{{$owner->name}}</td>
-        @else
-        <!--fixed the exception of geting unknown customer-->
-        <td>{{"Unknown"}}</td>
+        {{$found = true}}
 
         @endif
-        
+
         @endforeach
+        <!-- printing unknown if flag doesn't activated -->
+        @if($found == false)
+        <td>{{"Unknown"}}</td>
+        @endif
         <td>
         <a href="edit/{{$v->vehicleNo}}" class="btn" title="Edit" style="background-color:lavender;"><img src="img\icons8_Edit_25px.png" /></a>
-            
+
               <!-- delete vehicle-->
               <button type="button" class="btn" title="Delete" data-toggle="modal" data-target="#myModal4-{{$v->vehicleNo}}" data-mytitle="{{$v->vehicleNo}}"><img src="img\icons8_Trash_25px_1.png" /></button>
 
               <div class="modal fade" id="myModal4-{{$v->vehicleNo}}" role="dialog">
                   <div class="modal-dialog">
-  
+
                     <!-- Modal content-->
                     <div class="modal-content">
                       <div class="modal-header">
@@ -87,7 +92,7 @@
                         <a href="{{route('delete', $v->vehicleNo)}}" class="btn" role="button" style="background-color:bisque"><img src="img\icons8_Trash_25px_1.png" /></a>
                         </div>
                       </div>
-    
+
                     </div>
                   </div>
 
@@ -123,7 +128,7 @@
 
                 <div class="modal fade" id="myModal1" role="dialog">
                     <div class="modal-dialog" style="vertical-align:middle">
-    
+
                       <!-- Modal content-->
                       <div class="modal-content">
                         <div class="modal-header">
@@ -131,7 +136,7 @@
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
-                                {!! Form::open(['action'=>['vehicleController@edit',$v->vehicleNo],'method'=>'POST']) !!}   
+                                {!! Form::open(['action'=>['vehicleController@edit',$v->vehicleNo],'method'=>'POST']) !!}
                                 <div class="form-group" style="margin-left:20px">
                                         <div class="row">
                                         <p style="text-align:left"><label for="status"><strong>Status :</strong></label></p>
@@ -152,7 +157,7 @@
                               {!! Form::close()!!}
 
                       </div>
-    
+
                     </div>
                   </div></td>
         </tr>
@@ -186,7 +191,7 @@
 
                 <div class="modal fade" id="myModal2" role="dialog">
                     <div class="modal-dialog" style="vertical-align:middle">
-    
+
                       <!-- Modal content-->
                       <div class="modal-content">
                         <div class="modal-header">
@@ -194,7 +199,7 @@
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
-                                {!! Form::open(['action'=>['vehicleController@edit',$v->vehicleNo],'method'=>'POST']) !!}   
+                                {!! Form::open(['action'=>['vehicleController@edit',$v->vehicleNo],'method'=>'POST']) !!}
                                 <div class="form-group" style="margin-left:20px">
                                         <div class="row">
                                         <p style="text-align:left"><label for="status"><strong>Status :</strong></label></p>
@@ -215,7 +220,7 @@
                               {!! Form::close()!!}
 
                       </div>
-    
+
                     </div>
                   </div>
             </td>
