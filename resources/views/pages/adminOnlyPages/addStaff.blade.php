@@ -43,6 +43,23 @@
                                 </div>
                               </div>
                               </div>
+                              <div class="form-group" style="margin-left:20px">
+                                <div class="row">
+                                <p style="text-align:left"><strong>{{Form::label('role','Role')}}  :</strong></p>
+                                <div class="col-sm-10 " style="margin-left:90px">
+                                {{Form::text('role','',['class'=>'form-control','placeholder'=>''])}}
+                                </div>
+                              </div>
+                              </div>
+                              <div class="form-group" style="margin-left:20px">
+                                <div class="row">
+                                <p style="text-align:left"><strong>{{Form::label('password','Password')}}  :</strong></p>
+                                <div class="col-sm-10 " style="margin-left:50px">
+                                {{Form::text('password','',['class'=>'form-control','placeholder'=>''])}}
+                                </div>
+                              </div>
+                              </div>
+                              
                               {{Form::submit('Add',['class'=>'btn btn-success'] )}}
                               
                                   <a href="staff" class="btn btn-danger float-right "  id="cl" ><strong>Cancel</strong></a>
