@@ -2,26 +2,6 @@
 
 <link rel="stylesheet" href="{{asset('my/v.css')}}">
 @section('content')
-<div class="container">
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-
-      
-    <form action="/search" method="POST" role="search" style="margin-left:140px; margin-right:150px;">
-      {{ csrf_field() }}
-      <div class="input-group">
-        <input type="text" class="form-control" name="q" placeholder="Search....">
-        <span class="input-group-btn" >
-            <button type="submit" class="btn btn-default">
-              <span><img src="/img/Search1.png" /></span>
-            </button>
-        </span>
-      </div>
-    </form>
-    </div>
-</div>
-</div>
-@section('content')
 <div class="container mt-3">
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" style="margin-top:-60px">
