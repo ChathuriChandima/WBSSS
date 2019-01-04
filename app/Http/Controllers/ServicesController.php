@@ -29,7 +29,12 @@ class ServicesController extends Controller
     public function create()
     {
         $l= DB::table('services')->latest()->first();
-        $n=substr($l->sid,3);
+        // Here a error comes when the db is empty so adding a condition
+        if ($l != null){
+            $n=substr($l->sid,3);
+        }else{
+            $n = '0'; //This will prevent a error if the db is empty
+        }
         $i=(int)$n;
         $j=++$i;
         $h=(string)$j;
@@ -41,7 +46,7 @@ class ServicesController extends Controller
         }else{
             $id='SER'.$h;
         }
-        
+
 
         return view('pages.accountant.addService')
         ->with('id',$id);
