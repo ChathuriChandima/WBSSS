@@ -64,7 +64,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 Route::group(['middleware' => 'App\Http\Middleware\CustomerMiddleware'], function(){
 
     Route::match(['get','post'],'/customerOnlyPage','HomeController@customer');
-    Route::match(['get','post'],'/my_vehical','HomeController@myVehical');
+    Route::match(['get','post'],'/my_vehicals','vehicleController@myVehicals');
     Route::match(['get','post'],'/profile', 'customerController@view')->name('profile');
     Route::match(['get','post'],'/personal', 'customerController@editable');
     Route::match(['get','post'],'/picture', 'customerController@change');
