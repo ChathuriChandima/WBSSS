@@ -51,18 +51,20 @@ class staffController extends Controller
             'email' => 'required',
 
         ]);
-        $staff=new Staff;
-        $staff->name=$request->input('name');
-        $staff->address=$request->input('address');
-        $staff->contactNo=$request->input('contactNo');
-        $staff->email=$request->input('email');
-        $staff->save();
         $user=new User;
         $user->name=$request->input('name');
         $user->email=$request->input('email');
         $user->password=Hash::make($request->input('password'));
         $user->role=$request->input('role');
         $user->save();
+        $staff=new Staff;
+        $staff->id=$user->id;
+        $staff->name=$request->input('name');
+        $staff->address=$request->input('address');
+        $staff->contactNo=$request->input('contactNo');
+        $staff->email=$request->input('email');
+        $staff->save();
+
         Alert::success('Your changes are saved.','Done!');
         return redirect('staff');
 
@@ -91,7 +93,7 @@ class staffController extends Controller
 
     public function viewProfile()
     {
-      return view('pages.staff.viewProfile')->with('staff',Customer::find(Auth::user()->id));
+      return view('pages.staff.viewProfile')->with('staff',Staff::find(Auth::user()->id));
     }
 
     public function changePasswordForm()
