@@ -30,7 +30,9 @@
                         <th>Vehicle No</th>
                         <th>Service Description</th>
                         <th>Spare Parts Added</th>
-                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Service Charges</th>
+                        <th>Spare Parts Charges</th>
                         <th width="200px">Action</th>
                     </tr>
             
@@ -42,7 +44,9 @@
                         <td>{{$b->vehicleNo}}</td>
                         <td>{{$b->serviceDescription}}</td>
                         <td>{{$b->addedParts}}</td>
-                        <td>{{$b->price}}</td>
+                        <td>{{$b->stockQty}}</td>
+                        <td>{{$b->serviceCharge}}</td>
+                        <td>{{$b->stockCharge}}</td>
                     <td>
                         <a href="editbill/{{$b->billNo}}" class="btn" title="Edit" style="background-color:lavender;"><img src="img\icons8_Edit_25px.png" /></a>
                     
