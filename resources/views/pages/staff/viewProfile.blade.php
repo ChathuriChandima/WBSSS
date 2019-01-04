@@ -46,7 +46,7 @@
               </div>
                 </div>
                 <div class="form-group">
-                    <a href="personal" type="submit" class="btn btn-primary float-right " style="margin-right:165px" title="Edit"><strong>Edit</strong></a>
+                    <a href="editStaffDetail" type="submit" class="btn btn-primary float-right " style="margin-right:165px" title="Edit"><strong>Edit</strong></a>
                     <a href="staffPasswordChange" type="submit" class="btn btn-primary float-right " style="margin-right:165px" title="ChangePassword"><strong>Change Password</strong></a>
                   </div>
             </form>

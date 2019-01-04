@@ -98,21 +98,26 @@ class staffController extends Controller
 
     public function changePasswordForm()
     {
-      return view('pages.staff.changePassword')->with('$user',User::find(Auth::user()->id));
+      return view('pages.staff.changePassword')->with('$user',Auth::user());
     }
 
     public function changePassword(Request $request)
     {
       $this->validate($request, [
-        'currentPassword'=>'required',
-        'newPassword' => 'required',
-        'verifyPassword' => 'required'
+        'currentPassword'=>'min:6',
+        'newPassword' => 'min:6',
+        'verifyPassword' => 'same:newPassword'
       ]);
-      $user = User::find(Auth::user()->id);
-      if ($user->password == $request->input('currentPassword')){
-        $user->password = $request->input('newPassword');
+      $user = Auth::user();
+      $curPass = $request->input('currentPassword');
+      if ($user->password == Hash::make($curPass) ) {
+        $user->password = Hash::make($request->input('newPassword'));
         $user->save();
+        Alert::success("Password Changed !!!");
         return redirect('viewProfile');
+      }else{
+        $request->session()->flash('warning', "The Password you entered is Incorrect !!!");
+        return redirect('staffPasswordChange');
       }
     }
 
@@ -121,7 +126,9 @@ class staffController extends Controller
     {
 
         $v=Staff::find($id);
+        $user = User::find($id);
         $v->delete();
+        $user->delete();
         Alert::success('Deleted successfully.','Done!');
         return redirect('staff');
     }
@@ -141,6 +148,25 @@ class staffController extends Controller
             Alert::info('Try to search Again.....','Not Found!');
             return redirect('staff');
         }
+    }
+
+    public function changeDetailForm()
+    {
+      return view('pages.staff.editDetail')->with('staff',Staff::find(Auth::user()->id));
+    }
+
+    public function changeDetail(Request $request)
+    {
+      $this->validate($request,[
+        'address'=>'required',
+        'contactNo' => 'required'
+      ]);
+      $staff = Staff::find(Auth::user()->id);
+      $staff->address = $request->input('address');
+      $staff->contactNo = $request->input('contactNo');
+      $staff->save();
+      Alert::success("Personal Details changed");
+      return redirect('viewProfile');
     }
 
 }

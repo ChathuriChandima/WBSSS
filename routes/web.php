@@ -38,7 +38,6 @@ Route::get('vehicle/create',['as'=>'vehicle.create','uses'=>'vehicleController@c
 
 Route::get('/staff',['as'=>'Staff.index','uses'=>'staffController@index']);
 Route::get('/addStaff',['as'=>'Staff.create','uses'=>'staffController@create']);
-Route::post('changePassword',['uses'=>'staffController@changePassword']);
 
 Route::get('stock/stocks',['as'=>'stock.index','uses'=>'stockController@index']);
 Route::get('stock/add',['as'=>'stock.create','uses'=>'stockController@create']);
@@ -130,6 +129,9 @@ Route::group(['middleware' => 'App\Http\Middleware\StaffMiddleware'], function()
     Route::match(['get','post'],'/staffOnlyPage','HomeController@staff');
     Route::match(['get','post'],'/viewProfile','staffController@viewProfile');
     Route::match(['get','post'],'/staffPasswordChange','staffController@changePasswordForm');
+    Route::match(['get','post'],'/editStaffDetail','staffController@changeDetailForm');
+    Route::post('changePassword',['uses'=>'staffController@changePassword']);
+    Route::post('changeDetail',['uses'=>'staffController@changeDetail']);
 
 });
 
