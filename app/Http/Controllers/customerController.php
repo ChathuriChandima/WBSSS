@@ -235,7 +235,7 @@ class customerController extends Controller
 
     public function search(){
         $q=Input::get('q');
-        $customer=Customer::where('Id','LIKE','%'.$q.'%')->get();
+        $customer=Customer::where('Id','LIKE',$q)->get();
         $user=Customer::where('name','LIKE','%'.$q.'%')->get();
         if(count($customer)>0){
             return view('pages.adminOnlyPages.search')->withDetails($customer)->with('c',1 )
