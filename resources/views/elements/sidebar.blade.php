@@ -150,7 +150,7 @@
          @endif
       @else
         <script>
-            window.location.replace("/");
+            window.location.replace("/login");
             alert("Please make sure you are logged in !!!");
         </script>
       @endif

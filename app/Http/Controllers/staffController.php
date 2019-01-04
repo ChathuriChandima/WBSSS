@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 use Alert;
-use DB; 
+use DB;
 use App\Staff;
 use App\User;
+use App\Customer;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class staffController extends Controller
 {
@@ -43,7 +45,7 @@ class staffController extends Controller
             'address' =>'required',
             'contactNo'=>'required',
             'email' => 'required',
-            
+
         ]);
         $staff=new Staff;
         $staff->name=$request->input('name');
@@ -53,8 +55,8 @@ class staffController extends Controller
         $staff->save();
         Alert::success('Your changes are saved.','Done!');
         return redirect('staff');
-        
-        
+
+
     }
      /**
      * Update the specified resource in storage.
@@ -77,6 +79,31 @@ class staffController extends Controller
             return redirect('staff');
     }
 
+    public function viewProfile()
+    {
+      return view('pages.staff.viewProfile')->with('staff',Customer::find(Auth::user()->id));
+    }
 
- 
+    public function changePasswordForm()
+    {
+      return view('pages.staff.changePassword')->with('$user',User::find(Auth::user()->id));
+    }
+
+    public function changePassword(Request $request)
+    {
+      $this->validate($request, [
+        'currentPassword'=>'required',
+        'newPassword' => 'required',
+        'verifyPassword' => 'required'
+      ]);
+      $user = User::find(Auth::user()->id);
+      if ($user->password == $request->input('currentPassword')){
+        $user->password = $request->input('newPassword');
+        $user->save();
+        return redirect('viewProfile');
+      }
+    }
+
+
+
 }
