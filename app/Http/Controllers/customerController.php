@@ -233,6 +233,44 @@ class customerController extends Controller
     {
     }
 
+    public function addCustomer()
+    {
+        return view('pages.adminOnlyPages.addCustomer');
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeCustomer(Request $request)
+    {
+
+        $this->validate($request, [
+            'name' => 'required',
+            'address' =>'required',
+            'contactNo'=>'required',
+            'email' => 'required',
+            
+        ]);
+        $customer=new Customer;
+        $customer->name=$request->input('name');
+        $customer->address=$request->input('address');
+        $customer->contactNo=$request->input('contactNo');
+        $customer->email=$request->input('email');
+        $customer->save();
+        $user=new User;
+        $user->name=$request->input('name');
+        $user->email=$request->input('email');
+        $user->password=Hash::make($request->input('password'));
+        $user->role=$request->input('role');
+        $user->save();
+        Alert::success('Your changes are saved.','Done!');
+        return redirect('customers');
+        
+        
+    }
+
     public function search(){
         $q=Input::get('q');
         $customer=Customer::where('Id','LIKE',$q)->get();

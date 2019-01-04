@@ -51,6 +51,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::match(['get','post'],'/adminOnlyPage','HomeController@admin');
     Route::match(['get','post'],'/staff', 'staffController@move')->name('staff');
     Route::match(['get','post'],'/customers', 'customerController@move')->name('customers');
+    Route::match(['get','post'],'/addCustomer', 'customerController@addCustomer');
     Route::match(['get','post'],'/addStaff', 'StaffController@addStaff');
     Route::match(['get','post'],'/charts', 'chartsController@index');
     Route::match(['get','post'],'/editCustomer/{id}', 'customerController@find');
@@ -58,6 +59,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::match(['get','post'],'/searchCustomer', 'customerController@search');
     Route::match(['get','post'],'/deleteStaff/{id}','staffController@destroy')->name('delete');
     Route::match(['get','post'],'/searchStaff', 'staffController@search');
+    Route::post('store_customer', ['uses' => 'customerController@storeCustomer']);
 
 });
 
