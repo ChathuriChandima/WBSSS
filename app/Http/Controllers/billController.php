@@ -33,7 +33,12 @@ class billController extends Controller
     {
         //
         $l= DB::table('bills')->latest()->first();
-        $n=substr($l->billNo,1);
+        // Added a condition deal when the db is empty
+        if ($l != null){
+          $n=substr($l->billNo,1);
+        }else{
+          $n = '0';
+        }
         $i=(int)$n;
         $j=++$i;
         $h=(string)$j;
@@ -49,7 +54,7 @@ class billController extends Controller
         }else{
             $id='B'.$h;
         }
-        
+
 
         return view('pages.bill.addBill')
         ->with('id',$id);
@@ -74,7 +79,7 @@ class billController extends Controller
             'stockQty' =>'required',
             'serviceCharge'=>'required',
             'stockCharge'=>'required',
-            
+
         ]);
         $bill=new bill;
         $bill->billNo=$request->input('billNo');
@@ -133,7 +138,7 @@ class billController extends Controller
             'stockQty' =>'required',
             'serviceCharge'=>'required',
             'stockCharge'=>'required',
-            
+
         ]);
             $bill=bill::find($id);
             $bill->billNo=$request->input('billNo');
