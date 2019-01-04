@@ -253,18 +253,20 @@ class customerController extends Controller
             'email' => 'required',
             
         ]);
-        $customer=new Customer;
-        $customer->name=$request->input('name');
-        $customer->address=$request->input('address');
-        $customer->contactNo=$request->input('contactNo');
-        $customer->email=$request->input('email');
-        $customer->save();
         $user=new User;
         $user->name=$request->input('name');
         $user->email=$request->input('email');
         $user->password=Hash::make($request->input('password'));
         $user->role=$request->input('role');
         $user->save();
+        
+        $customer=new Customer;
+        $customer->Id=$user->id;
+        $customer->name=$request->input('name');
+        $customer->address=$request->input('address');
+        $customer->contactNo=$request->input('contactNo');
+        $customer->email=$request->input('email');
+        $customer->save();
         Alert::success('Your changes are saved.','Done!');
         return redirect('customers');
         
