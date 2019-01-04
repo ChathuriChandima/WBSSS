@@ -183,7 +183,7 @@ class vehicleController extends Controller
         }
     }
 
-    public function myVehicals(){
+    public function myVehicles(){
       // Getting the id of the costumer
       if (Auth::check()){
         $cid = Auth::user()->id;

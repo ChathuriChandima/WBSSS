@@ -16,7 +16,7 @@
                </li>
 
                <li>
-                   <a href="/my_vehicals">View Vehicle Status</a>
+                   <a href="/my_vehicles">View Vehicle Status</a>
                </li>
                <li>
                    <a href="profile">Profile</a>
