@@ -9,8 +9,11 @@ use App\vehicle;
 use Alert;
 use Image;
 use DB;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Notifications\SingleUser;
+
 
 class customerController extends Controller
 {
@@ -218,22 +221,32 @@ class customerController extends Controller
         return redirect('customers');
     }
 
-    public function updateCustomer(Request $request, $id)
+     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function updateCustomer(Request $request)
     {
-        $this->validate($request, [
-            'Id'=>'required'
-        ]);
-            $customer=Customer::find($id);
-            $customer->Id=$request->input('Id');
-            $customer->name=$request->input('name');
-            $customer->adress=$request->input('address');
-            $customer->contactNo=$request->input('contactNo');            
-            $customer->email=$request->input('email');
-            $customer->save();
-            Alert::success('Your changes are saved.','Done!');
-            // Notifying user if service Finished
-            
-            return redirect('/pages/adminOnlyPages/customer');
     }
 
+    public function search(){
+        $q=Input::get('q');
+        $customer=Customer::where('Id','LIKE','%'.$q.'%')->get();
+        $user=Customer::where('name','LIKE','%'.$q.'%')->get();
+        if(count($customer)>0){
+            return view('pages.adminOnlyPages.search')->withDetails($customer)->with('c',1 )
+            ->with('customer',Customer::all());
+        }elseif(count($user)>0){
+            return view('pages.adminOnlyPages.search')->withDetails($user)->with('c',0 )
+            ->with('customer',Customer::all());
+            }else{
+                Alert::info('Try to search Again.....','Not Found!');
+                return redirect('customers');
+        }
+    }
+    
 }
