@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBillsTable extends Migration
+class RemovePriceFromBills extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateBillsTable extends Migration
      */
     public function up()
     {
-        Schema::create('bills', function (Blueprint $table) {
-            $table->string('billNo')->primary();
-            $table->date('date');
-            $table->decimal('price');
-            $table->timestamps();
+        Schema::table('bills', function (Blueprint $table) {
+            $table->dropColumn('price');
         });
     }
 
@@ -28,6 +25,9 @@ class CreateBillsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bills');
+        Schema::table('bills', function (Blueprint $table) {
+            //
+            $table->decimal('price');
+        });
     }
 }

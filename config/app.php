@@ -161,6 +161,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -212,6 +213,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

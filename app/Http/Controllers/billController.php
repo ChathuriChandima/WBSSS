@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\bill;
+use App\service;
 use Alert;
 use DB;
+use PDF;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Validation\Validator;
 use Illuminate\Http\Request;
@@ -31,7 +33,7 @@ class billController extends Controller
     {
         //
         $l= DB::table('bills')->latest()->first();
-        $n=substr($l->billNo,5);
+        $n=substr($l->billNo,1);
         $i=(int)$n;
         $j=++$i;
         $h=(string)$j;
@@ -69,7 +71,9 @@ class billController extends Controller
             'vehicleNo' => 'required',
             'serviceDescription' => 'required',
             'addedParts' => 'required',
-            'price' =>'required',
+            'stockQty' =>'required',
+            'serviceCharge'=>'required',
+            'stockCharge'=>'required',
             
         ]);
         $bill=new bill;
@@ -79,7 +83,9 @@ class billController extends Controller
         $bill->vehicleNo=$request->input('vehicleNo');
         $bill->serviceDescription=$request->input('serviceDescription');
         $bill->addedParts=$request->input('addedParts');
-        $bill->price=$request->input('price');
+        $bill->stockQty=$request->input('stockQty');
+        $bill->serviceCharge=$request->input('serviceCharge');
+        $bill->stockCharge=$request->input('stockCharge');
         $bill->save();
         Alert::success('Your changes are saved.','Done!');
             return redirect('/bills');
@@ -124,7 +130,9 @@ class billController extends Controller
             'vehicleNo'=>'required',
             'serviceDescription' =>'required',
             'addedParts'=>'required',
-            'price' =>'required',
+            'stockQty' =>'required',
+            'serviceCharge'=>'required',
+            'stockCharge'=>'required',
             
         ]);
             $bill=bill::find($id);
@@ -134,7 +142,9 @@ class billController extends Controller
             $bill->vehicleNo=$request->input('vehicleNo');
             $bill->serviceDescription=$request->input('serviceDescription');
             $bill->addedParts=$request->input('addedParts');
-            $bill->price=$request->input('price');
+            $bill->stockQty=$request->input('stockQty');
+            $bill->serviceCharge=$request->input('serviceCharge');
+            $bill->stockCharge=$request->input('stockCharge');
             $bill->save();
             Alert::success('Your changes are saved.','Done!');
             return redirect('/bills');
@@ -174,5 +184,9 @@ class billController extends Controller
             Alert::info('Try to search Again.....','Not Found!');
             return redirect('/bills');
         }
+    }
+    public function downloadPdf(){
+        $pdf = PDF::loadview('pages.bill.printbill');
+        return $pdf->download('Mybill.pdf');
     }
 }
