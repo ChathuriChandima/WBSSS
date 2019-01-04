@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Supplier;
+use App\Invoice;
+use Alert;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class invoiceController extends Controller
 {
@@ -13,7 +16,7 @@ class invoiceController extends Controller
      */
     public function index()
     {
-        return view('pages.accountant.invoice');
+        return view('pages.accountant.invoice')->with('supplier',Supplier::all());
     }
 
     /**
@@ -34,7 +37,20 @@ class invoiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'invoiceNo' => 'required|unique:invoices',
+            'id' =>'required',
+            'date'=>'required',
+            'price' => 'required',
+        ]);
+        $invoice=new Invoice;
+        $invoice->invoiceNo=$request->input('invoiceNo');
+        $invoice->SupplierId=$request->input('id');
+        $invoice->date=date('Y-m-d',strtotime($request->input('date')));
+        $invoice->price=$request->input('price');
+        $invoice->save();
+        Alert::success('Invoice details are saved.','Done!');
+        return redirect('/invoice');
     }
 
     /**
@@ -80,5 +96,34 @@ class invoiceController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function search(){
+        $q=Input::get('q');
+        $invoice=Invoice::where('invoiceNo','LIKE','%'.$q.'%')->get();
+        $user=Supplier::where('supplierName','LIKE','%'.$q.'%')->get();
+        if(count($invoice)>0){
+            return view('pages.accountant.searchinvoice')->withDetails($invoice)->with('c',1 )
+            ->with('supplier',Supplier::all());
+        }elseif(count($user)>0){
+            $invoice1=Invoice::all();
+            $count=0;
+            foreach ($user as $u){
+                foreach($invoice1 as $v){
+                    if($u->supplierId==$v->SupplierId){
+                        $count++;
+                    }
+                }
+            }
+            if($count>0){
+            return view('pages.accountant.searchinvoice')->withDetails($user)->with('c',0 )
+            ->with('invoice',Invoice::all());
+            }else{
+                Alert::info('Try to search Again.....','Not Found!');
+                return redirect('/invoice');
+            }
+        }else{
+            Alert::info('Try to search Again.....','Not Found!');
+            return redirect('/invoice');
+        }
     }
 }

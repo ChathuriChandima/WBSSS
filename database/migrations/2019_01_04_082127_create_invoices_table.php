@@ -14,10 +14,9 @@ class CreateInvoicesTable extends Migration
     public function up()
     {
         Schema::create('invoices', function (Blueprint $table) {
-            $table->increments('invoiceNo')->primary;
-            $table->string('suppplierName');
-            $table->string('supplierID');
-            $table->date('Date');
+            $table->string('invoiceNo')->primary();
+            $table->string('SupplierId');
+            $table->date('date');
             $table->decimal('price');
             $table->timestamps();
         });

@@ -161,10 +161,10 @@ class vehicleController extends Controller
             return view('pages.vehicle.search')->withDetails($vehicle)->with('c',1 )
             ->with('customer',Customer::all());
         }elseif(count($user)>0){
-            $vehicle=vehicle::all();
+            $vehicle1=vehicle::all();
             $count=0;
             foreach ($user as $u){
-                foreach($vehicle as $v){
+                foreach($vehicle1 as $v){
                     if($u->Id==$v->cId){
                         $count++;
                     }
