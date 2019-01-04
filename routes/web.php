@@ -26,8 +26,6 @@ Route::resource('stock','stockController');
 Route::resource('Staff','staffController');
 Route::resource('Service','ServicesController');
 Route::resource('bill','billController');
-Route::resource('Invoice','invoiceController');
-Route::resource('Supplier','supplierController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@home')->name('home');
@@ -51,13 +49,15 @@ Route::get('stock/add',['as'=>'stock.create','uses'=>'stockController@create']);
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function(){
 
     Route::match(['get','post'],'/adminOnlyPage','HomeController@admin');
-    Route::match(['get','post'],'/staff', 'HomeController@staffPage')->name('staff');
+    Route::match(['get','post'],'/staff', 'staffController@move')->name('staff');
     Route::match(['get','post'],'/customers', 'customerController@move')->name('customers');
     Route::match(['get','post'],'/addStaff', 'StaffController@addStaff');
     Route::match(['get','post'],'/charts', 'chartsController@index');
     Route::match(['get','post'],'/editCustomer/{id}', 'customerController@find');
     Route::match(['get','post'],'/deletee/{id}','customerController@destroy')->name('delete');
     Route::match(['get','post'],'/searchCustomer', 'customerController@search');
+    Route::match(['get','post'],'/deleteStaff/{id}','staffController@destroy')->name('delete');
+    Route::match(['get','post'],'/searchStaff', 'staffController@search');
 
 });
 
@@ -66,7 +66,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 Route::group(['middleware' => 'App\Http\Middleware\CustomerMiddleware'], function(){
 
     Route::match(['get','post'],'/customerOnlyPage','HomeController@customer');
-    Route::match(['get','post'],'/my_vehicals','vehicleController@myVehicals');
+    Route::match(['get','post'],'/my_vehical','HomeController@myVehical');
     Route::match(['get','post'],'/profile', 'customerController@view')->name('profile');
     Route::match(['get','post'],'/personal', 'customerController@editable');
     Route::match(['get','post'],'/picture', 'customerController@change');
@@ -159,8 +159,7 @@ Route::group(['middleware' => 'App\Http\Middleware\ManagementMiddleware'], funct
     Route::match(['get','post'],'/printbill/{id}', 'billController@print');
 
     Route::match(['get','post'],'/invoice', 'invoiceController@index');
-    Route::match(['get','post'],'/searchinvoice', 'invoiceController@search');
-    Route::match(['get','post'],'/supplier', 'supplierController@index');
+
     Route::match(['get','post'],'/download', 'billController@downloadPdf');
 
 });
