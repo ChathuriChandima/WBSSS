@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Invoice extends Model
+class Supplier extends Model
 {
-    protected $table = 'invoices';
-    public $primaryKey = 'invoiceNo';
+    protected $table = 'suppliers';
+    public $primaryKey = 'supplierId';
     public $timestamps = true;
     public $incrementing = false;
     protected $fillable = [
-        'supplierId', 'price', 'date',
+        'supplierName', 'address', 'contactNo','email',
     ];
 }

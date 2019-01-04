@@ -26,6 +26,8 @@ Route::resource('stock','stockController');
 Route::resource('Staff','staffController');
 Route::resource('Service','ServicesController');
 Route::resource('bill','billController');
+Route::resource('Invoice','invoiceController');
+Route::resource('Supplier','supplierController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@home')->name('home');
@@ -157,7 +159,8 @@ Route::group(['middleware' => 'App\Http\Middleware\ManagementMiddleware'], funct
     Route::match(['get','post'],'/printbill/{id}', 'billController@print');
 
     Route::match(['get','post'],'/invoice', 'invoiceController@index');
-
+    Route::match(['get','post'],'/searchinvoice', 'invoiceController@search');
+    Route::match(['get','post'],'/supplier', 'supplierController@index');
     Route::match(['get','post'],'/download', 'billController@downloadPdf');
 
 });

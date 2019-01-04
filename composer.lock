@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+
     "content-hash": "aaf7ed8b9a794bf147a52be50e31c898",
+
+    "content-hash": "e19cb03e340185b4092c05aafe7e296b",
+
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -64,6 +68,10 @@
         },
         {
             "name": "consoletvs/charts",
+<<<<<<< HEAD
+            "version": "5.4.0",
+=======
+<<<<<<< HEAD
             "version": "5.4.0",
             "source": {
                 "type": "git",
@@ -82,16 +90,47 @@
                 "jenssegers/date": "v3.*",
                 "jlawrence/eos": "3.*",
                 "php": ">=7.0.0"
+=======
+            "version": "6.3.4",
+>>>>>>> f01d613cb9e23db2088e817fccb129697e3efe5c
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ConsoleTVs/Charts.git",
+                "reference": "353039ae19488c0ddd33213f5506548ef8b77558"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ConsoleTVs/Charts/zipball/353039ae19488c0ddd33213f5506548ef8b77558",
+                "reference": "353039ae19488c0ddd33213f5506548ef8b77558",
+                "shasum": ""
+            },
+            "require": {
+                "consoletvs/support": "^2.1.2",
+                "illuminate/support": "5.*",
+<<<<<<< HEAD
+                "jenssegers/date": "v3.*",
+                "jlawrence/eos": "3.*",
+                "php": ">=7.0.0"
+=======
+                "php": ">=7.0"
+>>>>>>> a528f8e7f2c77083f1bef275ba397be03d92b509
+>>>>>>> f01d613cb9e23db2088e817fccb129697e3efe5c
             },
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
                         "ConsoleTVs\\Charts\\ChartsServiceProvider"
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> f01d613cb9e23db2088e817fccb129697e3efe5c
                     ],
                     "aliases": {
                         "Charts": "ConsoleTVs\\Charts\\Facades\\Charts"
                     }
+<<<<<<< HEAD
+=======
                 }
             },
             "autoload": {
@@ -105,6 +144,61 @@
             ],
             "authors": [
                 {
+                    "name": "Erik Campobadal",
+                    "email": "soc@erik.cat"
+                }
+            ],
+            "description": "Create charts for laravel using different charts libraries",
+            "time": "2017-09-28T14:44:56+00:00"
+        },
+        {
+            "name": "consoletvs/support",
+            "version": "2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ConsoleTVs/Support.git",
+                "reference": "c7502eb323069bc7da1ad37e28d9c281ade8f1f0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ConsoleTVs/Support/zipball/c7502eb323069bc7da1ad37e28d9c281ade8f1f0",
+                "reference": "c7502eb323069bc7da1ad37e28d9c281ade8f1f0",
+                "shasum": ""
+            },
+            "require": {
+                "ext-bcmath": "*",
+                "illuminate/support": "5.*",
+                "intervention/image": "^2.4",
+                "php": ">=7.0",
+                "umpirsky/language-list": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ConsoleTVs\\Support\\SupportServiceProvider"
+=======
+>>>>>>> a528f8e7f2c77083f1bef275ba397be03d92b509
+                    ]
+>>>>>>> f01d613cb9e23db2088e817fccb129697e3efe5c
+                }
+            },
+            "autoload": {
+                "psr-4": {
+<<<<<<< HEAD
+                    "ConsoleTVs\\Support\\": "."
+=======
+                    "ConsoleTVs\\Charts\\": "src/"
+>>>>>>> a528f8e7f2c77083f1bef275ba397be03d92b509
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+<<<<<<< HEAD
                     "name": "Erik Campobadal",
                     "email": "soc@erik.cat"
                 }
@@ -158,6 +252,23 @@
             ],
             "description": "ConsoleTVs support library",
             "time": "2017-12-15T07:30:36+00:00"
+=======
+<<<<<<< HEAD
+                    "name": "Erik Campobadal",
+                    "email": "soc@erik.cat"
+                }
+            ],
+            "description": "ConsoleTVs support library",
+            "time": "2017-12-15T07:30:36+00:00"
+=======
+                    "name": "Èrik Campobadal Forés",
+                    "email": "soc@erik.cat"
+                }
+            ],
+            "description": "The laravel charting package",
+            "time": "2018-10-13T12:27:03+00:00"
+>>>>>>> a528f8e7f2c77083f1bef275ba397be03d92b509
+>>>>>>> f01d613cb9e23db2088e817fccb129697e3efe5c
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

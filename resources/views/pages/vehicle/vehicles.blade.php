@@ -58,7 +58,7 @@
         <td>{{$v->brand}}</td>
         <!-- flag of customer found -->
         {{$found = false}}
-        
+
         @foreach($customer as $owner)
         @if($owner->Id==$v->cId)
         <td>{{$owner->name}}</td>
@@ -119,11 +119,21 @@
             <td>{{$v->type}}</td>
             <td>{{$v->lastServiceDay}}</td>
             <td>{{$v->brand}}</td>
+            <!-- flag of customer found -->
+            {{$found = false}}
+
             @foreach($customer as $owner)
             @if($owner->Id==$v->cId)
             <td>{{$owner->name}}</td>
+            {{$found = true}}
+
             @endif
+
             @endforeach
+            <!-- printing unknown if flag doesn't activated -->
+            @if($found == false)
+            <td>{{"Unknown"}}</td>
+            @endif
             <td><button type="button" class="btn" title="Edit" data-toggle="modal" data-target="#myModal1" data-mytitle="{{$v->vehicleNo}}" ><img src="img\icons8_Pencil_25px.png" /></button>
 
                 <div class="modal fade" id="myModal1" role="dialog">
@@ -182,11 +192,21 @@
             <td>{{$v->type}}</td>
             <td>{{$v->lastServiceDay}}</td>
             <td>{{$v->brand}}</td>
+            <!-- flag of customer found -->
+            {{$found = false}}
+
             @foreach($customer as $owner)
             @if($owner->Id==$v->cId)
             <td>{{$owner->name}}</td>
+            {{$found = true}}
+
             @endif
+
             @endforeach
+            <!-- printing unknown if flag doesn't activated -->
+            @if($found == false)
+            <td>{{"Unknown"}}</td>
+            @endif
             <td><button type="button" class="btn" title="Edit" data-toggle="modal" data-target="#myModal2" data-mytitle="{{$v->vehicleNo}}" ><img src="img\icons8_Pencil_25px.png" /></button>
 
                 <div class="modal fade" id="myModal2" role="dialog">
