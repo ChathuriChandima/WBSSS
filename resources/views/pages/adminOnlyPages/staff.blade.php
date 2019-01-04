@@ -1,16 +1,24 @@
 @extends('layouts.log')
 
-<link rel="stylesheet" href="{{asset('my/m.css')}}">
-
-
-<div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="img/p2.jpg" width="1600" height="300"style = "padding-left:250px">
-      <div class="carousel-caption">
-              <h1>RAJAAN MOTORS</h1>
-              <h2>Rajaan Motors Staff</h2>
-
+<link rel="stylesheet" href="{{asset('my/v.css')}}">
+@section('content')
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 margin-tb">
+        
+      
+    <form action="/searchStaff" method="POST" role="search" style="margin-left:140px; margin-right:150px;">
+      {{ csrf_field() }}
+      <div class="input-group">
+        <input type="text" class="form-control" name="q" placeholder="Search....">
+        <span class="input-group-btn" >
+            <button type="submit" class="btn btn-default">
+              <span><img src="/img/Search1.png" /></span>
+            </button>
+        </span>
       </div>
+    </form>
+    </div>
 </div>
 </div>
 @section('content')
@@ -18,7 +26,7 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
 
-            <a class="btn float-right" href="addStaff" title="Add new staff member"> <img src="img\icons8_Add_New_50px_1.png"  /></a>  
+            <a class="btn float-right" href="addStaff" title="New Staff"> <img src="img\icons8_Add_New_50px_1.png"  /></a>
 
 
     </div>
@@ -26,20 +34,53 @@
 @section('content')
 
 
+@section('content')
 <div class="container">
 <table class="table table-bordered">
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Contact No</th>
-            <th>Email</th>
-            <th width="200px">Action</th>
+            <th style="text-align:center">Id</th>
+            <th style="text-align:center">Name</th>
+            <th style="text-align:center">Address</th>
+            <th style="text-align:center">Contact No</th>
+            <th style="text-align:center">Email</th>
+            
+            <th width="150px" style="text-align:center">Action</th>
         </tr>
+    @foreach ($staff as $v)
+    <tr>
+        <td>{{$v->id}}</td>
+        <td>{{$v->name}}</td>
+        <td>{{$v->address}}</td>
+        <td>{{$v->contactNo}}</td>
+        <td>{{$v->email}}</td>
+        <td>
+        <a href="editStaff/{{$v->id}}" class="btn" title="Edit" style="background-color:lavender;"><img src="img\icons8_Edit_25px.png" /></a>
+            
+              <!-- delete customer-->
+              <button type="button" class="btn" title="Delete" data-toggle="modal" data-target="#myModal4-{{$v->id}}" data-mytitle="{{$v->id}}"><img src="img\icons8_Trash_25px_1.png" /></button>
 
-        
+              <div class="modal fade" id="myModal4-{{$v->id}}" role="dialog">
+                  <div class="modal-dialog">
+  
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title" style="margin-left:200px;"><img src="img\warning.png" /></h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                      <div class="modal-body" style="text-align:center;">
+                        <h5>Are you sure??? Do you want to delete {{$v->id}}?</h5>
+                        <h3>If you delete it, it won't be exists anymore!...</h3>
+                        <a href="deleteStaff/{{$v->id}}" class="btn" role="button" style="background-color:bisque"><img src="img\icons8_Trash_25px_1.png" /></a>
+                        </div>
+                      </div>
+    
+                    </div>
+                  </div>
 
+        </td>
+        @endforeach
+    </tr>
     </table>
 </div>
-
 @endsection

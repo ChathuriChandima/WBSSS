@@ -1,13 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 use Alert;
 use DB;
 use App\Staff;
 use App\User;
 use App\Customer;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\SingleUser;
+use Illuminate\Support\Facades\Hash;
 
 class staffController extends Controller
 {
@@ -53,6 +57,12 @@ class staffController extends Controller
         $staff->contactNo=$request->input('contactNo');
         $staff->email=$request->input('email');
         $staff->save();
+        $user=new User;
+        $user->name=$request->input('name');
+        $user->email=$request->input('email');
+        $user->password=Hash::make($request->input('password'));
+        $user->role=$request->input('role');
+        $user->save();
         Alert::success('Your changes are saved.','Done!');
         return redirect('staff');
 
@@ -105,5 +115,30 @@ class staffController extends Controller
     }
 
 
+    public function destroy($id)
+    {
+
+        $v=Staff::find($id);
+        $v->delete();
+        Alert::success('Deleted successfully.','Done!');
+        return redirect('staff');
+    }
+
+    public function search(){
+        $q=Input::get('q');
+        $staff=Staff::where('id','LIKE',$q)->get();
+        $staff_name=Staff::where('name','LIKE','%'.$q.'%')->get();
+        if(count($staff)>0){
+            return view('pages.adminOnlyPages.searchStaff')->withDetails($staff)->with('c',1 )
+            ->with('staff',Staff::all());
+        }elseif(count($staff_name)>0){
+            return view('pages.adminOnlyPages.searchStaff')->withDetails($staff_name)->with('c',0 )
+            ->with('staff',Staff::all());
+
+        }else{
+            Alert::info('Try to search Again.....','Not Found!');
+            return redirect('staff');
+        }
+    }
 
 }
