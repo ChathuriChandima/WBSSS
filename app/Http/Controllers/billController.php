@@ -31,7 +31,7 @@ class billController extends Controller
     {
         //
         $l= DB::table('bills')->latest()->first();
-        $n=substr($l->billNo,5);
+        $n=substr($l->billNo,1);
         $i=(int)$n;
         $j=++$i;
         $h=(string)$j;

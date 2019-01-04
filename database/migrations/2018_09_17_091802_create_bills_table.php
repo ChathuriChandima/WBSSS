@@ -14,7 +14,7 @@ class CreateBillsTable extends Migration
     public function up()
     {
         Schema::create('bills', function (Blueprint $table) {
-            $table->integer('billNo')->primary;
+            $table->string('billNo')->primary();
             $table->date('date');
             $table->decimal('price');
             $table->timestamps();
