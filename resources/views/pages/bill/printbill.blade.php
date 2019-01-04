@@ -1,97 +1,217 @@
 @extends('layouts.log')
-<link rel="stylesheet" href="{{asset('my/l.css')}}">
 @section('content')
-<div class = "container" style =  "margin-top: 40px">
-        <h2> Print Bills   </h2>
+<div class="container">
+   
+  <div class="well">
+      {!! Form::open(['action'=>['billController@downloadPdf',$bill->billNo]]) !!}
+      <div class="form-group">
+            <div class="row">
+            <div class="col-md-6 col-form-label text-md-left">
+                    <h1 ><img src=img/ic.png> Rajaan Motors </h1>
+                  </div>
+                  <div class="col-md-1 col-form-label text-md-left">
+                        <strong>Phone:</strong><br>
+                        <strong>Email:</strong>
+                    </div>
+                    <div class="col-md-2 col-form-label text-md-left">
+                         <a href="tel:033-22-77616">033-22-77616</a><br>
+                         <a href="https://accounts.google.com/ServiceLogin/signinchooser?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F%3Frli%3Dn4mf18sk0chx%26rld%3D1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin">raajan@gmail.com</a><br>
+  <br>
+                  </div>
+                  <div class="col-md-3 ">
+                    </div>
+          </div>
+        </div>
+      <div class="form-group">
+            <div class="row">
+            <div class="col-md-3 col-form-label text-md-left">
+              <strong>{{Form::label('billNo','Bill No')}} :</strong>
+                </div>
+              <div class="col-md-2 col-form-label text-md-left">
+                {{Form::label('billNo',$bill->billNo)}}
+              </div><div class="col-md-2 col-form-label text-md-left">
+                    <strong>{{Form::label('date','Billed Date')}}  :</strong>
+                    </div>
+                    <div class="col-md-2 col-form-label text-md-left">
+                    {{Form::label('date',$bill->date)}}
+                    </div>
 
-<div class="row">
-        <div class="col-lg-12 margin-tb">
-<button class="btn float-right btn-success" title="Print Bill" style="width:60px; height:40px; text-align:center">Print</button>
-        </div>
-</div>
-
-    
-    <form  class="form-container border border-warning rounded" style="width:600px">
-    <div class="row">
-        <div class="span4">
-            <img src="img/ic.png" width="50px" height="50px">
-            <address>
-                
-                No.210/5 <br>
-                Weerangala South<br>
-                Yakkala <br>
-            </address>
-        </div>
-        <div class="span4 well">
-            <table class="invoice-head">
-                <tbody>
-                       
-                    <tr>
-                        <td class="pull-right"  style ="padding-right:40px"><strong>Customer Name </strong></td>
-                        <td><input type="text" style="margin-bottom: 10px"  ></td>
-                    </tr>
-                        
-                   
-                    <tr>
-                        <td class="pull-right"><strong>Bill No.</strong></td>
-                        <td><input type="text"  style="margin-bottom: 10px" ></td>
-                    </tr>
-                    <tr>
-                        <td class="pull-right"><strong>Date</strong></td>
-                        <td><input type="text"  style="margin-bottom: 10px" ></td>
-                    </tr>
-                    
-                    
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-          <div class="span8 well invoice-body">
-              <table class="table table-bordered" style = "font-size:10px">
-                <thead>
-                    <tr>
-                        <th>Service Description</th>
-                        <th>Date From</th>
-                        <th>Date To</th>
-                        <th>Vehicle No.</th>
-                        <th>Charges/Tax</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    
-                    </tr><tr>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td><strong>Total</strong></td>
-                        <td contenteditable="true"><strong></strong></td>
-                    </tr>
-                </tbody>
-            </table>
-          </div>
-      </div>
-      <div class="row">
-          <div class="span8 well invoice-thank">
-              <h5 style="text-align:center;">Thank You!</h5>
-          </div>
-      </div>
-      <div class="row">
-          <div class="span3" style="padding-right:50px">
-              <strong>Phone:</strong> <a href="tel:033-22-77616">033-22-77616</a>
-          </div>
-          <div class="span3" style ="padding-right:80px">
-              <strong>Email:</strong> <a href="https://accounts.google.com/ServiceLogin/signinchooser?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F%3Frli%3Dn4mf18sk0chx%26rld%3D1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin">raajan@gmail.com</a><br>
-          <br>
             </div>
-          
-
-      </div>
-</div>
+            </div>
+            <div class="form-group">
+                    <div class="row">
+                    <div class="col-md-3 col-form-label text-md-left">
+                      <strong>{{Form::label('customerName','Customer Name')}} :</strong>
+                        </div>
+                      <div class="col-md-2 col-form-label text-md-left">
+                        {{Form::label('customerName',$bill->customerName)}}
+                      </div><div class="col-md-2 col-form-label text-md-left">
+                            <strong>{{Form::label('vehicleNo','Vehicle No')}}  :</strong>
+                            </div>
+                            <div class="col-md-2 col-form-label text-md-left">
+                            {{Form::label('vehicleNo',$bill->vehicleNo)}}
+                            </div>
+        
+                    </div>
+                    </div>
+                    <div class="form-group">
+                            <div class="row">
+                            <div class="col-md-5 ">
+                                  
+                                  </div>
+                                  <div class="col-md-4 col-form-label text-md-left">
+                                  **********************************************
+                                  </div>
+                          </div>
+                          </div>
+                    <div class="form-group">
+                          <div class="row">
+                          <div class="col-md-3 col-form-label text-md-left">
+                          <strong>{{Form::label('serviceDescription','Service Description')}}  :</strong>
+                          </div>
+                          <div class="col-md-2 col-form-label text-md-left">
+                          {{Form::label('serviceDescription',$bill->serviceDescription)}}
+                          </div>
+                          <div class="col-md-2 col-form-label text-md-left">
+                                <strong>{{Form::label('price1','Price')}}  :</strong>
+                                </div>
+                                <div class="col-md-2 col-form-label text-md-left">
+                                {{Form::label('price1',$bill->serviceCharge)}}
+                                </div>
+                        </div>
+                        </div>
+                        <div class="form-group">
+                                <div class="row">
+                                <div class="col-md-3 col-form-label text-md-left">
+                                <strong>{{Form::label('addedParts','Parts Added')}}  :</strong>
+                                </div>
+                                <div class="col-md-2 col-form-label text-md-left">
+                                {{Form::label('addedParts',$bill->addedParts)}}
+                                </div>
+                                <div class="col-md-7 col-form-label text-md-left">
+    
+                                      </div>
+                              </div>
+                              </div>
+                              <div class="form-group">
+                                    <div class="row">
+                                    <div class="col-md-3 col-form-label text-md-left">
+                                    <strong>{{Form::label('stockQty','Quantity')}}  :</strong>
+                                    </div>
+                                    <div class="col-md-2 col-form-label text-md-left">
+                                    {{Form::label('stockQty',$bill->stockQty)}}
+                                    </div>
+                                    <div class="col-md-2 col-form-label text-md-left">
+                                          <strong>{{Form::label('price2','Price')}}  :</strong>
+                                          </div>
+                                          <div class="col-md-2 col-form-label text-md-left">
+                                          {{Form::label('price2',$bill->stockQty)}}
+                                          </div>
+                                  </div>
+                                  </div>
+                              <div class="form-group">
+                                    <div class="row">
+                                            <div class="col-md-5">
+                                                    
+                                                    </div>
+                                    <div class="col-md-2 col-form-label text-md-left">
+                                          <strong>{{Form::label('discount','Discount')}}  :</strong>
+                                          </div>
+                                          <div class="col-md-2 col-form-label text-md-left">
+                                          {{Form::label('discount',$bill->serviceCharge*0.05)}}
+                                          </div>
+                                  </div>
+                                  </div>
+                                  <div class="form-group">
+                                        <div class="row">
+                                                <div class="col-md-5 ">
+                                                       
+                                                        </div>
+                                        <div class="col-md-2 col-form-label text-md-left">
+                                              <strong>{{Form::label('tax','Tax')}}  :</strong>
+                                              </div>
+                                              <div class="col-md-2 col-form-label text-md-left">
+                                              {{Form::label('tax',$bill->serviceCharge*0.025)}}
+                                              </div>
+                                      </div>
+                                      </div>
+                                  <div class="form-group">
+                                        <div class="row">
+                                        <div class="col-md-5 ">
+                                              
+                                              </div>
+                                              <div class="col-md-4 col-form-label text-md-left">
+                                              **********************************************
+                                              </div>
+                                      </div>
+                                      </div>
+                                  <div class="form-group">
+                                        <div class="row">
+                                                <div class="col-md-5 ">
+                                                        
+                                                        </div>
+                                        <div class="col-md-2 col-form-label text-md-left">
+                                              <strong>{{Form::label('total','Total Charges')}}  :</strong>
+                                              </div>
+                                              <div class="col-md-2 col-form-label text-md-left">
+                                              {{Form::label('total',$bill->serviceCharge+$bill->stockCharge+($bill->serviceCharge*0.025)-($bill->serviceCharge*0.05))}}
+                                              </div>
+                                      </div>
+                                      </div>
+                                      <div class="form-group">
+                                            <div class="row">
+                                            <div class="col-md-5 ">
+                                                  
+                                                  </div>
+                                                  <div class="col-md-4 col-form-label text-md-left">
+                                                  **********************************************
+                                                  </div>
+                                          </div>
+                                          </div>
+                                          <div class="form-group">
+                                                <div class="row">
+                                                <div class="col-md-5 col-form-label text-md-right">
+                                                      
+                                                      </div>
+                                                      <div class="col-md-4 col-form-label text-md-left">
+                                                      **********************************************
+                                                      </div>
+                                              </div>
+                                              </div>
+             
+              </div>
+              <div class="form-group">
+                    <div class="row">
+                    <div class="col-md-3 ">
+                          </div>
+                          <div class="col-md-3 col-form-label text-md-center">
+                              <strong>Thank You  !!!</strong><br><br>
+                                <address>
+                                        No.210/5 <br>
+                                        Weerangala South<br>
+                                        Yakkala 
+                                    </address>
+                          </div>
+                          <div class="col-md-3 ">
+                            </div>
+                  </div>
+                  </div>
+              
+              
+          <br>
+          <div class="form-group float-right form-inline " style="margin-right:180px;">
+          <div class="form-group">
+            {{Form::hidden('_method','PUT')}}
+          {{Form::submit('Download',['class'=>'btn btn-success'] )}}
+          </div>
+          <div class="form-group">
+                <button class="btn btn-primary"style="margin:5px">Send</a></button>
+          </div>
+          <div class="form-group">
+              <a href="/bills" class="btn btn-danger float-right " style="margin:2.5px"  id="cl" ><strong>Cancel</strong></a>
+            </div>
+          </div>
+      {!! Form::close() !!}
+  </div>
+</div>  
+@endsection

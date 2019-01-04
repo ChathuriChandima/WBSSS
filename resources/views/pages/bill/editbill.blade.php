@@ -63,20 +63,42 @@
                               </div>
                             </div>
                             </div>
-            <div class="form-group">
-                <div class="row">
-                <div class="col-md-4 col-form-label text-md-right">
-                <strong>{{Form::label('price','Price')}}  :</strong>
+                            
+              <div class="form-group">
+                  <div class="row">
+                  <div class="col-md-4 col-form-label text-md-right">
+                  <strong>{{Form::label('stockQty','Part Quantity')}}  :</strong>
+                  </div>
+                  <div class="col-md-6">
+                  {{Form::text('stockQty',$bill->stockQty,['class'=>'form-control','placeholder'=>''])}}
+                  </div>
                 </div>
-                <div class="col-md-6">
-                {{Form::number('price',$bill->price,['class'=>'form-control','placeholder'=>''])}}
                 </div>
-              </div>
-              </div>
+                <div class="form-group">
+                        <div class="row">
+                        <div class="col-md-4 col-form-label text-md-right">
+                        <strong>{{Form::label('serviceCharge','Service Charges')}}  :</strong>
+                        </div>
+                        <div class="col-md-6">
+                        {{Form::text('serviceCharge',$bill->serviceCharge,['class'=>'form-control','placeholder'=>''])}}
+                        </div>
+                      </div>
+                      </div>
+                      <div class="form-group">
+                            <div class="row">
+                            <div class="col-md-4 col-form-label text-md-right">
+                            <strong>{{Form::label('stockCharge','SpareParts Charge')}}  :</strong>
+                            </div>
+                            <div class="col-md-6">
+                            {{Form::text('stockCharge',$bill->stockCharge,['class'=>'form-control','placeholder'=>''])}}
+                            </div>
+                          </div>
+                          </div>
              
         
           <br>
-          <div class="form-group float-right form-inline " style="margin-right:180px;">
+          <div class="form-g
+          roup float-right form-inline " style="margin-right:180px;">
           <div class="form-group">
             {{Form::hidden('_method','PUT')}}
           {{Form::submit('Save',['class'=>'btn btn-success'] )}}

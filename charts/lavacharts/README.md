@@ -106,6 +106,7 @@ Register Lavacharts in your app by adding these lines to the respective arrays f
     // ...
 
     "Khill\Lavacharts\Laravel\LavachartsServiceProvider",
+    
 ),
 
 // ...

@@ -161,4 +161,5 @@ Route::group(['middleware' => 'App\Http\Middleware\ManagementMiddleware'], funct
     Route::match(['get','post'],'/searchbill', 'billController@search');
     Route::match(['get','post'],'/deletebill/{id}','billController@destroy')->name('deletebill');
     Route::match(['get','post'],'/printbill/{id}', 'billController@print');
+    Route::match(['get','post'],'/download', 'billController@downloadPdf');
 });
