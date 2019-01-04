@@ -2,65 +2,60 @@
 @section('content')
 <div class="container">
   <div class="well">
-      {!! Form::open(['action'=>['vehicleController@update',$vehicle->vehicleNo],'method'=>'POST']) !!}
+      {!! Form::open(['action'=>['customerController@updateCustomer',$customer->Id],'method'=>'POST']) !!}
       <div class="form-group">
         <div class="row">
         <div class="col-md-4 col-form-label text-md-right">
-        <strong>{{Form::label('id','Vehicle No')}} :</strong>
+        <strong>{{Form::label('Id','ID')}} :</strong>
         </div>
         <div class="col-md-6">
-        {{Form::text('id', $vehicle->vehicleNo ,['class'=>'form-control','placeholder'=>'','readonly'])}}
+        {{Form::text('Id', $customer->Id ,['class'=>'form-control','placeholder'=>'','readonly'])}}
         </div>
       </div>
       </div>
       <div class="form-group">
-          <div class="row">
-          <div class="col-md-4 col-form-label text-md-right">
-          <strong>{{Form::label('lastServiceDay','Last Service Day')}} :</strong>
-          </div>
-          <div class="col-md-6">
-            {{Form::text('lastServiceDay', date('m/d/Y',strtotime($vehicle->lastServiceDay )),['class'=>'form-control','id'=>'datepicker','placeholder'=>''])}} 
-        <script>
-            $('#datepicker').datepicker();
-            </script>
+        <div class="row">
+        <div class="col-md-4 col-form-label text-md-right">
+        <strong>{{Form::label('name','Name')}} :</strong>
         </div>
+        <div class="col-md-6">
+        {{Form::text('name', $customer->name ,['class'=>'form-control','placeholder'=>'','readonly'])}}
         </div>
+      </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+        <div class="col-md-4 col-form-label text-md-right">
+        <strong>{{Form::label('address','Address')}} :</strong>
         </div>
-        <div class="form-group">
-            <div class="row">
-            <div class="col-md-4 col-form-label text-md-right">
-            <strong>{{Form::label('cId','Owner')}} :</strong>
-            </div>
-            <div class="col-md-6">
-                <select name="cId" class="form-control">
-                    @foreach($customer as $owner)
-                    @if($owner->Id==$vehicle->cId)
-                    <option value="{{$owner->Id}}">{{$owner->name}}</option>
-                    @endif
-                  @endforeach
-                  @foreach($customer as $owner)
-                    @if($owner->Id!=$vehicle->cId)
-                    <option value="{{$owner->Id}}">{{$owner->name}}</option>
-                    @endif
-                  @endforeach
-                  </select> 
-            </div>
-          </div>
-          </div>
-          <div class="form-group">
-            <div class="row">
-            <div class="col-md-4 col-form-label text-md-right">
-            <label for="status"><strong>Status :</strong></label>
-            </div>
-            <div class="col-md-6">
-            <select name="status" class="form-control">
-            <option value="0">Not at service station</option>
-            <option value="1">Servicing</option>
-            <option value="2">Finished Service</option>
-            </select>
-            </div>
-          </div>
-          </div>
+        <div class="col-md-6">
+        {{Form::text('id', $customer->address ,['class'=>'form-control','placeholder'=>'','readonly'])}}
+        </div>
+      </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+        <div class="col-md-4 col-form-label text-md-right">
+        <strong>{{Form::label('contactNo','Contact No')}} :</strong>
+        </div>
+        <div class="col-md-6">
+        {{Form::text('contactNo', $customer->contactNo ,['class'=>'form-control','placeholder'=>'','readonly'])}}
+        </div>
+      </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+        <div class="col-md-4 col-form-label text-md-right">
+        <strong>{{Form::label('email','Email')}} :</strong>
+        </div>
+        <div class="col-md-6">
+        {{Form::text('id', $customer->email ,['class'=>'form-control','placeholder'=>'','readonly'])}}
+        </div>
+      </div>
+      </div>
+      
+        
+          
           <br>
           <div class="form-group float-right form-inline " style="margin-right:180px;">
           <div class="form-group">

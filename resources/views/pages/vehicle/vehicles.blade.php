@@ -49,6 +49,7 @@
             <th style="text-align:center">Owner</th>
             <th width="150px" style="text-align:center">Action</th>
         </tr>
+        
     @foreach ($vehicle as $v)
     <tr>
         <td>{{$v->vehicleNo}}</td>
@@ -58,7 +59,12 @@
         @foreach($customer as $owner)
         @if($owner->Id==$v->cId)
         <td>{{$owner->name}}</td>
+        @else
+        <!--fixed the exception of geting unknown customer-->
+        <td>{{"Unknown"}}</td>
+
         @endif
+        
         @endforeach
         <td>
         <a href="edit/{{$v->vehicleNo}}" class="btn" title="Edit" style="background-color:lavender;"><img src="img\icons8_Edit_25px.png" /></a>

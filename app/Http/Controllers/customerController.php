@@ -207,11 +207,33 @@ class customerController extends Controller
     {
 
         $v=User::find($id);
-        $v->delete();
-        $v=Customer::find($id);
-        $v->delete();
+        if($v!=null){//checking is user exist for Id
+            $v->delete();
+        }
+        $c=Customer::find($id);
+        if($c!=null){//checking is customer exist for Id
+            $c->delete();
+        }
         Alert::success('Deleted successfully.','Done!');
         return redirect('customers');
+    }
+
+    public function updateCustomer(Request $request, $id)
+    {
+        $this->validate($request, [
+            'Id'=>'required'
+        ]);
+            $customer=Customer::find($id);
+            $customer->Id=$request->input('Id');
+            $customer->name=$request->input('name');
+            $customer->adress=$request->input('address');
+            $customer->contactNo=$request->input('contactNo');            
+            $customer->email=$request->input('email');
+            $customer->save();
+            Alert::success('Your changes are saved.','Done!');
+            // Notifying user if service Finished
+            
+            return redirect('/pages/adminOnlyPages/customer');
     }
 
 }
