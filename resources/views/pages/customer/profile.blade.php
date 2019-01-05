@@ -11,7 +11,7 @@
         <a class="nav-link" data-toggle="tab" href="#v">Vehicle Details</a>
       </li>
     </ul>
-  
+
     <!-- Tab panes -->
     <div class="tab-content">
       <div id="p" class="container tab-pane active"><br>
@@ -63,6 +63,7 @@
                 </div>
                 <div class="form-group">
                     <a href="personal" type="submit" class="btn btn-primary float-right " style="margin-right:165px" title="Edit"><strong>Edit</strong></a>
+                    <a href="change_password" type="submit" class="btn btn-primary float-right " style="margin-right:165px" title="Edit"><strong>Change Password</strong></a>
                   </div>
             </form>
             </div>
@@ -113,7 +114,7 @@
                                   </div>
                               </div>
                           </div>
-                  </div> 
+                  </div>
               </div>
               @endif
               @endforeach
@@ -123,4 +124,4 @@
       </div>
     </div>
   </div>
-@endsection 
+@endsection

@@ -72,6 +72,9 @@ Route::group(['middleware' => 'App\Http\Middleware\CustomerMiddleware'], functio
     Route::match(['get','post'],'/profile', 'customerController@view')->name('profile');
     Route::match(['get','post'],'/personal', 'customerController@editable');
     Route::match(['get','post'],'/picture', 'customerController@change');
+    Route::match(['get','post'],'/change_password', 'customerController@changePasswordForm');
+    Route::post('change_password',['uses'=>'customerController@changePassword']);
+
 
 
 

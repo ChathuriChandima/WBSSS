@@ -24,7 +24,7 @@ class customerController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**
@@ -62,8 +62,8 @@ class customerController extends Controller
             $customer->save();
             Alert::success('Your details inserted.','Done!');
             return redirect('/add_vehicle');
-            
-        
+
+
     }
 
     /**
@@ -130,7 +130,7 @@ class customerController extends Controller
             'address'=>'required',
             'contactNo'=> 'required|regex:/(0)[0-9]{9}/',
             ]);
-    
+
             $customer=Customer::find($id);
             $customer->address=$request->input('address');
             $customer->contactNo=$request->input('contactNo');
@@ -145,7 +145,7 @@ class customerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+
 
      /**
      * Remove the specified resource from storage.
@@ -159,7 +159,7 @@ class customerController extends Controller
         ->with('vehicle',vehicle::all())
         ->with('user',Auth::user())
         ->with('i',0);
-        
+
     }
     public function editable(){
         return view('pages.customer.personal')
@@ -172,9 +172,9 @@ class customerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function change(Request $request){
-        
+
         if($request->hasFile('pic')){
- 
+
             $pic = $request->file('pic');
             $filename = time().'.'.$pic->getClientOriginalExtension();
             Image::make($pic)->resize(200, 200)->save( public_path('img\\'. $filename));
@@ -251,7 +251,7 @@ class customerController extends Controller
             'address' =>'required',
             'contactNo'=>'required',
             'email' => 'required',
-            
+
         ]);
         $user=new User;
         $user->name=$request->input('name');
@@ -259,7 +259,7 @@ class customerController extends Controller
         $user->password=Hash::make($request->input('password'));
         $user->role=$request->input('role');
         $user->save();
-        
+
         $customer=new Customer;
         $customer->Id=$user->id;
         $customer->name=$request->input('name');
@@ -269,8 +269,8 @@ class customerController extends Controller
         $customer->save();
         Alert::success('Your changes are saved.','Done!');
         return redirect('customers');
-        
-        
+
+
     }
 
     public function search(){
@@ -288,5 +288,29 @@ class customerController extends Controller
                 return redirect('customers');
         }
     }
-    
+
+    public function changePasswordForm()
+    {
+      return view('pages.customer.changePassword')->with('$user',Auth::user());
+    }
+
+    public function changePassword(Request $request)
+    {
+      $this->validate($request, [
+        'currentPassword'=>'min:6',
+        'newPassword' => 'min:6',
+        'verifyPassword' => 'same:newPassword'
+      ]);
+      $user = Auth::user();
+      if (Hash::check($request->input('currentPassword'),$user->password) ) {
+        $user->password = Hash::make($request->input('newPassword'));
+        $user->save();
+        Alert::success("Password Changed !!!");
+        return redirect('profile');
+      }else{
+        $request->session()->flash('warning', "The Password you entered is Incorrect !!!");
+        return redirect('change_password');
+      }
+    }
+
 }
