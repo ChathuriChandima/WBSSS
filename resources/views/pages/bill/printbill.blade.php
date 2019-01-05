@@ -1,5 +1,6 @@
 @extends('layouts.log')
 @section('content')
+<!--generate print window -->
 <script type="text/javascript">
 function printlayer(Layer){
       var generator=window.open(",'name,");
