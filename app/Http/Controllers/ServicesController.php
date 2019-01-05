@@ -63,13 +63,17 @@ class ServicesController extends Controller
         $this->validate($request, [
             'sid' => 'required',
             'name' => 'required|unique:services',
-            'price' =>'required',
+            'partsCost' =>'required',
+            'serviceCharge' =>'required',
+            'totalAmount' =>'required',
             'discount'=>'required',
         ]);
         $service=new Service;
         $service->sid=$request->input('sid');
         $service->name=$request->input('name');
-        $service->price=$request->input('price');
+        $service->partsCost=$request->input('partsCost');
+        $service->serviceCharge=$request->input('serviceCharge');
+        $service->totalAmount=$request->input('totalAmount');
         $service->discount=$request->input('discount');
         $service->save();
         Alert::success('Your changes are saved.','Done!');
@@ -110,13 +114,17 @@ class ServicesController extends Controller
         $this->validate($request, [
             'sid' => 'required',
             'name' => 'required',
-            'price' =>'required',
+            'partsCost' =>'required',
+            'serviceCharge' =>'required',
+            'totalAmount' =>'required',
             'discount'=>'required',
         ]);
             $service=Service::find($id);
             $service->sid=$request->input('sid');
             $service->name=$request->input('name');
-            $service->price=$request->input('price');
+            $service->partsCost=$request->input('partsCost');
+            $service->serviceCharge=$request->input('serviceCharge');
+            $service->totalAmount=$request->input('totalAmount');
             $service->discount=$request->input('discount');
             $service->save();
             Alert::success('Your changes are saved.','Done!');

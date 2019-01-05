@@ -1,8 +1,21 @@
 @extends('layouts.log')
 @section('content')
+<!--generate print window -->
+<script type="text/javascript">
+function printlayer(Layer){
+      var generator=window.open(",'name,");
+      var laytext=document.getElementById(Layer);
+      generator.document.write(laytext.innerHTML.replace("Print Me"));
+
+      generator.document.close();
+      generator.print();
+      generator.close();
+}
+</script>
 <div class="container">
-   
-  <div class="well">
+   <a href="#" class="btn btn-success float-right" id="print" onclick="javascript:printlayer('c')">Download</a>
+  <div class="well" id="c">
+
       {!! Form::open(['action'=>['billController@downloadPdf',$bill->billNo]]) !!}
       <div class="form-group">
             <div class="row">
@@ -197,20 +210,6 @@
                   </div>
                   </div>
               
-              
-          <br>
-          <div class="form-group float-right form-inline " style="margin-right:180px;">
-          <div class="form-group">
-            {{Form::hidden('_method','PUT')}}
-          {{Form::submit('Download',['class'=>'btn btn-success'] )}}
-          </div>
-          <div class="form-group">
-                <button class="btn btn-primary"style="margin:5px">Send</a></button>
-          </div>
-          <div class="form-group">
-              <a href="/bills" class="btn btn-danger float-right " style="margin:2.5px"  id="cl" ><strong>Cancel</strong></a>
-            </div>
-          </div>
       {!! Form::close() !!}
   </div>
 </div>  
