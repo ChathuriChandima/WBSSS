@@ -112,4 +112,34 @@ class supplierController extends Controller
     {
         //
     }
+
+    public function search(){
+        $q=Input::get('q');
+        $vehicle=vehicle::where('vehicleNo','LIKE','%'.$q.'%')->get();
+        $user=Customer::where('name','LIKE','%'.$q.'%')->get();
+        if(count($vehicle)>0){
+            return view('pages.vehicle.search')->withDetails($vehicle)->with('c',1 )
+            ->with('customer',Customer::all());
+        }elseif(count($user)>0){
+            $vehicle1=vehicle::all();
+            $count=0;
+            foreach ($user as $u){
+                foreach($vehicle1 as $v){
+                    if($u->Id==$v->cId){
+                        $count++;
+                    }
+                }
+            }
+            if($count>0){
+            return view('pages.vehicle.search')->withDetails($user)->with('c',0 )
+            ->with('vehicle',vehicle::all());
+            }else{
+                Alert::info('Try to search Again.....','Not Found!');
+                return redirect('vehicles');
+            }
+        }else{
+            Alert::info('Try to search Again.....','Not Found!');
+            return redirect('vehicles');
+        }
+    }
 }

@@ -22,5 +22,8 @@ class PagesController extends Controller
         $title='Contact Us';
         return view('pages.contact')->with('title',$title);
     }
+    public function users(){
+        return view('pages.adminOnlyPages.users');
+    }
    
 }

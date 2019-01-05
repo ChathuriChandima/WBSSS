@@ -20,10 +20,7 @@
                     <a href="/vehicles">Vehicle</a>
                 </li>
                 <li>
-                    <a href="/staff">Staff</a>
-                </li>
-                <li>
-                    <a href="/customers">Customers</a>
+                    <a href="/users">Users</a>
                 </li>
                 <li>
                     <a href="/stocks">Stock</a>
@@ -34,9 +31,9 @@
                 <li>
                     <a href="#">Notification</a>
                 </li>
-                <li>
+                <!--<li>
                     <a href="viewProfile">Profile</a>
-                </li>
+                </li>-->
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->

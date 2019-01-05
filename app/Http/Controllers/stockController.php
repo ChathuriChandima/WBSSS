@@ -31,7 +31,7 @@ class stockController extends Controller
         $l= DB::table('stocks')->latest()->first();
         // Here a error comes when the db is empty so adding a condition
         if ($l != null){
-            $n=substr($l->sid,3);
+            $n=substr($l->code,1);
         }else{
             $n = '0'; //This will prevent a error if the db is empty
         }
