@@ -109,8 +109,7 @@ class staffController extends Controller
         'verifyPassword' => 'same:newPassword'
       ]);
       $user = Auth::user();
-      $curPass = $request->input('currentPassword');
-      if ($user->password == Hash::make($curPass) ) {
+      if (Hash::check($request->input('currentPassword'),$user->password) ) {
         $user->password = Hash::make($request->input('newPassword'));
         $user->save();
         Alert::success("Password Changed !!!");
