@@ -33,13 +33,33 @@
                               <div class="form-group">
                                   <div class="row">
                                   <div class="col-md-4 col-form-label text-md-right">
-                                  <strong>{{Form::label('price','Price')}}  :</strong>
+                                  <strong>{{Form::label('partsCost','Parts Cost')}}  :</strong>
                                   </div>
                                   <div class="col-md-6">
-                                  {{Form::number('price','',['class'=>'form-control','placeholder'=>''])}}
+                                  {{Form::number('partsCost','',['class'=>'form-control','placeholder'=>''])}}
                                   </div>
                                 </div>
                                 </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                    <div class="col-md-4 col-form-label text-md-right">
+                                    <strong>{{Form::label('serviceCharge','Service Charge')}}  :</strong>
+                                    </div>
+                                    <div class="col-md-6">
+                                    {{Form::number('serviceCharge','',['class'=>'form-control','placeholder'=>''])}}
+                                    </div>
+                                  </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <div class="row">
+                                      <div class="col-md-4 col-form-label text-md-right">
+                                      <strong>{{Form::label('totalAmount','Total Amount')}}  :</strong>
+                                      </div>
+                                      <div class="col-md-6">
+                                      {{Form::number('totalAmount','',['class'=>'form-control','placeholder'=>''])}}
+                                      </div>
+                                    </div>
+                                    </div>
                                 <div class="form-group">
                                     <div class="row">
                                     <div class="col-md-4 col-form-label text-md-right">
