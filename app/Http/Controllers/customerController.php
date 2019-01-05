@@ -231,7 +231,21 @@ class customerController extends Controller
 
     public function updateCustomer(Request $request)
     {
+        $this->validate($request, [
+            'Id'=>'required',
+            'email'=>'required'
+        ]);
+            $customer=Customer::find($Id);
+            $customer->Id=$request->input('Id');
+            $customer->name=$request->input('name');
+            $customer->address=$request->input('address');
+            $customer->contactNo=$request->input('contactNo');
+            $customer->email=$request->input('email');
+            $customer->save();
+            Alert::success('Your changes are saved.','Done!');
+            return redirect('customers');
     }
+
 
     public function addCustomer()
     {

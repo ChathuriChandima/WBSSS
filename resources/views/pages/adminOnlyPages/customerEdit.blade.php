@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
   <div class="well">
-      {!! Form::open(['action'=>['customerController@updateCustomer',$customer->Id],'method'=>'POST']) !!}
+      {!! Form::open(['action'=>['customerController@updateCustomer'],'method'=>'POST']) !!}
       <div class="form-group">
         <div class="row">
         <div class="col-md-4 col-form-label text-md-right">
@@ -19,7 +19,7 @@
         <strong>{{Form::label('name','Name')}} :</strong>
         </div>
         <div class="col-md-6">
-        {{Form::text('name', $customer->name ,['class'=>'form-control','placeholder'=>'','readonly'])}}
+        {{Form::text('name', $customer->name ,['class'=>'form-control','placeholder'=>''])}}
         </div>
       </div>
       </div>
@@ -29,7 +29,7 @@
         <strong>{{Form::label('address','Address')}} :</strong>
         </div>
         <div class="col-md-6">
-        {{Form::text('id', $customer->address ,['class'=>'form-control','placeholder'=>'','readonly'])}}
+        {{Form::text('id', $customer->address ,['class'=>'form-control','placeholder'=>''])}}
         </div>
       </div>
       </div>
@@ -39,7 +39,7 @@
         <strong>{{Form::label('contactNo','Contact No')}} :</strong>
         </div>
         <div class="col-md-6">
-        {{Form::text('contactNo', $customer->contactNo ,['class'=>'form-control','placeholder'=>'','readonly'])}}
+        {{Form::text('contactNo', $customer->contactNo ,['class'=>'form-control','placeholder'=>''])}}
         </div>
       </div>
       </div>
@@ -49,7 +49,7 @@
         <strong>{{Form::label('email','Email')}} :</strong>
         </div>
         <div class="col-md-6">
-        {{Form::text('id', $customer->email ,['class'=>'form-control','placeholder'=>'','readonly'])}}
+        {{Form::text('id', $customer->email ,['class'=>'form-control','placeholder'=>''])}}
         </div>
       </div>
       </div>
@@ -59,7 +59,6 @@
           <br>
           <div class="form-group float-right form-inline " style="margin-right:180px;">
           <div class="form-group">
-            {{Form::hidden('_method','PUT')}}
           {{Form::submit('Save',['class'=>'btn btn-success'] )}}
           </div>
           <div class="form-group">
