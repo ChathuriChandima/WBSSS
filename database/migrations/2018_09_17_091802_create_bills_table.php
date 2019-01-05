@@ -16,7 +16,10 @@ class CreateBillsTable extends Migration
         Schema::create('bills', function (Blueprint $table) {
             $table->string('billNo')->primary();
             $table->date('date');
-            $table->decimal('price');
+            $table->string('customerName');
+            $table->string('vehicleNo');
+            $table->decimal('totalAmount');
+            $table->decimal('discount');
             $table->timestamps();
         });
     }
