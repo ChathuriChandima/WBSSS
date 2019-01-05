@@ -60,7 +60,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::match(['get','post'],'/deleteStaff/{id}','staffController@destroy')->name('delete');
     Route::match(['get','post'],'/searchStaff', 'staffController@search');
     Route::post('store_customer', ['uses' => 'customerController@storeCustomer']);
-    Route::post('updateCustomer', ['uses' => 'customerController@updateCustomer']);
+    Route::post('updateCustomer/{{id ', ['uses' => 'customerController@updateCustomer']);
 
 });
 

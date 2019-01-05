@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Alert;
-use DB; 
+use DB;
 use App\Staff;
 use App\User;
+use App\Customer;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
@@ -48,24 +49,26 @@ class staffController extends Controller
             'address' =>'required',
             'contactNo'=>'required',
             'email' => 'required',
-            
+
         ]);
-        $staff=new Staff;
-        $staff->name=$request->input('name');
-        $staff->address=$request->input('address');
-        $staff->contactNo=$request->input('contactNo');
-        $staff->email=$request->input('email');
-        $staff->save();
         $user=new User;
         $user->name=$request->input('name');
         $user->email=$request->input('email');
         $user->password=Hash::make($request->input('password'));
         $user->role=$request->input('role');
         $user->save();
+        $staff=new Staff;
+        $staff->id=$user->id;
+        $staff->name=$request->input('name');
+        $staff->address=$request->input('address');
+        $staff->contactNo=$request->input('contactNo');
+        $staff->email=$request->input('email');
+        $staff->save();
+
         Alert::success('Your changes are saved.','Done!');
         return redirect('staff');
-        
-        
+
+
     }
      /**
      * Update the specified resource in storage.
@@ -88,11 +91,43 @@ class staffController extends Controller
             return redirect('staff');
     }
 
+    public function viewProfile()
+    {
+      return view('pages.staff.viewProfile')->with('staff',Staff::find(Auth::user()->id));
+    }
+
+    public function changePasswordForm()
+    {
+      return view('pages.staff.changePassword')->with('$user',Auth::user());
+    }
+
+    public function changePassword(Request $request)
+    {
+      $this->validate($request, [
+        'currentPassword'=>'min:6',
+        'newPassword' => 'min:6',
+        'verifyPassword' => 'same:newPassword'
+      ]);
+      $user = Auth::user();
+      if (Hash::check($request->input('currentPassword'),$user->password) ) {
+        $user->password = Hash::make($request->input('newPassword'));
+        $user->save();
+        Alert::success("Password Changed !!!");
+        return redirect('viewProfile');
+      }else{
+        $request->session()->flash('warning', "The Password you entered is Incorrect !!!");
+        return redirect('staffPasswordChange');
+      }
+    }
+
+
     public function destroy($id)
     {
 
         $v=Staff::find($id);
+        $user = User::find($id);
         $v->delete();
+        $user->delete();
         Alert::success('Deleted successfully.','Done!');
         return redirect('staff');
     }
@@ -107,12 +142,30 @@ class staffController extends Controller
         }elseif(count($staff_name)>0){
             return view('pages.adminOnlyPages.searchStaff')->withDetails($staff_name)->with('c',0 )
             ->with('staff',Staff::all());
-           
+
         }else{
             Alert::info('Try to search Again.....','Not Found!');
             return redirect('staff');
         }
     }
 
- 
+    public function changeDetailForm()
+    {
+      return view('pages.staff.editDetail')->with('staff',Staff::find(Auth::user()->id));
+    }
+
+    public function changeDetail(Request $request)
+    {
+      $this->validate($request,[
+        'address'=>'required',
+        'contactNo' => 'required'
+      ]);
+      $staff = Staff::find(Auth::user()->id);
+      $staff->address = $request->input('address');
+      $staff->contactNo = $request->input('contactNo');
+      $staff->save();
+      Alert::success("Personal Details changed");
+      return redirect('viewProfile');
+    }
+
 }
