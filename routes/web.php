@@ -162,5 +162,5 @@ Route::group(['middleware' => 'App\Http\Middleware\ManagementMiddleware'], funct
     Route::match(['get','post'],'/searchinvoice', 'invoiceController@search');
     Route::match(['get','post'],'/supplier', 'supplierController@index');
     Route::match(['get','post'],'/download', 'billController@downloadPdf');
-
+    
 });

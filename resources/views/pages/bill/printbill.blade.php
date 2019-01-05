@@ -7,7 +7,7 @@
       <div class="form-group">
             <div class="row">
             <div class="col-md-6 col-form-label text-md-left">
-                    <h1 ><img src=img/ic.png> Rajaan Motors </h1>
+                    <h1 ><img src="\img\ic.png"> Rajaan Motors </h1>
                   </div>
                   <div class="col-md-1 col-form-label text-md-left">
                         <strong>Phone:</strong><br>
