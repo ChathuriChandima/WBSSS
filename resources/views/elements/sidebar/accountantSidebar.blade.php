@@ -40,10 +40,10 @@
 
                    <a href="/stocks">Stock Management</a>
                </li>
-               <!--<li>
+               <li>
 
                    <a href="/viewProfile">Profile</a>
-               </li>-->
+               </li>
            </ul>
        </div>
         <!-- /#sidebar-wrapper -->
