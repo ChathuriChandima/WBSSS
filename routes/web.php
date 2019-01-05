@@ -24,6 +24,8 @@ Route::resource('customer','customerController');
 Route::resource('vehicle','vehicleController');
 Route::resource('stock','stockController');
 Route::resource('Staff','staffController');
+Route::resource('Invoice','invoiceController');
+Route::resource('Supplier','supplierController');
 Route::resource('Service','ServicesController');
 Route::resource('bill','billController');
 Auth::routes();
@@ -60,6 +62,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::match(['get','post'],'/deleteStaff/{id}','staffController@destroy')->name('delete');
     Route::match(['get','post'],'/searchStaff', 'staffController@search');
     Route::post('store_customer', ['uses' => 'customerController@storeCustomer']);
+    Route::match(['get','post'],'/users', 'pagesController@users');
 
 });
 
@@ -167,9 +170,9 @@ Route::group(['middleware' => 'App\Http\Middleware\ManagementMiddleware'], funct
     Route::match(['get','post'],'/searchbill', 'billController@search');
     Route::match(['get','post'],'/deletebill/{id}','billController@destroy')->name('deletebill');
     Route::match(['get','post'],'/printbill/{id}', 'billController@print');
-
+    Route::match(['get','post'],'/supplier', 'supplierController@index');
     Route::match(['get','post'],'/invoice', 'invoiceController@index');
-
+    Route::match(['get','post'],'/searchinvoice', 'invoiceController@search');
     Route::match(['get','post'],'/download', 'billController@downloadPdf');
 
 });
