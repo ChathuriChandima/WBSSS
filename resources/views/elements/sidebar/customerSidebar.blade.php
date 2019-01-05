@@ -6,7 +6,7 @@
             <br>
             <p>
                 <a class="navbar-brand float-center" >
-                    <img src="img/ic.png" alt="logo" style="width:70px"> 
+                    <img src="img/ic.png" alt="logo" style="width:70px">
                 </a>
             </p>
                <br>
@@ -14,14 +14,14 @@
                <li>
                    <a href="/loggedin">Home</a>
                </li>
-              
+
                <li>
-                   <a href="#">View Vehicle Status</a>
+                   <a href="/my_vehicles">View Vehicle Status</a>
                </li>
                <li>
                    <a href="profile">Profile</a>
                </li>
-               
+
            </ul>
        </div>
        <!-- /#sidebar-wrapper -->

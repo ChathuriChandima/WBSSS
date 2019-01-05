@@ -7,12 +7,15 @@
                        Home
                    </a>
                </li>
-               
+
                <li>
                    <a href="#">Services</a>
                </li>
                <li>
                    <a href="#">Contact</a>
+               </li>
+               <li>
+                   <a href="viewProfile">Profile</a>
                </li>
            </ul>
        </div>

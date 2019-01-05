@@ -30,7 +30,7 @@ class chartsController extends Controller
         $vehicles = vehicle::where(DB::raw("(DATE_FORMAT(created_at,'%Y'))"),date('Y'))
 
         ->get();
-        
+
         $bar_chart = Charts::database($vehicles, 'bar', 'highcharts')
 
 			      ->title("Monthly new Register Vehicles")
@@ -43,24 +43,10 @@ class chartsController extends Controller
 
                   ->groupByMonth(date('Y'), true);
 
-        $income = bill::where(DB::raw("price"),date('Y'))
 
-        ->get();
 
-        $line_chart = Charts::database($income, 'line', 'highcharts')
 
-			      ->title("Monthly income flow")
-
-			      //->elementLabel("Total Vehicles")
-
-			      ->dimensions(500, 350)
-
-			      ->responsive(false)
-
-                  ->groupByMonth(date('Y'), true);
-
-        
-        return view('pages/adminOnlyPages/charts',compact('bar_chart','line_chart','pie_chart'));
+        return view('pages/adminOnlyPages/charts',compact('bar_chart'));
 
     }
 

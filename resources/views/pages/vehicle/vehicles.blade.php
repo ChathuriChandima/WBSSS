@@ -39,68 +39,71 @@
     <!-- Tab panes -->
     <div class="tab-content">
       <div id="p" class="container tab-pane active"><br>
-<div class="container">
-<table class="table table-bordered">
-        <tr>
-            <th style="text-align:center">Vehicle No</th>
-            <th style="text-align:center">Type</th>
-            <th style="text-align:center">Last Service Date</th>
-            <th style="text-align:center">Brand</th>
-            <th style="text-align:center">Owner</th>
-            <th width="150px" style="text-align:center">Action</th>
-        </tr>
+        <div class="container">
+          <div >
 
-    @foreach ($vehicle as $v)
-    <tr>
-        <td>{{$v->vehicleNo}}</td>
-        <td>{{$v->type}}</td>
-        <td>{{$v->lastServiceDay}}</td>
-        <td>{{$v->brand}}</td>
-        <!-- flag of customer found -->
-        {{$found = false}}
-        
-        @foreach($customer as $owner)
-        @if($owner->Id==$v->cId)
-        <td>{{$owner->name}}</td>
-        {{$found = true}}
+          </div>
+        <table class="table table-bordered">
+                <tr>
+                    <th style="text-align:center">Vehicle No</th>
+                    <th style="text-align:center">Type</th>
+                    <th style="text-align:center">Last Service Date</th>
+                    <th style="text-align:center">Brand</th>
+                    <th style="text-align:center">Owner</th>
+                    <th width="150px" style="text-align:center">Action</th>
+                </tr>
 
-        @endif
+            @foreach ($vehicle as $v)
+            <tr>
+                <td>{{$v->vehicleNo}}</td>
+                <td>{{$v->type}}</td>
+                <td>{{$v->lastServiceDay}}</td>
+                <td>{{$v->brand}}</td>
+                <!-- flag of customer found -->
+                {{$found = false}}
 
-        @endforeach
-        <!-- printing unknown if flag doesn't activated -->
-        @if($found == false)
-        <td>{{"Unknown"}}</td>
-        @endif
-        <td>
-        <a href="edit/{{$v->vehicleNo}}" class="btn" title="Edit" style="background-color:lavender;"><img src="img\icons8_Edit_25px.png" /></a>
+                @foreach($customer as $owner)
+                @if($owner->Id==$v->cId)
+                <td>{{$owner->name}}</td>
+                {{$found = true}}
 
-              <!-- delete vehicle-->
-              <button type="button" class="btn" title="Delete" data-toggle="modal" data-target="#myModal4-{{$v->vehicleNo}}" data-mytitle="{{$v->vehicleNo}}"><img src="img\icons8_Trash_25px_1.png" /></button>
+                @endif
 
-              <div class="modal fade" id="myModal4-{{$v->vehicleNo}}" role="dialog">
-                  <div class="modal-dialog">
+                @endforeach
+                <!-- printing unknown if flag doesn't activated -->
+                @if($found == false)
+                <td>{{"Unknown"}}</td>
+                @endif
+                <td>
+                <a href="edit/{{$v->vehicleNo}}" class="btn" title="Edit" style="background-color:lavender;"><img src="img\icons8_Edit_25px.png" /></a>
 
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h4 class="modal-title" style="margin-left:200px;"><img src="img\warning.png" /></h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      </div>
-                      <div class="modal-body" style="text-align:center;">
-                        <h5>Are you sure??? Do you want to delete {{$v->vehicleNo}}?</h5>
-                        <h3>If you delete it, it won't be exists anymore!...</h3>
-                        <a href="{{route('delete', $v->vehicleNo)}}" class="btn" role="button" style="background-color:bisque"><img src="img\icons8_Trash_25px_1.png" /></a>
-                        </div>
-                      </div>
+                      <!-- delete vehicle-->
+                      <button type="button" class="btn" title="Delete" data-toggle="modal" data-target="#myModal4-{{$v->vehicleNo}}" data-mytitle="{{$v->vehicleNo}}"><img src="img\icons8_Trash_25px_1.png" /></button>
 
-                    </div>
-                  </div>
+                      <div class="modal fade" id="myModal4-{{$v->vehicleNo}}" role="dialog">
+                          <div class="modal-dialog">
 
-        </td>
-        @endforeach
-    </tr>
-    </table>
-</div>
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4 class="modal-title" style="margin-left:200px;"><img src="img\warning.png" /></h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              </div>
+                              <div class="modal-body" style="text-align:center;">
+                                <h5>Are you sure??? Do you want to delete {{$v->vehicleNo}}?</h5>
+                                <h3>If you delete it, it won't be exists anymore!...</h3>
+                                <a href="{{route('delete', $v->vehicleNo)}}" class="btn" role="button" style="background-color:bisque"><img src="img\icons8_Trash_25px_1.png" /></a>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+
+                </td>
+                @endforeach
+            </tr>
+            </table>
+        </div>
       </div>
       <div id="v" class="container tab-pane"><br>
         <table class="table table-bordered">
@@ -119,11 +122,21 @@
             <td>{{$v->type}}</td>
             <td>{{$v->lastServiceDay}}</td>
             <td>{{$v->brand}}</td>
+            <!-- flag of customer found -->
+            {{$found = false}}
+
             @foreach($customer as $owner)
             @if($owner->Id==$v->cId)
             <td>{{$owner->name}}</td>
+            {{$found = true}}
+
             @endif
+
             @endforeach
+            <!-- printing unknown if flag doesn't activated -->
+            @if($found == false)
+            <td>{{"Unknown"}}</td>
+            @endif
             <td><button type="button" class="btn" title="Edit" data-toggle="modal" data-target="#myModal1" data-mytitle="{{$v->vehicleNo}}" ><img src="img\icons8_Pencil_25px.png" /></button>
 
                 <div class="modal fade" id="myModal1" role="dialog">
@@ -182,11 +195,21 @@
             <td>{{$v->type}}</td>
             <td>{{$v->lastServiceDay}}</td>
             <td>{{$v->brand}}</td>
+            <!-- flag of customer found -->
+            {{$found = false}}
+
             @foreach($customer as $owner)
             @if($owner->Id==$v->cId)
             <td>{{$owner->name}}</td>
+            {{$found = true}}
+
             @endif
+
             @endforeach
+            <!-- printing unknown if flag doesn't activated -->
+            @if($found == false)
+            <td>{{"Unknown"}}</td>
+            @endif
             <td><button type="button" class="btn" title="Edit" data-toggle="modal" data-target="#myModal2" data-mytitle="{{$v->vehicleNo}}" ><img src="img\icons8_Pencil_25px.png" /></button>
 
                 <div class="modal fade" id="myModal2" role="dialog">

@@ -183,6 +183,16 @@ class vehicleController extends Controller
         }
     }
 
+    public function myVehicles(){
+      // Getting the id of the costumer
+      if (Auth::check()){
+        $cid = Auth::user()->id;
+        $vehicles = vehicle::where('cId',$cid)->get();
+        return view('pages.vehicle.myVehicles')
+        ->with('vehicle',$vehicles);
+      }
+    }
+
     public function searviceFinishNotifier($vehicle){
       // Getting the user to notify
       $user = User::find($vehicle->cId);

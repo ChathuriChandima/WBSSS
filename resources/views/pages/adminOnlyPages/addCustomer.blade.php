@@ -6,10 +6,10 @@
   }
 </style>
 @section('content')
-            <h2><img src="img\addStaff.jpg" style="width:150px;height:150px;">  New Staff member</h2>
+            <h2><img src="img\user_add.png" style="width:150px;height:150px;">  New Customer</h2>
             <div class="container">
               <div class="well">
-                  {!! Form::open(['action'=>'staffController@store','method'=>'POST']) !!}
+                  {!! Form::open(['action'=>'customerController@storeCustomer','method'=>'POST']) !!}
                         
                             <div class="form-group" style="margin-left:20px">
                               <div class="row">
@@ -62,7 +62,7 @@
                               
                               {{Form::submit('Add',['class'=>'btn btn-success'] )}}
                               
-                                  <a href="staff" class="btn btn-danger float-right "  id="cl" ><strong>Cancel</strong></a>
+                                  <a href="customers" class="btn btn-danger float-right "  id="cl" ><strong>Cancel</strong></a>
                                 </div>
                               </div>
                         {!! Form::close() !!}

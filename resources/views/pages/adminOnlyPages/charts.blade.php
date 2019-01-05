@@ -7,5 +7,4 @@
 
 
 {!! $bar_chart->render() !!}
-{!! $line_chart->render() !!}
 @endsection
