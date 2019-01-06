@@ -126,8 +126,14 @@ class vehicleController extends Controller
             $item->availableStock = $item->availableStock - $stockQuntity[$i];
             $item->soldStock = $item->soldStock + $stockQuntity[$i];
             $partsCost += $item->price*(int)$stockQuntity[$i];
-            if ($item->availableStock < 100){
-              // notify the admin for stock is critically low
+            if ($item->availableStock < 20){
+              $admins = User::where('role','=','admin')->get();
+              $sub = "Running out of Stock";
+              $ms = "Only $item->availableStock units of $item->name are left in Stocks!";
+              $notification = new SingleUser($sub,$ms);
+              foreach ($admins as $admin) {
+                $admin.notify($notification);
+              }
             }
             $item->save();
           }
@@ -160,7 +166,14 @@ class vehicleController extends Controller
           $service->isBilled = '0';
           $service->save();
           // Notifying the customer as there service finished
-          $this->searviceFinishNotifier($vehicle);
+          // Getting the user to notify
+          $user = User::find($vehicle->cId);
+
+          // Creating the subject and the msg of the Notification
+          $subject = "One of your Vehicle service Finished!";
+          $msg = "Your Vehicle with No. $vehicle->vehicleNo has been finished servicing.";
+          // Nofifying the User
+          $user->notify(new SingleUser($subject,$msg));
         }
         return redirect('vehicles');
     }
