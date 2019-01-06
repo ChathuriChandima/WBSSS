@@ -6,11 +6,13 @@
 <div class="container">
   <div class="container mt-3">
     <!-- information of the contact submitted -->
-    <div>
+    <div class="card bg-light">
+        <div class="card-body">
       <h3>{{$contact->subject}}</h3>
       <br />
       <p>{{$contact->message}}</p>
     </div>
+  </div>
     <br />
 
     <!-- Form to reply the contact -->

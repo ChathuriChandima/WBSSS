@@ -15,7 +15,7 @@
                    <a href="#">Contact</a>
                </li>
                <li>
-                   <a href="viewProfile">Profile</a>
+                   <a href="/viewProfile">Profile</a>
                </li>
            </ul>
        </div>

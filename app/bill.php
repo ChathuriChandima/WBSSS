@@ -10,4 +10,7 @@ class bill extends Model
     public $primaryKey = 'billNo';
     public $timestamps = true;
     public $incrementing = false;
+    protected $fillable = [
+        'date', 'customerName', 'vehicleNo','totalAmount','discount',
+    ];
 }

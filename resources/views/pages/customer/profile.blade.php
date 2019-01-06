@@ -61,11 +61,15 @@
                 <input type="number" class="form-control" id="contact" placeholder={{"0".$customer->contactNo}} disabled><br>
               </div>
                 </div>
+                <div class="form-group float-right form-inline ">
                 <div class="form-group">
-                    <a href="personal" type="submit" class="btn btn-primary float-right " style="margin-right:165px" title="Edit"><strong>Edit</strong></a>
-                    <a href="change_password" type="submit" class="btn btn-primary float-right " style="margin-right:165px" title="Edit"><strong>Change Password</strong></a>
+                    <a href="personal" type="submit" class="btn btn-primary float-right " style="margin:5px;" title="Edit"><strong>Edit</strong></a>
                   </div>
-            </form>
+                  <div class="form-group">
+                  <a href="change_password" type="submit" class="btn btn-primary float-right " style="margin-right:165px" title="Change"><strong>Change Password</strong></a>
+                  </div>
+                </div>
+                </form>
             </div>
 
         </div>

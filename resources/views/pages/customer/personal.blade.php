@@ -16,7 +16,7 @@
                                 <strong>{{Form::label('name','Name')}}  :</strong>
                                   </div>
                                   <div class="col-md-6">
-                                {{Form::text('name', $customer->name ,['class'=>'form-control','placeholder'=>'Name','readonly'])}}
+                                {{Form::text('name', $customer->name ,['class'=>'form-control','placeholder'=>'Name'])}}
                               </div>
                             </div>
                               </div>
@@ -36,7 +36,7 @@
                                   <strong>{{Form::label('email','Email Address')}}</strong>
                                       </div>
                                       <div class="col-md-6">
-                                  {{Form::text('email', $customer->email ,['class'=>'form-control','placeholder'=>'Email Address', 'readonly'])}}
+                                  {{Form::email('email', $customer->email ,['class'=>'form-control','placeholder'=>'Email Address'])}}
                                 </div>
                               </div>
                                 </div>

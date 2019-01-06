@@ -26,8 +26,11 @@
                                 <strong>{{Form::label('date','Billed Date')}}  :</strong>
                                 </div>
                                 <div class="col-md-6">
-                                {{Form::text('date','',['class'=>'form-control','placeholder'=>''])}}
+                                {{Form::text('date',date('m/d/Y'),['class'=>'form-control','placeholder'=>'','id'=>'datepicker'])}}
                                 </div>
+                                <script>
+                                    $('#datepicker').datepicker();
+                                    </script>
                               </div>
                               </div>
                               <div class="form-group">
@@ -36,7 +39,12 @@
                                     <strong>{{Form::label('customerName','Customer Name')}}  :</strong>
                                     </div>
                                     <div class="col-md-6">
-                                    {{Form::text('customerName','',['class'=>'form-control','placeholder'=>''])}}
+                                        <input list="c" name="customerName" class="form-control">
+                                        <datalist id="c">
+                                            @foreach($customer as $c)
+                                        <option value="{{$c->name}}">
+                                            @endforeach
+                                        </datalist>
                                     </div>
                                   </div>
                                   </div>
@@ -46,57 +54,32 @@
                                         <strong>{{Form::label('vehicleNo','Vehicle No')}}  :</strong>
                                         </div>
                                         <div class="col-md-6">
-                                        {{Form::text('vehicleNo','',['class'=>'form-control','placeholder'=>''])}}
+                                        <input list="v" name="vehicleNo" class="form-control">
+                                          <datalist id="v">
+                                              @foreach($vehicle as $v)
+                                          <option value="{{$v->vehicleNo}}">
+                                              @endforeach
+                                          </datalist>
                                         </div>
                                       </div>
                                       </div>
-                                      <div class="form-group">
-                                            <div class="row">
-                                            <div class="col-md-4 col-form-label text-md-right">
-                                            <strong>{{Form::label('serviceDescription','Service Description')}}  :</strong>
-                                            </div>
-                                            <div class="col-md-6">
-                                            {{Form::text('serviceDescription','',['class'=>'form-control','placeholder'=>''])}}
-                                            </div>
-                                          </div>
-                                          </div>
-                                          <div class="form-group">
-                                                <div class="row">
-                                                <div class="col-md-4 col-form-label text-md-right">
-                                                <strong>{{Form::label('addedParts','Spare Parts Added')}}  :</strong>
-                                                </div>
-                                                <div class="col-md-6">
-                                                {{Form::text('addedParts','',['class'=>'form-control','placeholder'=>''])}}
-                                                </div>
-                                              </div>
-                                              </div>
-                              <div class="form-group">
-                                  <div class="row">
-                                  <div class="col-md-4 col-form-label text-md-right">
-                                  <strong>{{Form::label('stockQty','Part Quantity')}}  :</strong>
-                                  </div>
-                                  <div class="col-md-6">
-                                  {{Form::number('stockQty','',['class'=>'form-control','placeholder'=>''])}}
-                                  </div>
-                                </div>
-                                </div>
                                 <div class="form-group">
                                         <div class="row">
                                         <div class="col-md-4 col-form-label text-md-right">
-                                        <strong>{{Form::label('serviceCharge','Service Charges')}}  :</strong>
+                                        <strong>{{Form::label('totalAmount','Total Amount')}}  :</strong>
                                         </div>
                                         <div class="col-md-6">
-                                        {{Form::number('serviceCharge','',['class'=>'form-control','placeholder'=>''])}}
+                                        {{Form::number('totalAmount','',['class'=>'form-control','placeholder'=>''])}}
                                         </div>
                                       </div>
                                       </div>
                                       <div class="form-group">
                                             <div class="row">
                                             <div class="col-md-4 col-form-label text-md-right">
-                                            <strong>{{Form::label('stockCharge','SpareParts Charge')}}  :</strong>
+                                            <strong>{{Form::label('discount','Discount')}}  :</strong>
                                             </div>
                                             <div class="col-md-6">
-                                            {{Form::number('stockCharge','',['class'=>'form-control','placeholder'=>''])}}
+                                            {{Form::number('discount','',['class'=>'form-control','placeholder'=>''])}}
                                             </div>
                                           </div>
                                           </div>

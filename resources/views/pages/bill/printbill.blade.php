@@ -13,6 +13,7 @@ function printlayer(Layer){
 }
 </script>
 <div class="container">
+            <a href="/bills" class="btn btn-info float-left" > Back</a>
    <a href="#" class="btn btn-success float-right" id="print" onclick="javascript:printlayer('c')">Download</a>
   <div class="well" id="c">
 
@@ -78,50 +79,6 @@ function printlayer(Layer){
                           </div>
                           </div>
                     <div class="form-group">
-                          <div class="row">
-                          <div class="col-md-3 col-form-label text-md-left">
-                          <strong>{{Form::label('serviceDescription','Service Description')}}  :</strong>
-                          </div>
-                          <div class="col-md-2 col-form-label text-md-left">
-                          {{Form::label('serviceDescription',$bill->serviceDescription)}}
-                          </div>
-                          <div class="col-md-2 col-form-label text-md-left">
-                                <strong>{{Form::label('price1','Price')}}  :</strong>
-                                </div>
-                                <div class="col-md-2 col-form-label text-md-left">
-                                {{Form::label('price1',$bill->serviceCharge)}}
-                                </div>
-                        </div>
-                        </div>
-                        <div class="form-group">
-                                <div class="row">
-                                <div class="col-md-3 col-form-label text-md-left">
-                                <strong>{{Form::label('addedParts','Parts Added')}}  :</strong>
-                                </div>
-                                <div class="col-md-2 col-form-label text-md-left">
-                                {{Form::label('addedParts',$bill->addedParts)}}
-                                </div>
-                                <div class="col-md-7 col-form-label text-md-left">
-    
-                                      </div>
-                              </div>
-                              </div>
-                              <div class="form-group">
-                                    <div class="row">
-                                    <div class="col-md-3 col-form-label text-md-left">
-                                    <strong>{{Form::label('stockQty','Quantity')}}  :</strong>
-                                    </div>
-                                    <div class="col-md-2 col-form-label text-md-left">
-                                    {{Form::label('stockQty',$bill->stockQty)}}
-                                    </div>
-                                    <div class="col-md-2 col-form-label text-md-left">
-                                          <strong>{{Form::label('price2','Price')}}  :</strong>
-                                          </div>
-                                          <div class="col-md-2 col-form-label text-md-left">
-                                          {{Form::label('price2',$bill->stockQty)}}
-                                          </div>
-                                  </div>
-                                  </div>
                               <div class="form-group">
                                     <div class="row">
                                             <div class="col-md-5">
@@ -131,23 +88,10 @@ function printlayer(Layer){
                                           <strong>{{Form::label('discount','Discount')}}  :</strong>
                                           </div>
                                           <div class="col-md-2 col-form-label text-md-left">
-                                          {{Form::label('discount',$bill->serviceCharge*0.05)}}
+                                          {{Form::label('discount',$bill->discount)}}
                                           </div>
                                   </div>
                                   </div>
-                                  <div class="form-group">
-                                        <div class="row">
-                                                <div class="col-md-5 ">
-                                                       
-                                                        </div>
-                                        <div class="col-md-2 col-form-label text-md-left">
-                                              <strong>{{Form::label('tax','Tax')}}  :</strong>
-                                              </div>
-                                              <div class="col-md-2 col-form-label text-md-left">
-                                              {{Form::label('tax',$bill->serviceCharge*0.025)}}
-                                              </div>
-                                      </div>
-                                      </div>
                                   <div class="form-group">
                                         <div class="row">
                                         <div class="col-md-5 ">
@@ -164,10 +108,10 @@ function printlayer(Layer){
                                                         
                                                         </div>
                                         <div class="col-md-2 col-form-label text-md-left">
-                                              <strong>{{Form::label('total','Total Charges')}}  :</strong>
+                                              <strong>{{Form::label('totalAmount','Total Charges')}}  :</strong>
                                               </div>
                                               <div class="col-md-2 col-form-label text-md-left">
-                                              {{Form::label('total',$bill->serviceCharge+$bill->stockCharge+($bill->serviceCharge*0.025)-($bill->serviceCharge*0.05))}}
+                                              {{Form::label('totalAmount',$bill->totalAmount)}}
                                               </div>
                                       </div>
                                       </div>

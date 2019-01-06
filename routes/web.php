@@ -21,7 +21,7 @@ Route::get('/login','PagesController@login');
 Route::get('/contact','PagesController@contact');
 Route::post('/contactSubmit','contactController@store');
 
-Route::resource('customer','customerController');
+Route::resource('Customer','customerController');
 Route::resource('vehicle','vehicleController');
 Route::resource('stock','stockController');
 Route::resource('Staff','staffController');
@@ -105,7 +105,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AccountantMiddleware'], funct
     //Route::match(['get','post'],'/show', 'vehicleController@show');
 
     Route::match(['get','post'],'/show', 'vehicleController@show');
-    Route::match(['get','post'],'/create', 'stockController@create');
+    //Route::match(['get','post'],'/create', 'stockController@create');
 
 
     Route::match(['get','post'],'/show', 'vehicleController@show');
@@ -152,6 +152,7 @@ Route::group(['middleware' => 'App\Http\Middleware\ManagementMiddleware'], funct
     Route::match(['get','post'],'/vehicles','vehicleController@move')->name('vehicles');
     Route::match(['get','post'],'/stocks','stockController@index')->name('stocks');
     Route::match(['get','post'],'/stocks','stockController@move')->name('stocks');
+    Route::match(['get','post'],'/create', 'stockController@create');
     Route::match(['get','post'],'/add_stock', 'stockController@create');
     Route::match(['get','post'],'/editStock/{id}', 'stockController@find');
     Route::match(['get','post'],'/deleteStock/{id}','stockController@destroy')->name('deleteStock');

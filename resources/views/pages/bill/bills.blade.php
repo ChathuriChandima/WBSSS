@@ -28,11 +28,8 @@
                         <th>Date</th>
                         <th>Customer Name</th>
                         <th>Vehicle No</th>
-                        <th>Service Description</th>
-                        <th>Spare Parts Added</th>
-                        <th>Quantity</th>
-                        <th>Service Charges</th>
-                        <th>Spare Parts Charges</th>
+                        <th>Total Amount</th>
+                        <th>Discount</th>
                         <th width="200px">Action</th>
                     </tr>
             
@@ -42,11 +39,8 @@
                         <td>{{$b->date}}</td>
                         <td>{{$b->customerName}}</td>
                         <td>{{$b->vehicleNo}}</td>
-                        <td>{{$b->serviceDescription}}</td>
-                        <td>{{$b->addedParts}}</td>
-                        <td>{{$b->stockQty}}</td>
-                        <td>{{$b->serviceCharge}}</td>
-                        <td>{{$b->stockCharge}}</td>
+                        <td>{{$b->totalAmount}}</td>
+                        <td>{{$b->discount}}</td>
                     <td>
                         <a href="editbill/{{$b->billNo}}" class="btn" title="Edit" style="background-color:lavender;"><img src="img\icons8_Edit_25px.png" /></a>
                     

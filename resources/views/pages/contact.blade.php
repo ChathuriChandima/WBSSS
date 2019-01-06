@@ -1,10 +1,9 @@
 @extends('layouts.app')
 <link rel="stylesheet" href="{{asset('my/l.css')}}">
 @section('content')
-<img src="img/p1.jpg" width="1400px" height="300px">
 
       <h1><img src="img/contact.gif" width="200px" ></h1>
-    <br><br><br>
+    <!--<br><br><br>
     <img src="img/email.jpg" width="60px" >
     <style>
        .container1{ font-size: 20px;
@@ -18,7 +17,7 @@
             Address :No. 210/5, <br>
             Weerangula South <br>
             Yakkala <br>
-        </div>
+        </div>-->
     <div class="container">
         <!-- <form action="/contactSubmit" class="form-container border border-warning rounded" style="width:600px" method="post"> -->
         {!! Form::open(['action'=>['contactController@store'],'method'=>'POST', 'class' => 'form-container border border-warning rounded']) !!}

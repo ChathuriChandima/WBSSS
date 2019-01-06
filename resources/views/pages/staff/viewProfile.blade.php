@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="{{asset('my/v.css')}}">
 <div class="container">
 
+  @if(!is_null($staff))
     <!-- Tab panes -->
     <div class="tab-content">
       <br>
@@ -53,5 +54,8 @@
             </div>
 
     </div>
+    @else
+      {{'You do not have a Staff profile yet'}}
+    @endif
   </div>
 @endsection
