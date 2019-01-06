@@ -56,7 +56,6 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::match(['get','post'],'/customers', 'customerController@move')->name('customers');
     Route::match(['get','post'],'/addCustomer', 'customerController@addCustomer');
     Route::match(['get','post'],'/addStaff', 'staffController@addStaff');
-    Route::match(['get','post'],'/charts', 'chartsController@index');
     Route::match(['get','post'],'/editCustomer/{id}', 'customerController@find');
     Route::match(['get','post'],'/deletee/{id}','customerController@destroy')->name('delete');
     Route::match(['get','post'],'/searchCustomer', 'customerController@search');
@@ -179,5 +178,7 @@ Route::group(['middleware' => 'App\Http\Middleware\ManagementMiddleware'], funct
     Route::match(['get','post'],'/invoice', 'invoiceController@index');
     Route::match(['get','post'],'/searchinvoice', 'invoiceController@search');
     Route::match(['get','post'],'/download', 'billController@downloadPdf');
+    Route::match(['get','post'],'/charts', 'chartsController@index');
+
 
 });
