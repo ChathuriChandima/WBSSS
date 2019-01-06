@@ -19,7 +19,7 @@
           <strong>{{Form::label('lastServiceDay','Last Service Day')}} :</strong>
           </div>
           <div class="col-md-6">
-            {{Form::text('lastServiceDay', date('m/d/Y',strtotime($vehicle->lastServiceDay )),['class'=>'form-control','id'=>'datepicker','placeholder'=>''])}} 
+            {{Form::text('lastServiceDay', date('m/d/Y',strtotime($vehicle->lastServiceDay )),['class'=>'form-control','id'=>'datepicker','placeholder'=>''])}}
         <script>
             $('#datepicker').datepicker();
             </script>
@@ -43,7 +43,7 @@
                     <option value="{{$owner->Id}}">{{$owner->name}}</option>
                     @endif
                   @endforeach
-                  </select> 
+                  </select>
             </div>
           </div>
           </div>
@@ -56,7 +56,6 @@
             <select name="status" class="form-control">
             <option value="0">Not at service station</option>
             <option value="1">Servicing</option>
-            <option value="2">Finished Service</option>
             </select>
             </div>
           </div>
@@ -73,5 +72,5 @@
           </div>
       {!! Form::close() !!}
   </div>
-</div>  
+</div>
 @endsection

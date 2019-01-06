@@ -26,10 +26,12 @@ class vehicleController extends Controller
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
     public function move(){
+
         //pass variables to vehicles page
         return view('pages.vehicle.vehicles')
         ->with('vehicle',vehicle::all())
         ->with('customer',Customer::all())
+        ->with('stockNames',stock::all())
         ->with('c',null);
     }
 
@@ -112,7 +114,7 @@ class vehicleController extends Controller
         Alert::success('Your changes are saved.','Done!');
         if ($vehicle->status == '2'){
           // updateting stocks by iterating on $items
-          $noOfStockItems = 3;
+          $noOfStockItems = (int)$request->input('count');
           $stockNames = array();
           $stockQuntity = array();
           for ($i = 0; $i < $noOfStockItems; $i++){

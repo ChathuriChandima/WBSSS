@@ -163,89 +163,95 @@
                                         <p style="text-align:left"><label for="status"><strong>Status :</strong></label></p>
                                         <div class="col-sm-10 " style="margin-left:71px">
                                         <select name="status" class="form-control">
-                                        <option value="0">Not at service station</option>
                                         <option value="2">Finished Service</option>
                                         </select>
                                         </div>
                                       </div>
 
+                                      <!-- Adding jquery and javascript function to duplicate divs -->
+
+                                      <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.min.js"></script>
+                                      <script type="text/javascript">
+                                          var count = 0;
+                                          $(function() {
+                                            $("#add").click(function() {
+                                                count++;
+                                                document.getElementById("count").value = (count + 1);
+                                                div = document.createElement('div');
+                                                var html =  `
+                                                <div id = "inner">
+                                                  <div class="row">
+                                                    <p style="text-align:center"><label for="status"><strong>Item ${count + 1} :</strong></label></p>
+                                                    <div class="col-sm-10 " style="margin-left:71px">
+                                                      <label for="stock"><strong>Name :</strong></label>
+                                                      <select name="stock[${count}][name]" class="form-control">
+                                                        @foreach($stockNames as $stock)
+                                                          <option value= "{{$stock->name}}">{{$stock->name}}</option>
+                                                        @endforeach
+                                                      </select>
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="row">
+                                                    <div class="col-sm-10 " style="margin-left:71px">
+                                                      <label for="quantity"><strong>Quantity :</strong></label>
+                                                      <input type="text" name = "stock[${count}][qun]" class = "form-control">
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                `;
+                                                $(div).addClass("inner")
+                                                .html(html);
+                                                $("#container").append(div);
+                                              });
+                                          });
+                                      </script>
+
+
                                       <!-- buttons to add and remove stock items  -->
-                                      <a href="#" class="btn btn-danger float-right " style="margin:5px"  id="cl" ><strong>ADD</strong></a>
-                                      <a href="#" class="btn btn-danger float-right " style="margin:5px"  id="cl" ><strong>REM</strong></a>
+                                      <a href="#" class="btn btn-danger float-right " style="margin:5px"  id="add" ><strong>ADD</strong></a>
                                       <!-- Stocks data comes here -->
                                       <div class="row">
                                         <p style="text-align:left"><label for="status"><strong>Stocks :</strong></label></p>
                                       </div>
-                                      <div class="row">
-                                        <p style="text-align:center"><label for="status"><strong>Item 1 :</strong></label></p>
-                                        <div class="col-sm-10 " style="margin-left:71px">
-                                          <label for="stock"><strong>Name :</strong></label>
-                                          <!-- <select name="stname" class="form-control">
-                                            <option value="0">Not at service station</option>
-                                            <option value="2">Finished Service</option>
-                                          </select> -->
-                                          <!-- {{Form::text('stname[]', '' ,['class'=>'form-control','placeholder'=>''])}} -->
-                                          <input type="text" name = "stock[0][name]" class = "form-control">
+
+                                      <div id = "container">
+                                        <div id = "inner">
+                                          <div class="row">
+                                            <p style="text-align:center"><label for="status"><strong>Item 1 :</strong></label></p>
+                                            <div class="col-sm-10 " style="margin-left:71px">
+                                              <label for="stock"><strong>Name :</strong></label>
+                                              <!-- <input type="text" name = "stock[0][name]" class = "form-control"> -->
+                                              <select name="stock[0][name]" class="form-control">
+                                                @foreach($stockNames as $stock)
+                                                  <option value= "{{$stock->name}}">{{$stock->name}}</option>
+                                                @endforeach
+                                              </select>
+                                            </div>
+                                          </div>
+
+                                          <div class="row">
+                                            <div class="col-sm-10 " style="margin-left:71px">
+                                              <label for="quantity"><strong>Quantity :</strong></label>
+                                              <input type="text" name = "stock[0][qun]" class = "form-control">
+                                            </div>
+                                          </div>
                                         </div>
                                       </div>
 
-                                      <div class="row">
-                                        <div class="col-sm-10 " style="margin-left:71px">
-                                          <label for="quantity"><strong>Quantity :</strong></label>
-                                          <!-- {{Form::text('stock[0][qun]', '' ,['class'=>'form-control','placeholder'=>''])}} -->
-                                          <input type="text" name = "stock[0][qun]" class = "form-control">
-                                        </div>
-                                      </div>
 
-                                      <div class="row">
-                                        <p style="text-align:center"><label for="status"><strong>Item 2 :</strong></label></p>
-                                        <div class="col-sm-10 " style="margin-left:71px">
-                                          <label for="stname"><strong>Name :</strong></label>
-                                          <!-- <select name="stname" class="form-control">
-                                            <option value="0">Not at service station</option>
-                                            <option value="2">Finished Service</option>
-                                          </select> -->
-                                          <!-- {{Form::text('stname[]', '' ,['class'=>'form-control','placeholder'=>''])}} -->
-                                          <input type="text" name = "stock[1][name]" class = "form-control">
-                                        </div>
-                                      </div>
-
-                                      <div class="row">
-                                        <div class="col-sm-10 " style="margin-left:71px">
-                                          <label for="quantity"><strong>Quantity :</strong></label>
-                                          <!-- {{Form::text('stock[1][qun]', '' ,['class'=>'form-control','placeholder'=>''])}} -->
-                                          <input type="text" name = "stock[1][qun]" class = "form-control">
-                                        </div>
-                                      </div>
-
-                                      <div class="row">
-                                        <p style="text-align:center"><label for="status"><strong>Item 3 :</strong></label></p>
-                                        <div class="col-sm-10 " style="margin-left:71px">
-                                          <label for="stname"><strong>Name :</strong></label>
-                                          <!-- <select name="stname" class="form-control">
-                                            <option value="0">Not at service station</option>
-                                            <option value="2">Finished Service</option>
-                                          </select> -->
-                                          <!-- {{Form::text('stname[]', '' ,['class'=>'form-control','placeholder'=>''])}} -->
-                                          <input type="text" name = "stock[2][name]" class = "form-control">
-                                        </div>
-                                      </div>
-
-                                      <div class="row">
-                                        <div class="col-sm-10 " style="margin-left:71px">
-                                          <label for="quantity"><strong>Quantity :</strong></label>
-                                          <!-- {{Form::text('stock[2][qun]', '' ,['class'=>'form-control','placeholder'=>''])}} -->
-                                          <input type="text" name = "stock[2][qun]" class = "form-control">
-                                        </div>
-                                      </div>
                                       <!-- service data comes here -->
                                       <div class="row">
                                         <p style="text-align:left"><label for="status"><strong>Service :</strong></label></p>
                                         <div class="col-sm-10 " style="margin-left:71px">
                                           <label for="sname"><strong>Name :</strong></label>
                                           <select name="sname" class="form-control">
-                                            <option value="0">Not at service station</option>
-                                            <option value="2">Finished Service</option>
+                                            <option value="Full Service"> Full Service</option>
+                                            <option value="Oil & Filter Change"> Oil & Filter Change</option>
+                                            <option value="Engine Cleaning"> Engine Cleaning</option>
+                                            <option value="Car Wash"> Car Wash</option>
+                                            <option value="Undercarriage Wash"> Undercarriage Wash</option>
+                                            <option value="Other">Other</option>
                                           </select>
                                         </div>
                                       </div>
@@ -266,6 +272,8 @@
 
                                       <div class="form-group float-right form-inline">
                                         <div class="form-group">
+
+                                          <input type="hidden" id="count" name="count" value="1">
 
                                           {{Form::hidden('_method','GET')}}
                                         {{Form::button('<img src="img\icons8_Available_Updates_25px_1.png" />',['type'=>'submit','class'=>'btn'] )}}
