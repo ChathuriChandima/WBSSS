@@ -8,7 +8,7 @@
 <div class="container">
         <div class="row">
             <div class="col-lg-12 margin-tb">
-                 
+
             <form action="/searchinvoice" method="POST" role="search" style="margin-left:140px; margin-right:150px;">
               {{ csrf_field() }}
               <div class="input-group">
@@ -75,16 +75,101 @@
                                   </div>
                                 </div>
                                 </div>
-                                
+
+                                <!-- Adding jquery and javascript function to duplicate divs -->
+
+                                <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.min.js"></script>
+                                <script type="text/javascript">
+                                    var count = 0;
+                                    $(function() {
+                                      $("#add").click(function() {
+                                          count++;
+                                          document.getElementById("count").value = (count + 1);
+                                          div = document.createElement('div');
+                                          var html =  `
+                                          <div id = "inner">
+                                            <div class="col-md-4 col-form-label text-md-right">
+                                              <p style="text-align:center"><label for="status"><strong>Item ${(count + 1)} :</strong></label></p>
+                                            </div>
+                                            <div class="row">
+                                              <div class="col-md-4 col-form-label text-md-right">
+                                                <label for="stock"><strong>Name :</strong></label>
+                                              </div>
+                                              <div class="col-md-6">
+                                                <!-- <input type="text" name = "stock[${count}][name]" class = "form-control"> -->
+                                                <select name="stock[0][name]" class="form-control">
+                                                  @foreach($stockNames as $stock)
+                                                    <option value= "{{$stock->name}}">{{$stock->name}}</option>
+                                                  @endforeach
+                                                </select>
+                                              </div>
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="col-md-4 col-form-label text-md-right">
+                                                <label for="quantity"><strong>Quantity :</strong></label>
+                                              </div>
+                                              <div class="col-md-6">
+                                                <input type="number" name = "stock[${count}][qun]" class = "form-control" value ="0">
+                                              </div>
+                                            </div>
+                                          </div>
+                                          `;
+                                          $(div).addClass("inner")
+                                          .html(html);
+                                          $("#container").append(div);
+                                        });
+                                    });
+                                </script>
+
+
+                                <!-- buttons to add and remove stock items  -->
+                                <a href="#" class="btn btn-danger float-center " style="margin:5px"  id="add" ><strong>Add Stock Item</strong></a>
+                                <!-- Stocks data comes here -->
+                                <div class="col-md-4 col-form-label text-md-right">
+                                  <label for="status"><strong>Stocks :</strong></label>
+                                </div>
+
+                                <div id = "container">
+                                  <div id = "inner">
+                                    <div class="col-md-4 col-form-label text-md-right">
+                                      <p style="text-align:center"><label for="status"><strong>Item 1 :</strong></label></p>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-md-4 col-form-label text-md-right">
+                                        <label for="stock"><strong>Name :</strong></label>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <!-- <input type="text" name = "stock[0][name]" class = "form-control"> -->
+                                        <select name="stock[0][name]" class="form-control">
+                                          @foreach($stockNames as $stock)
+                                            <option value= "{{$stock->name}}">{{$stock->name}}</option>
+                                          @endforeach
+                                        </select>
+                                      </div>
+                                    </div>
+
+                                    <div class="row">
+                                      <div class="col-md-4 col-form-label text-md-right">
+                                        <label for="quantity"><strong>Quantity :</strong></label>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <input type="number" name = "stock[0][qun]" class = "form-control" value ="0">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <input type="hidden" id="count" name="count" value="1">
                                 <div class="form-group float-right form-inline" style="margin-right:180px">
                                 <div class="form-group">
-                                  
-                                {{Form::submit('Add',['class'=>'btn btn-success'] )}}
+
+                                {{Form::submit('Save',['class'=>'btn btn-success'] )}}
                                 </div>
                                 <div class="form-group">
                                     <a href="/invoice" class="btn btn-danger float-right " style="margin:5px"  id="cl" ><strong>Cancel</strong></a>
                                   </div>
                                 </div>
                           {!! Form::close() !!}
-            </div>    
+            </div>
 @endsection
