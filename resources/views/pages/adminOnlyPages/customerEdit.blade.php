@@ -29,7 +29,7 @@
         <strong>{{Form::label('address','Address')}} :</strong>
         </div>
         <div class="col-md-6">
-        {{Form::text('id', $customer->address ,['class'=>'form-control','placeholder'=>''])}}
+        {{Form::text('address', $customer->address ,['class'=>'form-control','placeholder'=>''])}}
         </div>
       </div>
       </div>
@@ -39,7 +39,7 @@
         <strong>{{Form::label('contactNo','Contact No')}} :</strong>
         </div>
         <div class="col-md-6">
-        {{Form::text('contactNo', $customer->contactNo ,['class'=>'form-control','placeholder'=>''])}}
+        {{Form::number('contactNo', '0'.$customer->contactNo ,['class'=>'form-control','placeholder'=>''])}}
         </div>
       </div>
       </div>
@@ -49,7 +49,7 @@
         <strong>{{Form::label('email','Email')}} :</strong>
         </div>
         <div class="col-md-6">
-        {{Form::text('id', $customer->email ,['class'=>'form-control','placeholder'=>''])}}
+        {{Form::email('email', $customer->email ,['class'=>'form-control','placeholder'=>''])}}
         </div>
       </div>
       </div>

@@ -21,7 +21,7 @@ Route::get('/login','PagesController@login');
 Route::get('/contact','PagesController@contact');
 Route::post('/contactSubmit','contactController@store');
 
-Route::resource('customer','customerController');
+Route::resource('Customer','customerController');
 Route::resource('vehicle','vehicleController');
 Route::resource('stock','stockController');
 Route::resource('Staff','staffController');
