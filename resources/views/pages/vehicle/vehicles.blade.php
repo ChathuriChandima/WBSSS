@@ -159,7 +159,7 @@
                         <div class="modal-body">
                                 {!! Form::open(['action'=>['vehicleController@edit',$v->vehicleNo],'method'=>'POST']) !!}
                                 <div class="form-group" style="margin-left:20px">
-                                        <div class="row">
+                                      <div class="row">
                                         <p style="text-align:left"><label for="status"><strong>Status :</strong></label></p>
                                         <div class="col-sm-10 " style="margin-left:71px">
                                         <select name="status" class="form-control">
@@ -168,13 +168,109 @@
                                         </select>
                                         </div>
                                       </div>
+
+                                      <!-- buttons to add and remove stock items  -->
+                                      <a href="#" class="btn btn-danger float-right " style="margin:5px"  id="cl" ><strong>ADD</strong></a>
+                                      <a href="#" class="btn btn-danger float-right " style="margin:5px"  id="cl" ><strong>REM</strong></a>
+                                      <!-- Stocks data comes here -->
+                                      <div class="row">
+                                        <p style="text-align:left"><label for="status"><strong>Stocks :</strong></label></p>
                                       </div>
+                                      <div class="row">
+                                        <p style="text-align:center"><label for="status"><strong>Item 1 :</strong></label></p>
+                                        <div class="col-sm-10 " style="margin-left:71px">
+                                          <label for="stock"><strong>Name :</strong></label>
+                                          <!-- <select name="stname" class="form-control">
+                                            <option value="0">Not at service station</option>
+                                            <option value="2">Finished Service</option>
+                                          </select> -->
+                                          <!-- {{Form::text('stname[]', '' ,['class'=>'form-control','placeholder'=>''])}} -->
+                                          <input type="text" name = "stock[0][name]" class = "form-control">
+                                        </div>
+                                      </div>
+
+                                      <div class="row">
+                                        <div class="col-sm-10 " style="margin-left:71px">
+                                          <label for="quantity"><strong>Quantity :</strong></label>
+                                          <!-- {{Form::text('stock[0][qun]', '' ,['class'=>'form-control','placeholder'=>''])}} -->
+                                          <input type="text" name = "stock[0][qun]" class = "form-control">
+                                        </div>
+                                      </div>
+
+                                      <div class="row">
+                                        <p style="text-align:center"><label for="status"><strong>Item 2 :</strong></label></p>
+                                        <div class="col-sm-10 " style="margin-left:71px">
+                                          <label for="stname"><strong>Name :</strong></label>
+                                          <!-- <select name="stname" class="form-control">
+                                            <option value="0">Not at service station</option>
+                                            <option value="2">Finished Service</option>
+                                          </select> -->
+                                          <!-- {{Form::text('stname[]', '' ,['class'=>'form-control','placeholder'=>''])}} -->
+                                          <input type="text" name = "stock[1][name]" class = "form-control">
+                                        </div>
+                                      </div>
+
+                                      <div class="row">
+                                        <div class="col-sm-10 " style="margin-left:71px">
+                                          <label for="quantity"><strong>Quantity :</strong></label>
+                                          <!-- {{Form::text('stock[1][qun]', '' ,['class'=>'form-control','placeholder'=>''])}} -->
+                                          <input type="text" name = "stock[1][qun]" class = "form-control">
+                                        </div>
+                                      </div>
+
+                                      <div class="row">
+                                        <p style="text-align:center"><label for="status"><strong>Item 3 :</strong></label></p>
+                                        <div class="col-sm-10 " style="margin-left:71px">
+                                          <label for="stname"><strong>Name :</strong></label>
+                                          <!-- <select name="stname" class="form-control">
+                                            <option value="0">Not at service station</option>
+                                            <option value="2">Finished Service</option>
+                                          </select> -->
+                                          <!-- {{Form::text('stname[]', '' ,['class'=>'form-control','placeholder'=>''])}} -->
+                                          <input type="text" name = "stock[2][name]" class = "form-control">
+                                        </div>
+                                      </div>
+
+                                      <div class="row">
+                                        <div class="col-sm-10 " style="margin-left:71px">
+                                          <label for="quantity"><strong>Quantity :</strong></label>
+                                          <!-- {{Form::text('stock[2][qun]', '' ,['class'=>'form-control','placeholder'=>''])}} -->
+                                          <input type="text" name = "stock[2][qun]" class = "form-control">
+                                        </div>
+                                      </div>
+                                      <!-- service data comes here -->
+                                      <div class="row">
+                                        <p style="text-align:left"><label for="status"><strong>Service :</strong></label></p>
+                                        <div class="col-sm-10 " style="margin-left:71px">
+                                          <label for="sname"><strong>Name :</strong></label>
+                                          <select name="sname" class="form-control">
+                                            <option value="0">Not at service station</option>
+                                            <option value="2">Finished Service</option>
+                                          </select>
+                                        </div>
+                                      </div>
+
+                                      <div class="row">
+                                        <div class="col-sm-10 " style="margin-left:71px">
+                                          <label for="sericeCharge"><strong>Service Charge :</strong></label>
+                                          {{Form::text('serviceCharge', '' ,['class'=>'form-control','placeholder'=>''])}}
+                                        </div>
+                                      </div>
+
+                                      <div class="row">
+                                        <div class="col-sm-10 " style="margin-left:71px">
+                                          <label for="discount"><strong>Discount :</strong></label>
+                                          {{Form::text('discount', '' ,['class'=>'form-control','placeholder'=>''])}}
+                                        </div>
+                                      </div>
+
                                       <div class="form-group float-right form-inline">
-                                    <div class="form-group">
-                                      {{Form::hidden('_method','GET')}}
-                                    {{Form::button('<img src="img\icons8_Available_Updates_25px_1.png" />',['type'=>'submit','class'=>'btn'] )}}
-                                    </div>
-                                    </div>
+                                        <div class="form-group">
+
+                                          {{Form::hidden('_method','GET')}}
+                                        {{Form::button('<img src="img\icons8_Available_Updates_25px_1.png" />',['type'=>'submit','class'=>'btn'] )}}
+                                        </div>
+                                      </div>
                               {!! Form::close()!!}
 
                       </div>

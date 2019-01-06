@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Customer;
 use App\vehicle;
+use App\stock;
+use App\Service;
 use App\User;
 use Alert;
 use DB;
@@ -100,14 +102,65 @@ class vehicleController extends Controller
         $this->validate($request, [
             'status'=>'required'
         ]);
-            $vehicle=vehicle::find($id);
-            $vehicle->status=$request->input('status');
-            $vehicle->save();
-            Alert::success('Your changes are saved.','Done!');
-            if ($vehicle->status == '2'){
-              $this->searviceFinishNotifier($vehicle);
+        // variables
+        $partsCost = 0;
+
+
+        $vehicle=vehicle::find($id);
+        $vehicle->status=$request->input('status');
+        $vehicle->save();
+        Alert::success('Your changes are saved.','Done!');
+        if ($vehicle->status == '2'){
+          // updateting stocks by iterating on $items
+          $noOfStockItems = 3;
+          $stockNames = array();
+          $stockQuntity = array();
+          for ($i = 0; $i < $noOfStockItems; $i++){
+            array_push($stockNames,$request->input('stock')["$i"]['name']);
+            array_push($stockQuntity,$request->input('stock')["$i"]['qun']);
+          }
+          for ($i = 0; $i < count($stockNames); $i++){
+            $item = stock::where('name','=',$stockNames[$i])->first();
+            $item->availableStock = $item->availableStock - $stockQuntity[$i];
+            $item->soldStock = $item->soldStock + $stockQuntity[$i];
+            $partsCost += $item->price*(int)$stockQuntity[$i];
+            if ($item->availableStock < 100){
+              // notify the admin for stock is critically low
             }
-            return redirect('vehicles');
+            $item->save();
+          }
+          // Creating the service object and saving in Database
+          $l= DB::table('services')->latest()->first();
+          // Here a error comes when the db is empty so adding a condition
+          if ($l != null){
+              $n=substr($l->sid,2);
+          }else{
+              $n = '0'; //This will prevent a error if the db is empty
+          }
+          $i=(int)$n;
+          $j=++$i;
+          $h=(string)$j;
+          $d=strlen($h);
+          if($d==1){
+              $id='SE00'.$h;
+          }elseif($d==2){
+              $id='SE0'.$h;
+          }else{
+              $id='SE'.$h;
+          }
+          $service = new Service;
+          $service->sid = $id;
+          $service->name = $request->input('sname');
+          $service->partsCost = $partsCost;
+          $service->serviceCharge = $request->input('serviceCharge');
+          $service->totalAmount = $service->serviceCharge + $service->partsCost;
+          $service->discount = $request->input('discount');
+          $service->isBilled = '0';
+          $service->save();
+          // Notifying the customer as there service finished
+          $this->searviceFinishNotifier($vehicle);
+        }
+        return redirect('vehicles');
     }
 
     /**
@@ -132,7 +185,15 @@ class vehicleController extends Controller
             Alert::success('Your changes are saved.','Done!');
             // Notifying user if service Finished
             if ($vehicle->status == '2'){
-              searviceFinishNotifier($vehicle);
+              // searviceFinishNotifier($vehicle);
+              // Getting the user to notify
+              $user = User::find($vehicle->cId);
+
+              // Creating the subject and the msg of the Notification
+              $subject = "One of your Vehicle service Finished!";
+              $msg = "Your Vehicle with No. $vehicle->vehicleNo has been finished servicing.";
+              // Nofifying the User
+              $user->notify(new SingleUser($subject,$msg));
             }
             return redirect('vehicles');
     }
