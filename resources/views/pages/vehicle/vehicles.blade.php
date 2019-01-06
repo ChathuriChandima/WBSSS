@@ -60,12 +60,16 @@
                 <td>{{$v->lastServiceDay}}</td>
                 <td>{{$v->brand}}</td>
                 <!-- flag of customer found -->
-                {{$found = false}}
+                <?php
+                  $found = false;
+                ?>
 
                 @foreach($customer as $owner)
                 @if($owner->Id==$v->cId)
                 <td>{{$owner->name}}</td>
-                {{$found = true}}
+                <?php
+                  $found = true;
+                ?>
 
                 @endif
 
@@ -123,12 +127,16 @@
             <td>{{$v->lastServiceDay}}</td>
             <td>{{$v->brand}}</td>
             <!-- flag of customer found -->
-            {{$found = false}}
+            <?php
+              $found = false;
+            ?>
 
             @foreach($customer as $owner)
             @if($owner->Id==$v->cId)
             <td>{{$owner->name}}</td>
-            {{$found = true}}
+            <?php
+              $found = true;
+            ?>
 
             @endif
 
@@ -196,12 +204,16 @@
             <td>{{$v->lastServiceDay}}</td>
             <td>{{$v->brand}}</td>
             <!-- flag of customer found -->
-            {{$found = false}}
+            <?php
+              $found = false;
+            ?>
 
             @foreach($customer as $owner)
             @if($owner->Id==$v->cId)
             <td>{{$owner->name}}</td>
-            {{$found = true}}
+            <?php
+              $found = true;
+            ?>
 
             @endif
 
