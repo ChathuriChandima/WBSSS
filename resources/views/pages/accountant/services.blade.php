@@ -25,7 +25,9 @@
             <tr>
                 <th>Service Code</th>
                 <th>Name</th>
-                <th>Price</th>
+                <th>Parts Cost</th>
+                <th>Service Charge</th>
+                <th>Total Amount</th>
                 <th>Discount</th>
                 <th width="200px">Action</th>
             </tr>
@@ -34,7 +36,9 @@
             <tr>
                 <td>{{$s->sid}}</td>
                 <td>{{$s->name}}</td>
-                <td>{{$s->price}}</td>
+                <td>{{$s->partsCost}}</td>
+                <td>{{$s->serviceCharge}}</td>
+                <td>{{$s->ttalAmount}}</td>
                 <td>{{$s->discount}}</td>
             <td>
                 <a href="editservice/{{$s->sid}}" class="btn" title="Edit" style="background-color:lavender;"><img src="img\icons8_Edit_25px.png" /></a>
