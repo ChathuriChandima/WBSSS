@@ -106,7 +106,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AccountantMiddleware'], funct
     //Route::match(['get','post'],'/show', 'vehicleController@show');
 
     Route::match(['get','post'],'/show', 'vehicleController@show');
-    Route::match(['get','post'],'/create', 'stockController@create');
+    //Route::match(['get','post'],'/create', 'stockController@create');
 
 
     Route::match(['get','post'],'/show', 'vehicleController@show');
@@ -153,6 +153,7 @@ Route::group(['middleware' => 'App\Http\Middleware\ManagementMiddleware'], funct
     Route::match(['get','post'],'/vehicles','vehicleController@move')->name('vehicles');
     Route::match(['get','post'],'/stocks','stockController@index')->name('stocks');
     Route::match(['get','post'],'/stocks','stockController@move')->name('stocks');
+    Route::match(['get','post'],'/create', 'stockController@create');
     Route::match(['get','post'],'/add_stock', 'stockController@create');
     Route::match(['get','post'],'/editStock/{id}', 'stockController@find');
     Route::match(['get','post'],'/deleteStock/{id}','stockController@destroy')->name('deleteStock');
