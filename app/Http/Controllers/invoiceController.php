@@ -68,7 +68,7 @@ class invoiceController extends Controller
         for ($i = 0; $i < count($stockNames); $i++){
           $item = stock::where('name','=',$stockNames[$i])->first();
           $item->availableStock = $item->availableStock + $stockQuntity[$i];
-          $item->soldStock = $item->purchasedStock + $stockQuntity[$i];
+          $item->purchasedStock = $item->purchasedStock + $stockQuntity[$i];
           $partsCost += $item->price*(int)$stockQuntity[$i];
           $item->save();
         }
