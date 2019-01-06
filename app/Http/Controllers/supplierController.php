@@ -16,7 +16,11 @@ class supplierController extends Controller
     public function index()
     {
         $l= DB::table('suppliers')->latest()->first();
+          if ($l != null){
             $n=substr($l->supplierId,3);
+          }else{
+            $n = '1';
+          }
             $i=(int)$n;
             $j=++$i;
             $h=(string)$j;
@@ -56,7 +60,7 @@ class supplierController extends Controller
             'address'=>'required',
             'contactNo'=> 'required|regex:/(0)[0-9]{9}/',
             ]);
-            
+
             $supplier=new Supplier;
             $supplier->supplierId=$request->input('id');
             $supplier->supplierName=$request->input('name');

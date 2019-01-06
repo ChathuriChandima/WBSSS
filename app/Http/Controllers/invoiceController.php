@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Supplier;
 use App\Invoice;
+use App\stock;
 use Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -16,7 +17,8 @@ class invoiceController extends Controller
      */
     public function index()
     {
-        return view('pages.accountant.invoice')->with('supplier',Supplier::all());
+        return view('pages.accountant.invoice')->with('supplier',Supplier::all())
+        ->with('stockNames',stock::all());
     }
 
     /**
@@ -43,12 +45,34 @@ class invoiceController extends Controller
             'date'=>'required',
             'price' => 'required',
         ]);
+
         $invoice=new Invoice;
         $invoice->invoiceNo=$request->input('invoiceNo');
         $invoice->SupplierId=$request->input('id');
         $invoice->date=date('Y-m-d',strtotime($request->input('date')));
         $invoice->price=$request->input('price');
         $invoice->save();
+        // variables
+        $partsCost = 0;
+
+        // updateting stocks by iterating on $items
+        $noOfStockItems = (int)$request->input('count');
+        $stockNames = array();
+        $stockQuntity = array();
+
+        for ($i = 0; $i < $noOfStockItems; $i++){
+          array_push($stockNames,$request->input('stock')["$i"]['name']);
+          array_push($stockQuntity,$request->input('stock')["$i"]['qun']);
+        }
+
+        for ($i = 0; $i < count($stockNames); $i++){
+          $item = stock::where('name','=',$stockNames[$i])->first();
+          $item->availableStock = $item->availableStock + $stockQuntity[$i];
+          $item->purchasedStock = $item->purchasedStock + $stockQuntity[$i];
+          $partsCost += $item->price*(int)$stockQuntity[$i];
+          $item->save();
+        }
+
         Alert::success('Invoice details are saved.','Done!');
         return redirect('/invoice');
     }

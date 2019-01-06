@@ -10,6 +10,7 @@ use Alert;
 use DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
+use \Validator;
 use App\Notifications\SingleUser;
 class vehicleController extends Controller
 {
@@ -98,12 +99,10 @@ class vehicleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function edit(Request $request,$id)
     {
-        //update the vehicle status
-        $this->validate($request, [
-            'status'=>'required'
-        ]);
+
         // variables
         $partsCost = 0;
 

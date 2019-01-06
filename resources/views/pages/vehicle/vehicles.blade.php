@@ -195,7 +195,7 @@
                                                   <div class="row">
                                                     <div class="col-sm-10 " style="margin-left:71px">
                                                       <label for="quantity"><strong>Quantity :</strong></label>
-                                                      <input type="text" name = "stock[${count}][qun]" class = "form-control">
+                                                      <input type="number" name = "stock[${count}][qun]" class = "form-control" value = "0">
                                                     </div>
                                                   </div>
                                                 </div>
@@ -233,7 +233,7 @@
                                           <div class="row">
                                             <div class="col-sm-10 " style="margin-left:71px">
                                               <label for="quantity"><strong>Quantity :</strong></label>
-                                              <input type="text" name = "stock[0][qun]" class = "form-control">
+                                              <input type="number" name = "stock[0][qun]" class = "form-control" value ="0">
                                             </div>
                                           </div>
                                         </div>
@@ -259,14 +259,14 @@
                                       <div class="row">
                                         <div class="col-sm-10 " style="margin-left:71px">
                                           <label for="sericeCharge"><strong>Service Charge :</strong></label>
-                                          {{Form::text('serviceCharge', '' ,['class'=>'form-control','placeholder'=>''])}}
+                                          {{Form::number('serviceCharge', '0' ,['class'=>'form-control','placeholder'=>''])}}
                                         </div>
                                       </div>
 
                                       <div class="row">
                                         <div class="col-sm-10 " style="margin-left:71px">
                                           <label for="discount"><strong>Discount :</strong></label>
-                                          {{Form::text('discount', '' ,['class'=>'form-control','placeholder'=>''])}}
+                                          {{Form::number('discount', '0' ,['class'=>'form-control','placeholder'=>''])}}
                                         </div>
                                       </div>
 
@@ -326,42 +326,8 @@
             @if($found == false)
             <td>{{"Unknown"}}</td>
             @endif
-            <td><button type="button" class="btn" title="Edit" data-toggle="modal" data-target="#myModal2" data-mytitle="{{$v->vehicleNo}}" ><img src="img\icons8_Pencil_25px.png" /></button>
-
-                <div class="modal fade" id="myModal2" role="dialog">
-                    <div class="modal-dialog" style="vertical-align:middle">
-
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                        <h4 class="modal-title">Select Option</h4>
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                                {!! Form::open(['action'=>['vehicleController@edit',$v->vehicleNo],'method'=>'POST']) !!}
-                                <div class="form-group" style="margin-left:20px">
-                                        <div class="row">
-                                        <p style="text-align:left"><label for="status"><strong>Status :</strong></label></p>
-                                        <div class="col-sm-10 " style="margin-left:71px">
-                                        <select name="status" class="form-control">
-                                        <option value="0">Not at service station</option>
-                                        <option value="1">Servicing</option>
-                                        </select>
-                                        </div>
-                                      </div>
-                                      </div>
-                                      <div class="form-group float-right form-inline">
-                                    <div class="form-group">
-                                      {{Form::hidden('_method','GET')}}
-                                    {{Form::button('<img src="img\icons8_Available_Updates_25px_1.png" />',['type'=>'submit','class'=>'btn'] )}}
-                                    </div>
-                                    </div>
-                              {!! Form::close()!!}
-
-                      </div>
-
-                    </div>
-                  </div>
+            <td>
+                  <a href="edit/{{$v->vehicleNo}}" class="btn" title="Edit" style="background-color:lavender;"><img src="img\icons8_Edit_25px.png" /></a>
             </td>
         </tr>
         @endif
