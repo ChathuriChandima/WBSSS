@@ -11,7 +11,7 @@
                    <p style="color:darkgoldenrod">Accountant Navigation</p>
                <li>
 
-                   <a href="/loggedin">
+                   <a href="/charts">
                        Home
                    </a>
                </li>

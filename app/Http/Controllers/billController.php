@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\bill;
 use App\service;
+use App\vehicle;
+use App\Customer;
 use Alert;
 use DB;
 use PDF;
@@ -57,7 +59,7 @@ class billController extends Controller
 
 
         return view('pages.bill.addBill')
-        ->with('id',$id);
+        ->with('id',$id)->with('vehicle',vehicle::all())->with('customer',Customer::all());
     }
 
     /**
@@ -74,25 +76,18 @@ class billController extends Controller
             'date' => 'required',
             'customerName' => 'required',
             'vehicleNo' => 'required',
-            'serviceDescription' => 'required',
-            'addedParts' => 'required',
-            'stockQty' =>'required',
-            'serviceCharge'=>'required',
-            'stockCharge'=>'required',
-
+            'totalAmount' => 'required',
+            'discount' => 'required',
         ]);
         $bill=new bill;
         $bill->billNo=$request->input('billNo');
-        $bill->date=$request->input('date');
+        $bill->date=date('Y-m-d',strtotime($request->input('date')));
         $bill->customerName=$request->input('customerName');
         $bill->vehicleNo=$request->input('vehicleNo');
-        $bill->serviceDescription=$request->input('serviceDescription');
-        $bill->addedParts=$request->input('addedParts');
-        $bill->stockQty=$request->input('stockQty');
-        $bill->serviceCharge=$request->input('serviceCharge');
-        $bill->stockCharge=$request->input('stockCharge');
+        $bill->totalAmount=$request->input('totalAmount');
+        $bill->discount=$request->input('discount');
         $bill->save();
-        Alert::success('Your changes are saved.','Done!');
+        Alert::success('Bill details are saved.','Done!');
             return redirect('/bills');
     }
 

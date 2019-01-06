@@ -24,7 +24,7 @@ class customerController extends Controller
      */
     public function index()
     {
-
+        
     }
 
     /**
@@ -44,7 +44,7 @@ class customerController extends Controller
             $l= DB::table('users')->latest()->first();
             $m=$l->id;
             $n=$m+1;
-            $password=$request->input('name').'@raajan';
+            $password=$request->input('name').'@rajaan';
             $user=new User;
             $user->Id=$n;
             $user->name=$request->input('name');
@@ -60,6 +60,7 @@ class customerController extends Controller
             $customer->contactNo=$request->input('contactNo');
             $customer->email=$request->input('email');
             $customer->save();
+            $this->userNotifier();
             Alert::success('Your details inserted.','Done!');
             return redirect('/add_vehicle');
 
@@ -126,12 +127,19 @@ class customerController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-
+            'name'=>'required',
+            'email'=>'required|unique:users',
             'address'=>'required',
             'contactNo'=> 'required|regex:/(0)[0-9]{9}/',
             ]);
+            $user=User::find($id);
+            $user->name=$request->input('name');
+            $user->email=$request->input('email');
+            $user->save();
 
             $customer=Customer::find($id);
+            $customer->name=$request->input('name');
+            $customer->email=$request->input('email');
             $customer->address=$request->input('address');
             $customer->contactNo=$request->input('contactNo');
             $customer->save();
@@ -200,7 +208,7 @@ class customerController extends Controller
 
     public function find($id)
     {
-        $cu=customer::find($id);
+        $cu=Customer::find($id);
         return view('pages.adminOnlyPages.customerEdit')
         /*->with('customer',Customer::all())*/
         ->with('customer',$cu);
@@ -235,7 +243,7 @@ class customerController extends Controller
             'Id'=>'required',
             'email'=>'required'
         ]);
-            $customer=Customer::find($Id);
+            $customer=Customer::find($request->input('Id'));
             $customer->Id=$request->input('Id');
             $customer->name=$request->input('name');
             $customer->address=$request->input('address');
@@ -326,5 +334,17 @@ class customerController extends Controller
         return redirect('change_password');
       }
     }
+
+    public function userNotifier(){
+        // Getting the user to notify
+        $u= DB::table('users')->latest()->first();
+        $user = User::find($u->id);
+  
+        // Creating the subject and the msg of the Notification
+        $subject = "You are registered customer in Rajaan Motors!";
+        $msg = "Your Password is '$user->name@rajaan' and your username is your email";
+        // Nofifying the User
+        $user->notify(new SingleUser($subject,$msg));
+      }
 
 }
