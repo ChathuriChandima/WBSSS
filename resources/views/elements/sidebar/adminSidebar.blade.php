@@ -32,6 +32,9 @@
                     <a href="#">Notification</a>
                 </li>
                 <li>
+                    <a href="contactForm">Contact Forms</a>
+                </li>
+                <li>
                     <a href="viewProfile">Profile</a>
                 </li>
             </ul>

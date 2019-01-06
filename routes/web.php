@@ -19,6 +19,7 @@ Route::get('/','PagesController@index');
 Route::get('/service','PagesController@service');
 Route::get('/login','PagesController@login');
 Route::get('/contact','PagesController@contact');
+Route::post('/contactSubmit','contactController@store');
 
 Route::resource('customer','customerController');
 Route::resource('vehicle','vehicleController');
@@ -63,6 +64,10 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::match(['get','post'],'/searchStaff', 'staffController@search');
     Route::post('store_customer', ['uses' => 'customerController@storeCustomer']);
     Route::match(['get','post'],'/users', 'pagesController@users');
+    Route::match(['get','post'],'/contactForm', 'contactController@index');
+    Route::match(['get','post'],'/reply_contact_form/{id}', 'contactController@replyForm');
+    Route::post('reply_contact', ['uses' => 'contactController@reply']);
+
 
 });
 
