@@ -29,7 +29,7 @@
                     <a href="#">Reports</a>
                 </li>
                 <li>
-                    <a href="#">Notification</a>
+                    <a href="salary">Salary</a>
                 </li>
                 <li>
                     <a href="/contactForm">Contact Forms</a>
