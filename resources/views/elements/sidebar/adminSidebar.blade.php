@@ -32,10 +32,10 @@
                     <a href="#">Notification</a>
                 </li>
                 <li>
-                    <a href="contactForm">Contact Forms</a>
+                    <a href="/contactForm">Contact Forms</a>
                 </li>
                 <li>
-                    <a href="viewProfile">Profile</a>
+                    <a href="/viewProfile">Profile</a>
                 </li>
             </ul>
         </div>
