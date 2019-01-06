@@ -18,11 +18,13 @@ class vehicleController extends Controller
      */
     public function index(Request $request)
     {
+        //view vehicle page
         $items = vehicle::orderBy('vehicleNo','type','lastServiceDay','brand')->paginate(5);
         return view('vehicle.vehicles',compact('items'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
     public function move(){
+        //pass variables to vehicles page
         return view('pages.vehicle.vehicles')
         ->with('vehicle',vehicle::all())
         ->with('customer',Customer::all())
@@ -36,6 +38,7 @@ class vehicleController extends Controller
      */
     public function create()
     {
+        //vehicle adding page view
         return view('pages.vehicle.add')
         ->with('customer',Customer::all());
     }
@@ -48,6 +51,7 @@ class vehicleController extends Controller
      */
     public function store(Request $request)
     {
+        //add new vehicle
 
         $this->validate($request, [
             'vehicleNo' => 'required',
@@ -92,6 +96,7 @@ class vehicleController extends Controller
      */
     public function edit(Request $request,$id)
     {
+        //update the vehicle status
         $this->validate($request, [
             'status'=>'required'
         ]);
@@ -114,6 +119,7 @@ class vehicleController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //update the vehicle details
         $this->validate($request, [
             'lastServiceDay'=>'required',
             'cId'=>'required'
@@ -139,7 +145,7 @@ class vehicleController extends Controller
      */
     public function destroy($id)
     {
-
+        //delete vehicle
         $v=vehicle::find($id);
         $v->delete();
         Alert::success('Deleted successfully.','Done!');
@@ -148,12 +154,14 @@ class vehicleController extends Controller
 
     public function find($id)
     {
+        //edit view
         $v=vehicle::find($id);
         return view('pages.vehicle.edit')
         ->with('customer',Customer::all())
         ->with('vehicle',$v);
     }
     public function search(){
+        //search function
         $q=Input::get('q');
         $vehicle=vehicle::where('vehicleNo','LIKE','%'.$q.'%')->get();
         $user=Customer::where('name','LIKE','%'.$q.'%')->get();
@@ -184,7 +192,7 @@ class vehicleController extends Controller
     }
 
     public function myVehicles(){
-      // Getting the id of the costumer
+      // Getting the id of the customer
       if (Auth::check()){
         $cid = Auth::user()->id;
         $vehicles = vehicle::where('cId',$cid)->get();
