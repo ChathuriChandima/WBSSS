@@ -13,7 +13,7 @@ class salaryController extends Controller
      */
     public function index()
     {
-        //
+        return view('/pages/adminOnlyPages/salary')->with('salary',salary::all());;
     }
 
     /**

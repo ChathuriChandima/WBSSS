@@ -43,14 +43,14 @@
                                 </div>
                               </div>
                               </div>
-                              <div class="form-group" style="margin-left:20px">
+                              <!--<div class="form-group" style="margin-left:20px">
                                 <div class="row">
                                 <p style="text-align:left"><strong>{{Form::label('role','Role')}}  :</strong></p>
                                 <div class="col-sm-10 " style="margin-left:90px">
-                                {{Form::text('role','',['class'=>'form-control','placeholder'=>''])}}
+                                {{Form::text('role','',['class'=>'form-control','placeholder'=>'' ])}}
                                 </div>
                               </div>
-                              </div>
+                              </div>-->
                               <div class="form-group" style="margin-left:20px">
                                 <div class="row">
                                 <p style="text-align:left"><strong>{{Form::label('password','Password')}}  :</strong></p>

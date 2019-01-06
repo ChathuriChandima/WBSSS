@@ -279,7 +279,7 @@ class customerController extends Controller
         $user->name=$request->input('name');
         $user->email=$request->input('email');
         $user->password=Hash::make($request->input('password'));
-        $user->role=$request->input('role');
+        $user->role='customer';
         $user->save();
 
         $customer=new Customer;
