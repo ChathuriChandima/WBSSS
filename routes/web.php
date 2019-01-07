@@ -67,6 +67,10 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::match(['get','post'],'/reply_contact_form/{id}', 'contactController@replyForm');
     Route::post('reply_contact', ['uses' => 'contactController@reply']);
     Route::match(['get','post'],'/salary','salaryController@index');
+    Route::match(['get','post'],'/editSalary/{type}', 'salaryController@edit');
+    Route::match(['get','post'],'/updateSalary', 'salaryController@update');
+    Route::match(['get','post'],'/updateCustomer', 'customerController@updateCustomer');
+
 
 
 });

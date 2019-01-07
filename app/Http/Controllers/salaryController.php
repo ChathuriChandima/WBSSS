@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class salaryController extends Controller
 {
@@ -13,7 +14,9 @@ class salaryController extends Controller
      */
     public function index()
     {
-        return view('/pages/adminOnlyPages/salary')->with('salary',salary::all());;
+        $salary=DB::select('select * from salaryDetail');
+
+        return view('/pages/adminOnlyPages/salary')->with('salary',$salary);
     }
 
     /**
@@ -56,7 +59,9 @@ class salaryController extends Controller
      */
     public function edit($id)
     {
-        //
+       
+            $salaryDetail=DB::select("select * from salaryDetail where type='$id'");
+            return view('/pages/adminOnlyPages/editSalary')->with('salaryDetail',$salaryDetail);
     }
 
     /**
@@ -66,19 +71,20 @@ class salaryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $this->validate($request, [
+            'type'=>'required',
+            'salary'=>'required'
+        ]);
+            
+            $type=$request->input('type');
+            $salary=$request->input('salary');
+            DB::update("update salaryDetail set salary = '$salary' where type = '$type'");
+            
+            return redirect('salary');
     }
+    
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+  
 }

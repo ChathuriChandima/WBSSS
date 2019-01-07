@@ -243,6 +243,11 @@ class customerController extends Controller
             'Id'=>'required',
             'email'=>'required'
         ]);
+            $user=User::find($request->input('Id'));
+            $user->Id=$request->input('Id');
+            $user->name=$request->input('name');      
+            $user->email=$request->input('email');
+            $user->save();
             $customer=Customer::find($request->input('Id'));
             $customer->Id=$request->input('Id');
             $customer->name=$request->input('name');
