@@ -1,5 +1,17 @@
 @extends('layouts.log')
 <link rel="stylesheet" href="{{asset('my/l.css')}}">
+
+@section('content')
+
+<div class="row">
+    <div class="col-lg-12 margin-tb">
+
+            <a class="btn float-right" href="paySalary" title="Salary Payments"> <img src="img\aaa.jpg"  /></a>
+
+
+    </div>
+</div>
+
 @section('content')
 
         @section('content')

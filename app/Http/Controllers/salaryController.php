@@ -85,6 +85,10 @@ class salaryController extends Controller
             return redirect('salary');
     }
     
+    public function paySalary(){
+        $staff=DB::select('select name from staff');
+        return view('/pages/adminOnlyPages/paySalary')->with('staff',$staff);
+    }
 
   
 }

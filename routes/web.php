@@ -70,6 +70,9 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::match(['get','post'],'/editSalary/{type}', 'salaryController@edit');
     Route::match(['get','post'],'/updateSalary', 'salaryController@update');
     Route::match(['get','post'],'/updateCustomer', 'customerController@updateCustomer');
+    Route::match(['get','post'],'/editStaff/{id}', 'staffController@find');
+    Route::match(['get','post'],'/updatestaff', 'staffController@updateStaff');
+    Route::match(['get','post'],'/paySalary', 'salaryController@paySalary');
 
 
 

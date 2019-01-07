@@ -151,6 +151,7 @@ class staffController extends Controller
 
     public function changeDetailForm()
     {
+        
       return view('pages.staff.editDetail')->with('staff',Staff::find(Auth::user()->id));
     }
 
@@ -168,4 +169,35 @@ class staffController extends Controller
       return redirect('viewProfile');
     }
 
+    public function find($id)
+    {
+        $staff=Staff::find($id);
+        return view('pages.adminOnlyPages.staffEdit')
+        /*->with('customer',Customer::all())*/
+        ->with('staff',$staff);
+    }
+
+
+    public function updateStaff(Request $request)
+    {
+        $this->validate($request, [
+            'address'=>'required',
+            'contactNo'=>'required'
+        ]);
+            $user=User::find($request->input('Id'));
+            $user->id=$request->input('Id');
+            $user->name=$request->input('name');
+            $user->email=$request->input('email');
+            $user->save();
+            
+            $staff=Staff::find($request->input('Id'));
+            $staff->id=$request->input('Id');
+            $staff->name=$request->input('name');
+            $staff->address=$request->input('address');
+            $staff->contactNo=$request->input('contactNo');
+            $staff->email=$request->input('email');
+            $staff->save();
+            Alert::success('Your changes are saved.','Done!');
+            return redirect('staff');
+    }
 }
