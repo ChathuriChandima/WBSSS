@@ -11,6 +11,6 @@ class Service extends Model
     public $timestamps = true;
     public $incrementing = false;
     protected $fillable = [
-        'name', 'partsCost', 'serviceCharge','totalAmount','discount','isBilled',
+        'name', 'partsCost', 'serviceCharge','totalAmount','discount','vehicleNo','isBilled',
     ];
 }

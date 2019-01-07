@@ -162,6 +162,7 @@ class vehicleController extends Controller
           $service->serviceCharge = $request->input('serviceCharge');
           $service->totalAmount = $service->serviceCharge + $service->partsCost;
           $service->discount = $request->input('discount');
+          $service->vehicleNo = $vehicle->vehicleNo;
           $service->isBilled = '0';
           $service->save();
           // Notifying the customer as there service finished
