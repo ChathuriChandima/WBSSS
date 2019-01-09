@@ -123,6 +123,8 @@ class invoiceController extends Controller
     {
         //
     }
+
+    // loading view with invice records which only matches search query
     public function search(){
         //search invoice
         $q=Input::get('q');
