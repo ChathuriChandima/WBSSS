@@ -63,7 +63,7 @@
                                         </div>
                                       </div>
                                       </div>
-                                <!-- <div class="form-group">
+                                <div class="form-group">
                                         <div class="row">
                                         <div class="col-md-4 col-form-label text-md-right">
                                         <strong>{{Form::label('totalAmount','Total Amount')}}  :</strong>
@@ -72,8 +72,8 @@
                                         {{Form::number('totalAmount','',['class'=>'form-control','placeholder'=>''])}}
                                         </div>
                                       </div>
-                                      </div> -->
-                                      <!-- <div class="form-group">
+                                      </div> 
+                                      <div class="form-group">
                                             <div class="row">
                                             <div class="col-md-4 col-form-label text-md-right">
                                             <strong>{{Form::label('discount','Discount')}}  :</strong>
@@ -82,7 +82,7 @@
                                             {{Form::number('discount','',['class'=>'form-control','placeholder'=>''])}}
                                             </div>
                                           </div>
-                                          </div> -->
+                                          </div> 
 
 
                                 <div class="form-group float-right form-inline" style="margin-right:180px">

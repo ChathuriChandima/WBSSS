@@ -46,59 +46,25 @@
                     <div class="form-group">
                           <div class="row">
                           <div class="col-md-4 col-form-label text-md-right">
-                          <strong>{{Form::label('serviceDescription','Service Description')}}  :</strong>
+                          <strong>{{Form::label('totalAmount','Total Amount')}}  :</strong>
                           </div>
                           <div class="col-md-6">
-                          {{Form::text('serviceDescription',$bill->serviceDescription,['class'=>'form-control','placeholder'=>''])}}
+                          {{Form::text('totalAmount',$bill->totalAmount,['class'=>'form-control','placeholder'=>''])}}
                           </div>
                         </div>
                         </div>
                         <div class="form-group">
                               <div class="row">
                               <div class="col-md-4 col-form-label text-md-right">
-                              <strong>{{Form::label('addedParts','Spare Parts Added')}}  :</strong>
+                              <strong>{{Form::label('discount','Discount')}}  :</strong>
                               </div>
                               <div class="col-md-6">
-                              {{Form::text('addedParts',$bill->addedParts,['class'=>'form-control','placeholder'=>''])}}
+                              {{Form::text('discount',$bill->discount,['class'=>'form-control','placeholder'=>''])}}
                               </div>
                             </div>
                             </div>
-                            
-              <div class="form-group">
-                  <div class="row">
-                  <div class="col-md-4 col-form-label text-md-right">
-                  <strong>{{Form::label('stockQty','Part Quantity')}}  :</strong>
-                  </div>
-                  <div class="col-md-6">
-                  {{Form::text('stockQty',$bill->stockQty,['class'=>'form-control','placeholder'=>''])}}
-                  </div>
-                </div>
-                </div>
-                <div class="form-group">
-                        <div class="row">
-                        <div class="col-md-4 col-form-label text-md-right">
-                        <strong>{{Form::label('serviceCharge','Service Charges')}}  :</strong>
-                        </div>
-                        <div class="col-md-6">
-                        {{Form::text('serviceCharge',$bill->serviceCharge,['class'=>'form-control','placeholder'=>''])}}
-                        </div>
-                      </div>
-                      </div>
-                      <div class="form-group">
-                            <div class="row">
-                            <div class="col-md-4 col-form-label text-md-right">
-                            <strong>{{Form::label('stockCharge','SpareParts Charge')}}  :</strong>
-                            </div>
-                            <div class="col-md-6">
-                            {{Form::text('stockCharge',$bill->stockCharge,['class'=>'form-control','placeholder'=>''])}}
-                            </div>
-                          </div>
-                          </div>
-             
-        
           <br>
-          <div class="form-g
-          roup float-right form-inline " style="margin-right:180px;">
+          <div class="form-group float-right form-inline " style="margin-right:180px;">
           <div class="form-group">
             {{Form::hidden('_method','PUT')}}
           {{Form::submit('Save',['class'=>'btn btn-success'] )}}
