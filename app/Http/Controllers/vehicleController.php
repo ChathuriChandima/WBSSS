@@ -49,7 +49,7 @@ class vehicleController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created vehicle in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -94,7 +94,9 @@ class vehicleController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * This function reads the state change of a vehicle and create a
+     * service record according to the charges and cost it takes
+     * And update the Stock data as stock data spend to the srvice
      *
      * *@param  \Illuminate\Http\Request  $request
      * @param  int  $id

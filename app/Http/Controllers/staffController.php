@@ -20,10 +20,15 @@ class staffController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    // Function to load view for add a new staff member
     public function addStaff()
     {
         return view('pages.adminOnlyPages.addStaff');
     }
+
+    // Load the staff with staff records in the db
     public function index(Request $request)
     {
         $staff = Staff::orderBy('name','address','contactNo','email')->paginate(5);
@@ -95,26 +100,32 @@ class staffController extends Controller
             Alert::success('Your changes are saved.','Done!');
             return redirect('staff');
     }
-
+    // Load the profile view
     public function viewProfile()
     {
       return view('pages.staff.viewProfile')->with('staff',Staff::find(Auth::user()->id));
     }
 
+    // load the change password view
     public function changePasswordForm()
     {
       return view('pages.staff.changePassword')->with('$user',Auth::user());
     }
 
+    // Function to change the password of the user
     public function changePassword(Request $request)
     {
+      // Validating the form
       $this->validate($request, [
         'currentPassword'=>'min:6',
         'newPassword' => 'min:6',
         'verifyPassword' => 'same:newPassword'
       ]);
+
+      // Geting the user object data and checking for the old password
       $user = Auth::user();
       if (Hash::check($request->input('currentPassword'),$user->password) ) {
+        // Saving the user with new password if the old password matched
         $user->password = Hash::make($request->input('newPassword'));
         $user->save();
         Alert::success("Password Changed !!!");
@@ -125,18 +136,20 @@ class staffController extends Controller
       }
     }
 
-
+    // Function to deleting a staff member
     public function destroy($id)
     {
-
+        // Getiing the staff and user records of the member
         $v=Staff::find($id);
         $user = User::find($id);
+        // Deleting both records from the database
         $v->delete();
         $user->delete();
         Alert::success('Deleted successfully.','Done!');
         return redirect('staff');
     }
 
+    // Load the view with records which are related to the searcn query
     public function search(){
         $q=Input::get('q');
         $staff=Staff::where('id','LIKE',$q)->get();
@@ -154,12 +167,14 @@ class staffController extends Controller
         }
     }
 
+     // Load the view for staff details
     public function changeDetailForm()
     {
-        
+
       return view('pages.staff.editDetail')->with('staff',Staff::find(Auth::user()->id));
     }
 
+    // Function to read input data and save changed staff data on the database
     public function changeDetail(Request $request)
     {
       $this->validate($request,[
@@ -174,27 +189,29 @@ class staffController extends Controller
       return redirect('viewProfile');
     }
 
+    // Load the edit staff page with staff member of the id
     public function find($id)
     {
         $staff=Staff::find($id);
         return view('pages.adminOnlyPages.staffEdit')
-        /*->with('customer',Customer::all())*/
         ->with('staff',$staff);
     }
 
-
+    // Read the form data and update the staff details in the database
     public function updateStaff(Request $request)
     {
         $this->validate($request, [
             'address'=>'required',
             'contactNo'=>'required|regex:/(0)[0-9]{9}/'
         ]);
+            // Find the user record edit its details
             $user=User::find($request->input('Id'));
             $user->id=$request->input('Id');
             $user->name=$request->input('name');
             $user->email=$request->input('email');
             $user->save();
-            
+
+            // Find the staff record and edit its detail
             $staff=Staff::find($request->input('Id'));
             $staff->id=$request->input('Id');
             $staff->name=$request->input('name');

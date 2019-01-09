@@ -46,7 +46,7 @@
                                   <strong>{{Form::label('availableStock','Available Stock')}}  :</strong>
                                       </div>
                                   <div class="col-md-6">
-                                  {{Form::text('availableStock','',['class'=>'form-control','placeholder'=>''])}}
+                                  {{Form::number('availableStock','',['class'=>'form-control','placeholder'=>''])}}
                                 </div>
                               </div>
                                 </div>
@@ -56,7 +56,7 @@
                                         <strong>{{Form::label('purchasedStock','Purchased Stock')}}  :</strong>
                                         </div>
                                         <div class="col-md-6">
-                                        {{Form::text('purchasedStock','',['class'=>'form-control','placeholder'=>''])}}
+                                        {{Form::number('purchasedStock','',['class'=>'form-control','placeholder'=>''])}}
                                       </div>
                                     </div>
                                       </div>
@@ -65,8 +65,8 @@
                                         <div class="col-md-4 col-form-label text-md-right">
                                         <strong>{{Form::label('soldStock','Stock Sales')}}  :</strong>
                                         </div>
-                                        <div class="col-md-6">      
-                                        {{Form::text('soldStock','',['class'=>'form-control','placeholder'=>''])}}
+                                        <div class="col-md-6">
+                                        {{Form::number('soldStock','',['class'=>'form-control','placeholder'=>''])}}
                                       </div>
                                     </div>
                                               </div>
@@ -75,15 +75,15 @@
                                         <div class="col-md-4 col-form-label text-md-right">
                                         <strong>{{Form::label('price','Unit Price')}}  :</strong>
                                         </div>
-                                        <div class="col-md-6">     
-                                        {{Form::text('price','',['class'=>'form-control','placeholder'=>''])}}
+                                        <div class="col-md-6">
+                                        {{Form::number('price','',['class'=>'form-control','placeholder'=>''])}}
                                         </div>
                                       </div>
                                     </div>
-                            
+
                                 <div class="form-group float-right form-inline">
                                 <div class="form-group">
-                                  
+
                                 {{Form::submit('Add',['class'=>'btn btn-success'] )}}
                                 </div>
                                 <div class="form-group">
@@ -92,5 +92,5 @@
                                 </div>
                           {!! Form::close() !!}
                       </div>
-            </div>    
+            </div>
 @endsection
