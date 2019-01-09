@@ -36,7 +36,7 @@
                                 <div class="row">
                                 <p style="text-align:left"><strong>{{Form::label('contactNo','Contact No')}}  :</strong></p>
                                 <div class="col-sm-10 " style="margin-left:45px">
-                                {{Form::text('contactNo','',['class'=>'form-control','placeholder'=>''])}}
+                                {{Form::number('contactNo',null,['class'=>'form-control','placeholder'=>''])}}
                                 </div>
                               </div>
                               </div>
@@ -46,7 +46,7 @@
                                 <div class="row">
                                 <p style="text-align:left"><strong>{{Form::label('email','Email')}}  :</strong></p>
                                 <div class="col-sm-10 " style="margin-left:80px">
-                                {{Form::text('email','',['class'=>'form-control','placeholder'=>''])}}
+                                {{Form::email('email','',['class'=>'form-control','placeholder'=>''])}}
                                 </div>
                               </div>
                               </div>

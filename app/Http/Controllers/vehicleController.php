@@ -57,7 +57,7 @@ class vehicleController extends Controller
     public function store(Request $request)
     {
         //add new vehicle
-
+        //validation
         $this->validate($request, [
             'vehicleNo' => 'required',
             'type' =>'required',
@@ -65,6 +65,7 @@ class vehicleController extends Controller
             'brand' => 'required',
             'cId'=>'required'
         ]);
+        //create new object
         $vehicle=new vehicle;
         $vehicle->vehicleNo=$request->input('vehicleNo');
         $vehicle->type=$request->input('type');
@@ -247,12 +248,15 @@ class vehicleController extends Controller
     public function search(){
         //search function
         $q=Input::get('q');
+        //using vehicle no
         $vehicle=vehicle::where('vehicleNo','LIKE','%'.$q.'%')->get();
+        //using customer
         $user=Customer::where('name','LIKE','%'.$q.'%')->get();
         if(count($vehicle)>0){
             return view('pages.vehicle.search')->withDetails($vehicle)->with('c',1 )
             ->with('customer',Customer::all());
         }elseif(count($user)>0){
+            //find the relevant vehicle owners
             $vehicle1=vehicle::all();
             $count=0;
             foreach ($user as $u){

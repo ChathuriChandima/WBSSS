@@ -107,17 +107,11 @@ Route::group(['middleware' => 'App\Http\Middleware\AccountantMiddleware'], funct
     // ** As both Accountant and Admin has same functionality within those PagesController
     // ** And also change the vehicle add and stock add routes as add_vehicle and add_stock
     // ** Otherwise they overlap and does not perform the expected navigation
-
-    //Route::match(['get','post'],'/services', 'PostsController@servc')->name('services');
     // ** Moved add vehicle path to higher admin because it can be also used,
     // ** As the template for customers add vehicle funtionality
 
-    //Route::match(['get','post'],'/show', 'vehicleController@show');
 
     Route::match(['get','post'],'/show', 'vehicleController@show');
-    //Route::match(['get','post'],'/create', 'stockController@create');
-
-
     Route::match(['get','post'],'/show', 'vehicleController@show');
 
     // ** Moved the add_stock path to heigher level staff route group

@@ -15,6 +15,7 @@ class supplierController extends Controller
      */
     public function index()
     {
+        //calculating next available supplier id
         $l= DB::table('suppliers')->latest()->first();
           if ($l != null){
             $n=substr($l->supplierId,3);
@@ -53,6 +54,7 @@ class supplierController extends Controller
      */
     public function store(Request $request)
     {
+        //validation
         $this->validate($request,[
 
             'name' => 'required|string|max:255',
@@ -60,7 +62,7 @@ class supplierController extends Controller
             'address'=>'required',
             'contactNo'=> 'required|regex:/(0)[0-9]{9}/',
             ]);
-
+            //new supplier object
             $supplier=new Supplier;
             $supplier->supplierId=$request->input('id');
             $supplier->supplierName=$request->input('name');

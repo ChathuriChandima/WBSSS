@@ -17,6 +17,7 @@ class stockController extends Controller
      */
     public function index()
     {
+        //link to stock page
         $stocks = stock::orderBy('code','name','type','availableStock','purchasedStock','soldStock','price')->paginate(10);
         return view('pages.stock.stocks')->with('stocks',$stocks);
     }
@@ -60,6 +61,7 @@ class stockController extends Controller
      */
     public function store(Request $request)
     {
+        //validation
         $this->validate($request, [
             'code' => 'required',
             'name' => 'required',
@@ -69,6 +71,7 @@ class stockController extends Controller
             'soldStock'=>'required',
             'price' => 'required'
         ]);
+        //create new stock object
         $stock=new stock;
         $stock->code=$request->input('code');
         $stock->name=$request->input('name');
@@ -117,7 +120,7 @@ class stockController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //validation
         $this->validate($request, [
             'code' => 'required',
             'name' => 'required',
@@ -155,6 +158,7 @@ class stockController extends Controller
 
     public function search(){
         $q=Input::get('q');
+        //using code or stock name or type
         $stock=stock::where('code','LIKE','%'.$q.'%')->orWhere('name','LIKE','%'.$q.'%')->orWhere('type','LIKE','%'.$q.'%')->get();
         if(count($stock)>0){
             return view('pages.stock.searchstock')->withDetails($stock);
