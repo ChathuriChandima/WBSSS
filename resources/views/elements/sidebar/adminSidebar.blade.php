@@ -26,9 +26,6 @@
                     <a href="/stocks">Stock</a>
                 </li>
                 <li>
-                    <a href="#">Reports</a>
-                </li>
-                <li>
                     <a href="salary">Salary</a>
                 </li>
                 <li>

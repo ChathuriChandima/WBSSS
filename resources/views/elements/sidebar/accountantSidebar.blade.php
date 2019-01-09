@@ -27,10 +27,7 @@
 
                     <a href="/invoice">Invoices</a>
                 </li>
-               <li>
-
-                   <a href="#">Generate Reports</a>
-               </li>
+            
 
 
                <li>

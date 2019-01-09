@@ -27,9 +27,7 @@ class chartsController extends Controller
     public function index()
 
     {
-
-        $vehicles = vehicle::all();
-
+        /*load vahicle data from database*/
         $v=DB::table('vehicles')
             ->select(
                 DB::raw('created_at as created_at'),
@@ -37,7 +35,8 @@ class chartsController extends Controller
             )
             ->groupBy('created_at')
             ->get();
-
+        
+        /*createing Chart*/
         $bar_chart = Charts::database($v, 'bar', 'highcharts')
 
 			      ->title("Monthly new Register Vehicles")
@@ -50,7 +49,7 @@ class chartsController extends Controller
 
                   ->groupByMonth(date('Y'), true);
 
-
+        /*load all income for month from bills table*/
          $jant=DB::select("select sum(totalAmount-discount) as monthlySum from bills where DATE(date) BETWEEN '2019-01-01' AND '2019-01-31'");
          $febt=DB::select("select sum(totalAmount-discount) as monthlySum from bills where DATE(date) BETWEEN '2019-02-01' AND '2019-02-28'");
          $mart=DB::select("select sum(totalAmount-discount) as monthlySum from bills where DATE(date) BETWEEN '2019-03-01' AND '2019-03-31'");
@@ -65,7 +64,7 @@ class chartsController extends Controller
          $dect=DB::select("select sum(totalAmount-discount) as monthlySum from bills where DATE(date) BETWEEN '2019-12-01' AND '2019-12-31'");
 
         
-
+        /*load all expenses for month from invoices table*/
          $jani=DB::select("select sum(price) as monthlySum from invoices where DATE(created_at) BETWEEN '2019-01-01' AND '2019-01-31'");
          $febi=DB::select("select sum(price) as monthlySum from invoices where DATE(created_at) BETWEEN '2019-02-01' AND '2019-02-28'");
          $mari=DB::select("select sum(price) as monthlySum from invoices where DATE(created_at) BETWEEN '2019-03-01' AND '2019-03-31'");
@@ -79,75 +78,86 @@ class chartsController extends Controller
          $novi=DB::select("select sum(price) as monthlySum from invoices where DATE(created_at) BETWEEN '2019-11-01' AND '2019-11-30'");
          $deci=DB::select("select sum(price) as monthlySum from invoices where DATE(created_at) BETWEEN '2019-12-01' AND '2019-12-31'");
 
-         $c=array($jant[0]->monthlySum,$febt[0]->monthlySum,$mart[0]->monthlySum,$aprt[0]->monthlySum,$mayt[0]->monthlySum,$junt[0]->monthlySum,$jult[0]->monthlySum,$augt[0]->monthlySum,$sept[0]->monthlySum,$octt[0]->monthlySum,$novt[0]->monthlySum,$dect[0]->monthlySum);
-         $d=array($jani[0]->monthlySum,$febi[0]->monthlySum,$mari[0]->monthlySum,$apri[0]->monthlySum,$mayi[0]->monthlySum,$juni[0]->monthlySum,$juli[0]->monthlySum,$augi[0]->monthlySum,$sepi[0]->monthlySum,$octi[0]->monthlySum,$novi[0]->monthlySum,$deci[0]->monthlySum);
-        $e=array();
-        $f=array();
+         /*store income in an array month wise*/
+         $incomeArray=array($jant[0]->monthlySum,$febt[0]->monthlySum,$mart[0]->monthlySum,$aprt[0]->monthlySum,$mayt[0]->monthlySum,$junt[0]->monthlySum,$jult[0]->monthlySum,$augt[0]->monthlySum,$sept[0]->monthlySum,$octt[0]->monthlySum,$novt[0]->monthlySum,$dect[0]->monthlySum);
+         
+         /*store expenses in an array month wise*/
+         $expensesArray=array($jani[0]->monthlySum,$febi[0]->monthlySum,$mari[0]->monthlySum,$apri[0]->monthlySum,$mayi[0]->monthlySum,$juni[0]->monthlySum,$juli[0]->monthlySum,$augi[0]->monthlySum,$sepi[0]->monthlySum,$octi[0]->monthlySum,$novi[0]->monthlySum,$deci[0]->monthlySum);
+        
+         /*create two empty arrays to store data in incomeArray & expenses array avoiding null values*/
+        $incomeArray2=array();
+        $expensesArray2=array();
+
+        /*create empty array to store monthly profit*/
         $profit=array();
+
+        /*lables of x-axis for line charts*/
         $label=array('jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec');
         for($i=0;$i<12;$i++){
-            if($c[$i]==null){
-                $e[$i]=0;
+            if($incomeArray[$i]==null){
+                /*set income as 0 for month with zero bills*/
+                $incomeArray2[$i]=0;
             }
             else{
-                $e[$i]=$c[$i];
+                $incomeArray2[$i]=$incomeArray[$i];
             }
-            if($d[$i]==null){
-                $f[$i]=0;
+            if($expensesArray[$i]==null){
+                /*set expenses as 0 for month with zero invoices*/
+                $expensesArray2[$i]=0;
             }
             else{
-                $f[$i]=$c[$i];
+                $expensesArray2[$i]=$incomeArray[$i];
             }
             
-                    $profit[$i]=$e[$i]-$f[$i];
+            /*calculate profit for the months*/
+            $profit[$i]=$incomeArray2[$i]-$expensesArray2[$i];
                 
         }
     
+    /*create line chart for income*/
     $line_chart = Charts::create('line', 'highcharts')
-                ->title("Monthly income")
-                ->labels($label)
+        ->title("Monthly income")
+            
+        ->labels($label)
 
-			    ->elementLabel("Income")
+	    ->elementLabel("Income")
 
-			    ->dimensions(500, 350)
+        ->dimensions(500, 350)
 
-                ->responsive(true)
+        ->responsive(true)
                   
-                ->values($e);
+        ->values($incomeArray2);
 
-
-                 $line_chart2 = Charts::create('line', 'highcharts')
-                 ->title("Monthly expenses")
-                 
-                ->labels($label)
- 
-                   ->elementLabel("expenses")
- 
-                   ->dimensions(500, 350)
- 
-                   ->responsive(true)
-                   
-                   ->values($f)
-                    
- 
-                  ;   
+    /*create line chart for expenses*/
+    $line_chart2 = Charts::create('line', 'highcharts')
+        ->title("Monthly expenses")
+                                        
+        ->labels($label)
+                        
+        ->elementLabel("expenses")                
+    
+        ->dimensions(500, 350)
+                        
+        ->responsive(true)
+                                        
+        ->values($expensesArray2);   
                   
-                  $line_chart3 = Charts::create('line', 'highcharts')
-                 ->title("Monthly profit")
+    /*create line chart for profit*/
+    $line_chart3 = Charts::create('line', 'highcharts')
+        ->title("Monthly profit")
                  
-                ->labels($label)
+        ->labels($label)
  
-                   ->elementLabel("profit")
+        ->elementLabel("profit")
  
-                   ->dimensions(500, 350)
+        ->dimensions(500, 350)
  
-                   ->responsive(true)
+        ->responsive(true)
                    
-                   ->values($profit)
-                    
- 
-                  ;   
-             return view('pages/adminOnlyPages/charts',compact('line_chart','line_chart2','line_chart3','bar_chart'));
+        ->values($profit);
+        
+        /*load charts to the charts blade*/
+        return view('pages/adminOnlyPages/charts',compact('line_chart','line_chart2','line_chart3','bar_chart'));
     }
 
 }

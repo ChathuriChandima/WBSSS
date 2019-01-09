@@ -17,16 +17,7 @@ use App\Notifications\SingleUser;
 
 class customerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        
-    }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -93,17 +84,7 @@ class customerController extends Controller
         return redirect('/loggedin');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-
-    }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -147,12 +128,7 @@ class customerController extends Controller
             return redirect('profile');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
 
 
      /**
@@ -205,15 +181,17 @@ class customerController extends Controller
         ->with('customer',Customer::all())
         ->with('c',null);
     }
+    
 
+    //find customer record and load to customerEdit blade
     public function find($id)
     {
         $cu=Customer::find($id);
         return view('pages.adminOnlyPages.customerEdit')
-        /*->with('customer',Customer::all())*/
-        ->with('customer',$cu);
+            ->with('customer',$cu);
     }
 
+    //delete a customer
     public function destroy($id)
     {
 
@@ -237,17 +215,20 @@ class customerController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    //update customer details from to edit customers
     public function updateCustomer(Request $request)
     {
         $this->validate($request, [
             'Id'=>'required',
             'email'=>'required'
         ]);
+            //edit customer details of user table
             $user=User::find($request->input('Id'));
             $user->Id=$request->input('Id');
             $user->name=$request->input('name');      
             $user->email=$request->input('email');
             $user->save();
+            //edit customer details of customer table
             $customer=Customer::find($request->input('Id'));
             $customer->Id=$request->input('Id');
             $customer->name=$request->input('name');
@@ -259,7 +240,7 @@ class customerController extends Controller
             return redirect('customers');
     }
 
-
+    //direct to addCustomer blade
     public function addCustomer()
     {
         return view('pages.adminOnlyPages.addCustomer');
@@ -270,6 +251,7 @@ class customerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    /*add customer from addCustomer blade*/
     public function storeCustomer(Request $request)
     {
 
@@ -280,13 +262,16 @@ class customerController extends Controller
             'email' => 'required',
 
         ]);
+        /*create a user for the customer*/
         $user=new User;
         $user->name=$request->input('name');
         $user->email=$request->input('email');
-        $user->password=Hash::make($request->input('password'));
+        /*setting the password to default password*/
+        $user->password=Hash::make('rajan123');
         $user->role='customer';
         $user->save();
 
+        /*create customer recorde for the customer*/
         $customer=new Customer;
         $customer->Id=$user->id;
         $customer->name=$request->input('name');

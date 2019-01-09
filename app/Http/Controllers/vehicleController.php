@@ -111,6 +111,14 @@ class vehicleController extends Controller
         $vehicle->status=$request->input('status');
         $vehicle->save();
         Alert::success('Your changes are saved.','Done!');
+            // Getting the user to notify
+        $user = User::find($vehicle->cId);
+
+        // Creating the subject and the msg of the Notification
+        $subject = "One of your Vehicle service Finished!";
+        $msg = "Your Vehicle with No. $vehicle->vehicleNo has been finished servicing.";
+        // Nofifying the User
+        $user->notify(new SingleUser($subject,$msg));
         if ($vehicle->status == '2'){
           // updateting stocks by iterating on $items
           $noOfStockItems = (int)$request->input('count');
@@ -131,7 +139,7 @@ class vehicleController extends Controller
               $ms = "Only $item->availableStock units of $item->name are left in Stocks!";
               $notification = new SingleUser($sub,$ms);
               foreach ($admins as $admin) {
-                $admin.notify($notification);
+                $admin->notify($notification);
               }
             }
             $item->save();

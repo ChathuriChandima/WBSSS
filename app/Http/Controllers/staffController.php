@@ -41,6 +41,8 @@ class staffController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+     /*add staff members*/
     public function store(Request $request)
     {
 
@@ -49,14 +51,17 @@ class staffController extends Controller
             'address' =>'required',
             'contactNo'=>'required',
             'email' => 'required',
+            ]);
 
-        ]);
+        /*add user account for the new staff member*/
         $user=new User;
         $user->name=$request->input('name');
         $user->email=$request->input('email');
         $user->password=Hash::make('rajan123');
         $user->role=$request->input('role');
         $user->save();
+
+        /*add staff recorde for the new staff member*/
         $staff=new Staff;
         $staff->id=$user->id;
         $staff->name=$request->input('name');
