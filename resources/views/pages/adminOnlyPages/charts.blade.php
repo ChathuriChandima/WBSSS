@@ -45,7 +45,7 @@
 
             </div>
             <!--display the monthly income line chart-->
-            <div class="zoom">
+            <div class="zoom1">
             {!! $line_chart->render() !!}
             </div>
         </div>
