@@ -146,11 +146,9 @@ class billController extends Controller
             'date' => 'required',
             'customerName'=>'required',
             'vehicleNo'=>'required',
-            'serviceDescription' =>'required',
-            'addedParts'=>'required',
-            'stockQty' =>'required',
-            'serviceCharge'=>'required',
-            'stockCharge'=>'required',
+            'totalAmount' =>'required',
+            'discount'=>'required',
+            
 
         ]);
             $bill=bill::find($id);
@@ -158,11 +156,8 @@ class billController extends Controller
             $bill->date=$request->input('date');
             $bill->customerName=$request->input('customerName');
             $bill->vehicleNo=$request->input('vehicleNo');
-            $bill->serviceDescription=$request->input('serviceDescription');
-            $bill->addedParts=$request->input('addedParts');
-            $bill->stockQty=$request->input('stockQty');
-            $bill->serviceCharge=$request->input('serviceCharge');
-            $bill->stockCharge=$request->input('stockCharge');
+            $bill->totalAmount=$request->input('totalAmount');
+            $bill->discount=$request->input('discount');
             $bill->save();
             Alert::success('Your changes are saved.','Done!');
             return redirect('/bills');
