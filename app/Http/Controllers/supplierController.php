@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class supplierController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Genarating the id for the next supplier.
      *
      * @return \Illuminate\Http\Response
      */
@@ -47,7 +47,7 @@ class supplierController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created supplier in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -119,6 +119,7 @@ class supplierController extends Controller
         //
     }
 
+    // Load the view with supplier records which matches the search query
     public function search(){
         $q=Input::get('q');
         $vehicle=vehicle::where('vehicleNo','LIKE','%'.$q.'%')->get();

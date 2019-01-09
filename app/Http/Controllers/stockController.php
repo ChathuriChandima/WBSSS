@@ -54,7 +54,7 @@ class stockController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created stock object in the database.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -64,12 +64,12 @@ class stockController extends Controller
         //validation
         $this->validate($request, [
             'code' => 'required',
-            'name' => 'required',
+            'name' => 'required|unique:stocks',
             'type' =>'required',
-            'availableStock'=>'required',
-            'purchasedStock' => 'required',
-            'soldStock'=>'required',
-            'price' => 'required'
+            'availableStock'=>'required|numeric|min:0',
+            'purchasedStock' => 'required|numeric|min:0',
+            'soldStock'=>'required|numeric|min:0',
+            'price' => 'required|numeric|min:0'
         ]);
         //create new stock object
         $stock=new stock;
@@ -112,7 +112,7 @@ class stockController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the stock object in the database.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -125,11 +125,12 @@ class stockController extends Controller
             'code' => 'required',
             'name' => 'required',
             'type' =>'required',
-            'purchasedStock'=>'required',
-            'availableStock'=>'required',
-            'soldStock' => 'required',
-            'price' => 'required'
+            'purchasedStock'=>'required|numeric|min:0',
+            'availableStock'=>'required|numeric|min:0',
+            'soldStock' => 'required|numeric|min:0',
+            'price' => 'required|numeric|min:0'
         ]);
+            // Find the stock record and updating the value
             $stock=stock::find($id);
             $stock->name=$request->input('name');
             $stock->type=$request->input('type');
@@ -143,7 +144,7 @@ class stockController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified stock record from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -156,6 +157,7 @@ class stockController extends Controller
         return redirect('/stocks');
     }
 
+    // load the view with stock records which only matchs the search query
     public function search(){
         $q=Input::get('q');
         //using code or stock name or type
@@ -168,6 +170,7 @@ class stockController extends Controller
         }
     }
 
+    // Loading a the edit stock view for a particular stock data
     public function find($id){
         $s=stock::find($id);
         return view('pages.stock.editstock')
