@@ -45,7 +45,7 @@ class chartsController extends Controller
 
 			      ->dimensions(500, 350)
 
-			      ->responsive(true)
+			      ->responsive(false)
 
                   ->groupByMonth(date('Y'), true);
 
@@ -124,7 +124,7 @@ class chartsController extends Controller
 
         ->dimensions(500, 350)
 
-        ->responsive(true)
+        ->responsive(false)
                   
         ->values($incomeArray2);
 
@@ -138,7 +138,7 @@ class chartsController extends Controller
     
         ->dimensions(500, 350)
                         
-        ->responsive(true)
+        ->responsive(false)
                                         
         ->values($expensesArray2);   
                   
@@ -152,7 +152,7 @@ class chartsController extends Controller
  
         ->dimensions(500, 350)
  
-        ->responsive(true)
+        ->responsive(false)
                    
         ->values($profit);
         
