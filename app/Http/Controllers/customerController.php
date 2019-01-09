@@ -17,7 +17,7 @@ use App\Notifications\SingleUser;
 
 class customerController extends Controller
 {
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -25,6 +25,7 @@ class customerController extends Controller
      */
     public function create(Request $request)
     {
+        //validation
         $this->validate($request,[
 
             'name' => 'required|string|max:255',
@@ -32,20 +33,26 @@ class customerController extends Controller
             'address'=>'required',
             'contactNo'=> 'required|regex:/(0)[0-9]{9}/',
             ]);
-            $l= DB::table('users')->latest()->first();
-            $m=$l->id;
-            $n=$m+1;
+            $last= DB::table('users')->latest()->first();
+            if ($last != null){
+              $lastId=$last->id;
+            }
+            else{
+              $lastId = 0;
+            }
+            $newId=$lastId+1;
             $password=$request->input('name').'@rajaan';
+            //create new user object
             $user=new User;
-            $user->Id=$n;
+            $user->Id=$newId;
             $user->name=$request->input('name');
             $user->email=$request->input('email');
             $user->password=Hash::make($password);
             $user->role='customer';
             $user->save();
-
+            //create new customer object
             $customer=new Customer;
-            $customer->Id=$n;
+            $customer->Id=$newId;
             $customer->name=$request->input('name');
             $customer->address=$request->input('address');
             $customer->contactNo=$request->input('contactNo');
@@ -66,13 +73,13 @@ class customerController extends Controller
      */
     public function store(Request $request)
     {
-
+        //validation
         $this->validate($request,[
 
         'address'=>'required',
         'contactNo'=> 'required|regex:/(0)[0-9]{9}/',
         ]);
-
+        //create new customer object
         $customer=new Customer;
         $customer->Id=$request->input('id');
         $customer->name=$request->input('name');
@@ -84,7 +91,7 @@ class customerController extends Controller
         return redirect('/loggedin');
     }
 
-    
+
 
     /**
      * Show the form for editing the specified resource.
@@ -107,9 +114,10 @@ class customerController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //validaation
         $this->validate($request,[
             'name'=>'required',
-            'email'=>'required|unique:users',
+            'email'=>'required',
             'address'=>'required',
             'contactNo'=> 'required|regex:/(0)[0-9]{9}/',
             ]);
@@ -128,15 +136,10 @@ class customerController extends Controller
             return redirect('profile');
     }
 
-    
 
 
-     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+     // load the profile view of the customer
     public function view(){
         return view('pages.customer.profile')
         ->with('customer',Customer::find(Auth::user()->id))
@@ -145,6 +148,7 @@ class customerController extends Controller
         ->with('i',0);
 
     }
+    // load the edit personal data view
     public function editable(){
         return view('pages.customer.personal')
         ->with('customer',Customer::find(Auth::user()->id));
@@ -156,13 +160,14 @@ class customerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function change(Request $request){
-
+        //get the file name
         if($request->hasFile('pic')){
 
             $pic = $request->file('pic');
             $filename = time().'.'.$pic->getClientOriginalExtension();
+            //save image in img folder
             Image::make($pic)->resize(200, 200)->save( public_path('img\\'. $filename));
-
+            //table updation
             $user=Auth::user();
             $user->pic=$filename;
             $user->save();
@@ -172,16 +177,18 @@ class customerController extends Controller
         return redirect('profile');
     }
 
+    // load the user view
     public function user(){
         return view('pages.customer.user');
     }
 
+    // load the customer view
     public function move(){
         return view('pages.adminOnlyPages.customer')
         ->with('customer',Customer::all())
         ->with('c',null);
     }
-    
+
 
     //find customer record and load to customerEdit blade
     public function find($id)
@@ -225,7 +232,7 @@ class customerController extends Controller
             //edit customer details of user table
             $user=User::find($request->input('Id'));
             $user->Id=$request->input('Id');
-            $user->name=$request->input('name');      
+            $user->name=$request->input('name');
             $user->email=$request->input('email');
             $user->save();
             //edit customer details of customer table
@@ -258,8 +265,8 @@ class customerController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'address' =>'required',
-            'contactNo'=>'required',
-            'email' => 'required',
+            'contactNo'=>'required|regex:/(0)[0-9]{9}/',
+            'email' => 'required|unique:users',
 
         ]);
         /*create a user for the customer*/
@@ -285,6 +292,7 @@ class customerController extends Controller
 
     }
 
+    // Load the view with customer records which only match the search query
     public function search(){
         $q=Input::get('q');
         $customer=Customer::where('Id','LIKE',$q)->get();
@@ -301,11 +309,13 @@ class customerController extends Controller
         }
     }
 
+    // Load the change password view
     public function changePasswordForm()
     {
       return view('pages.customer.changePassword')->with('$user',Auth::user());
     }
 
+    // function to change the password
     public function changePassword(Request $request)
     {
       $this->validate($request, [
@@ -325,11 +335,12 @@ class customerController extends Controller
       }
     }
 
+    // The function to send notifications for users about new registrations
     public function userNotifier(){
         // Getting the user to notify
         $u= DB::table('users')->latest()->first();
         $user = User::find($u->id);
-  
+
         // Creating the subject and the msg of the Notification
         $subject = "You are registered customer in Rajaan Motors!";
         $msg = "Your Password is '$user->name@rajaan' and your username is your email";

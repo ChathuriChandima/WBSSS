@@ -49,8 +49,8 @@ class staffController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'address' =>'required',
-            'contactNo'=>'required',
-            'email' => 'required',
+            'contactNo'=>'required|regex:/(0)[0-9]{9}/',
+            'email' => 'required|unique:users',
             ]);
 
         /*add user account for the new staff member*/
@@ -86,7 +86,7 @@ class staffController extends Controller
     {
         $this->validate($request, [
             'address'=>'required',
-            'contactNo'=>'required'
+            'contactNo'=>'required|regex:/(0)[0-9]{9}/'
         ]);
             $staff=Staff::find($id);
             $staff->address=$request->input('address');
@@ -164,7 +164,7 @@ class staffController extends Controller
     {
       $this->validate($request,[
         'address'=>'required',
-        'contactNo' => 'required'
+        'contactNo' => 'required|regex:/(0)[0-9]{9}/'
       ]);
       $staff = Staff::find(Auth::user()->id);
       $staff->address = $request->input('address');
@@ -187,7 +187,7 @@ class staffController extends Controller
     {
         $this->validate($request, [
             'address'=>'required',
-            'contactNo'=>'required'
+            'contactNo'=>'required|regex:/(0)[0-9]{9}/'
         ]);
             $user=User::find($request->input('Id'));
             $user->id=$request->input('Id');

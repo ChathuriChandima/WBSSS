@@ -17,6 +17,7 @@ class invoiceController extends Controller
      */
     public function index()
     {
+        //link to invice adding page
         return view('pages.accountant.invoice')->with('supplier',Supplier::all())
         ->with('stockNames',stock::all());
     }
@@ -39,13 +40,14 @@ class invoiceController extends Controller
      */
     public function store(Request $request)
     {
+        //vaidation
         $this->validate($request, [
             'invoiceNo' => 'required|unique:invoices',
             'id' =>'required',
             'date'=>'required',
             'price' => 'required',
         ]);
-
+        //new invoice object
         $invoice=new Invoice;
         $invoice->invoiceNo=$request->input('invoiceNo');
         $invoice->SupplierId=$request->input('id');
@@ -121,9 +123,14 @@ class invoiceController extends Controller
     {
         //
     }
+
+    // loading view with invice records which only matches search query
     public function search(){
+        //search invoice
         $q=Input::get('q');
+        //using invoice no
         $invoice=Invoice::where('invoiceNo','LIKE','%'.$q.'%')->get();
+        //using supplier name
         $user=Supplier::where('supplierName','LIKE','%'.$q.'%')->get();
         if(count($invoice)>0){
             return view('pages.accountant.searchinvoice')->withDetails($invoice)->with('c',1 )
