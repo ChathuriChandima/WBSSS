@@ -17,6 +17,7 @@ class ServicesController extends Controller
      */
     public function index()
     {
+        //link to service page
         return view('pages.accountant.services')
         ->with('service',service::all());
     }
@@ -60,6 +61,7 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
+        //validation
         $this->validate($request, [
             'sid' => 'required',
             'name' => 'required|unique:services',
@@ -68,6 +70,7 @@ class ServicesController extends Controller
             'totalAmount' =>'required',
             'discount'=>'required',
         ]);
+        //new service object 
         $service=new Service;
         $service->sid=$request->input('sid');
         $service->name=$request->input('name');
@@ -75,6 +78,7 @@ class ServicesController extends Controller
         $service->serviceCharge=$request->input('serviceCharge');
         $service->totalAmount=$request->input('totalAmount');
         $service->discount=$request->input('discount');
+        $service->isBilled=false;
         $service->save();
         Alert::success('Your changes are saved.','Done!');
             return redirect('/services');
@@ -111,6 +115,7 @@ class ServicesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //validation
         $this->validate($request, [
             'sid' => 'required',
             'name' => 'required',
@@ -153,6 +158,7 @@ class ServicesController extends Controller
 
     public function search(){
         $q=Input::get('q');
+        //using service code or service name
         $service=Service::where('sid','LIKE','%'.$q.'%')->orWhere('name','LIKE','%'.$q.'%')->get();
         if(count($service)>0){
             return view('pages.accountant.searchservice')->withDetails($service);

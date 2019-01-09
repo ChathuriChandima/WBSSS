@@ -25,6 +25,7 @@ class customerController extends Controller
      */
     public function create(Request $request)
     {
+        //validation
         $this->validate($request,[
 
             'name' => 'required|string|max:255',
@@ -36,6 +37,7 @@ class customerController extends Controller
             $m=$l->id;
             $n=$m+1;
             $password=$request->input('name').'@rajaan';
+            //create new user object
             $user=new User;
             $user->Id=$n;
             $user->name=$request->input('name');
@@ -43,7 +45,7 @@ class customerController extends Controller
             $user->password=Hash::make($password);
             $user->role='customer';
             $user->save();
-
+            //create new customer object
             $customer=new Customer;
             $customer->Id=$n;
             $customer->name=$request->input('name');
@@ -66,13 +68,13 @@ class customerController extends Controller
      */
     public function store(Request $request)
     {
-
+        //validation
         $this->validate($request,[
 
         'address'=>'required',
         'contactNo'=> 'required|regex:/(0)[0-9]{9}/',
         ]);
-
+        //create new customer object
         $customer=new Customer;
         $customer->Id=$request->input('id');
         $customer->name=$request->input('name');
@@ -107,9 +109,10 @@ class customerController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //validaation
         $this->validate($request,[
             'name'=>'required',
-            'email'=>'required|unique:users',
+            'email'=>'required',
             'address'=>'required',
             'contactNo'=> 'required|regex:/(0)[0-9]{9}/',
             ]);
@@ -156,13 +159,14 @@ class customerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function change(Request $request){
-
+        //get the file name
         if($request->hasFile('pic')){
-
+            
             $pic = $request->file('pic');
             $filename = time().'.'.$pic->getClientOriginalExtension();
+            //save image in img folder
             Image::make($pic)->resize(200, 200)->save( public_path('img\\'. $filename));
-
+            //table updation
             $user=Auth::user();
             $user->pic=$filename;
             $user->save();
@@ -258,8 +262,8 @@ class customerController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'address' =>'required',
-            'contactNo'=>'required',
-            'email' => 'required',
+            'contactNo'=>'required|regex:/(0)[0-9]{9}/',
+            'email' => 'required|unique:users',
 
         ]);
         /*create a user for the customer*/
