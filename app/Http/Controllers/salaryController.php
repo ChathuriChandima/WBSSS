@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use \Validator;
 
 class salaryController extends Controller
 {
@@ -75,7 +76,7 @@ class salaryController extends Controller
     {
         $this->validate($request, [
             'type'=>'required',
-            'salary'=>'required'
+            'salary'=>'required|niumeric|min:0'
         ]);
             
             $type=$request->input('type');
