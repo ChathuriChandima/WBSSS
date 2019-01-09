@@ -144,22 +144,38 @@ class billController extends Controller
         $this->validate($request, [
             'billNo' => 'required',
             'date' => 'required',
-            'customerName'=>'required',
-            'vehicleNo'=>'required',
-            'totalAmount' =>'required',
-            'discount'=>'required',
-            
-
+            'vehicleNo' => 'required',
         ]);
-            $bill=bill::find($id);
-            $bill->billNo=$request->input('billNo');
-            $bill->date=$request->input('date');
-            $bill->customerName=$request->input('customerName');
-            $bill->vehicleNo=$request->input('vehicleNo');
-            $bill->totalAmount=$request->input('totalAmount');
-            $bill->discount=$request->input('discount');
-            $bill->save();
-            Alert::success('Your changes are saved.','Done!');
+        // Getting the unbilled services of the vehicles
+        $vehicleNo = $request->input('vehicleNo');
+        $services = Service::where('vehicleNo','=',$vehicleNo)->get();
+        $totalAmount = 0;
+        $discount = 0;
+        foreach ($services as $service) {
+          if ($service->isBilled == 0){
+            $totalAmount += $service->totalAmount;
+            $discount += $service->discount;
+            $service->isBilled = 1;
+            $service->save();
+          }
+        }
+        if ($totalAmount == 0){
+          Alert::success('Nothing to Bill.','Done!');
+        }else{
+
+          $bill=new bill;
+          $bill->billNo=$request->input('billNo');
+          $bill->date=date('Y-m-d',strtotime($request->input('date')));
+          $vehicle = vehicle::where('vehicleNo','=',$vehicleNo)->first();
+          $customer = User::find($vehicle->cId);
+          $bill->customerName = $customer->name;
+          $bill->vehicleNo= $vehicleNo;
+          $bill->totalAmount= $totalAmount;
+          $bill->discount= $discount;
+          $bill->save();
+        }
+        
+            Alert::success('Your bill details are edited.','Done!');
             return redirect('/bills');
     }
 
