@@ -63,12 +63,12 @@ class chartsController extends Controller
                   $expenses=DB::select("SELECT sum(price)
                   as monthlySum
                   FROM invoices
-                  WHERE YEAR(created_at) = YEAR(CURDATE())
-                  GROUP BY MONTH(created_at) ORDER by MONTH(created_at)");
+                  WHERE YEAR(date) = YEAR(CURDATE())
+                  GROUP BY MONTH(date) ORDER by MONTH(date)");
                 $j=0;
                 $expensesArray=array(0,0,0,0,0,0,0,0,0,0,0,0);
                   foreach($expenses as $d){
-                      $d[$j]=$d->monthlySum;
+                      $expensesArray[$j]=$d->monthlySum;
                       $j++;
                   }
                   $profitArray=array();
@@ -122,6 +122,7 @@ class chartsController extends Controller
         ->values($profitArray);
         
         /*load charts to the charts blade*/
+        //return $expenses;
         return view('pages/adminOnlyPages/charts',compact('line_chart','line_chart2','line_chart3','bar_chart'));
     }
 
