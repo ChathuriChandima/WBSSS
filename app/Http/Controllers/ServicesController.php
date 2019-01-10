@@ -29,16 +29,16 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        $l= DB::table('services')->latest()->first();
+        $last= DB::table('services')->latest()->first();
         // Here a error comes when the db is empty so adding a condition
-        if ($l != null){
-            $n=substr($l->sid,3);
+        if ($last != null){
+            $idStr=substr($last->sid,3);
         }else{
-            $n = '0'; //This will prevent a error if the db is empty
+            $idStr = '0'; //This will prevent a error if the db is empty
         }
-        $i=(int)$n;
-        $j=++$i;
-        $h=(string)$j;
+        $idInt=(int)$idStr;
+        $newId=++$idInt;
+        $h=(string)$newId;
         $d=strlen($h);
         if($d==1){
             $id='SER00'.$h;
@@ -55,7 +55,7 @@ class ServicesController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     * SAves a new service object at the db
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -70,7 +70,7 @@ class ServicesController extends Controller
             'totalAmount' =>'required',
             'discount'=>'required',
         ]);
-        //new service object 
+        //new service object
         $service=new Service;
         $service->sid=$request->input('sid');
         $service->name=$request->input('name');
@@ -150,12 +150,14 @@ class ServicesController extends Controller
         return redirect('/services');
     }
 
+    // find the service from id and load the edit service with service object
     public function find($id){
         $s=Service::find($id);
         return view('pages.accountant.editService')
         ->with('service',$s);
     }
 
+    // load the view with service records which only matches the search query
     public function search(){
         $q=Input::get('q');
         //using service code or service name

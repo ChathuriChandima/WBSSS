@@ -10,7 +10,7 @@ class salaryController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * Loads the sallary page
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -53,14 +53,14 @@ class salaryController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing a selected salary data
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-       
+
             $salaryDetail=DB::select("select * from salaryDetail where type='$id'");
             return view('/pages/adminOnlyPages/editSalary')->with('salaryDetail',$salaryDetail);
     }
@@ -78,18 +78,18 @@ class salaryController extends Controller
             'type'=>'required',
             'salary'=>'required|niumeric|min:0'
         ]);
-            
+
             $type=$request->input('type');
             $salary=$request->input('salary');
             DB::update("update salaryDetail set salary = '$salary' where type = '$type'");
-            
+
             return redirect('salary');
     }
-    
+
     public function paySalary(){
         $staff=DB::select('select name from staff');
         return view('/pages/adminOnlyPages/paySalary')->with('staff',$staff);
     }
 
-  
+
 }

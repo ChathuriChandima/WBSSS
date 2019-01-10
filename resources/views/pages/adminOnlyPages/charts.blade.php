@@ -13,7 +13,7 @@
     
   
   
-  transform:translate(150px, 100px) scale(1.75) ;
+  transform:translate(150px, 100px) scale(1.5) ;
   z-index: 1;
 }
 .zoom2 {
@@ -28,7 +28,7 @@
     
   
   
-  transform:translate(-150px, 100px) scale(1.75) ;
+  transform:translate(-150px, 100px) scale(1.5) ;
   z-index: 1;
 }
 </style>

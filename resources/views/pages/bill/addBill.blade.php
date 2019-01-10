@@ -11,6 +11,8 @@
     <br>
     <div class="container">
       {!! Form::open(['action'=>'billController@store','method'=>'POST']) !!}
+
+        <!-- Bill NO -->
         <div class="form-group">
           <div class="row">
             <div class="col-md-4 col-form-label text-md-right">
@@ -21,6 +23,8 @@
             </div>
           </div>
         </div>
+
+        <!-- Billing data -->
         <div class="form-group">
           <div class="row">
             <div class="col-md-4 col-form-label text-md-right">
@@ -28,6 +32,7 @@
             </div>
             <div class="col-md-6">
               {{Form::text('date',date('m/d/Y'),['class'=>'form-control','placeholder'=>'','id'=>'datepicker'])}}
+<<<<<<< HEAD
             </div>
             <script>
                 $('#datepicker').datepicker();
@@ -95,4 +100,44 @@
         </div>
         {!! Form::close() !!}
   </div>
+=======
+            </div>
+            <script>
+              $('#datepicker').datepicker();
+            </script>
+          </div>
+        </div>
+
+        <!-- Vehicle No -->
+        <div class="form-group">
+              <div class="row">
+                <div class="col-md-4 col-form-label text-md-right">
+                  <strong>{{Form::label('vehicleNo','Vehicle No')}}  :</strong>
+                </div>
+              <div class="col-md-6">
+                <input list="v" name="vehicleNo" class="form-control">
+                <datalist id="v">
+                    @foreach($vehicle as $v)
+                <option value="{{$v->vehicleNo}}">
+                    @endforeach
+                </datalist>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit button -->
+          <div class="form-group float-right form-inline" style="margin-right:180px">
+            <div class="form-group">
+
+              {{Form::submit('Add',['class'=>'btn btn-success'] )}}
+            </div>
+            <div class="form-group">
+                <a href="/bills" class="btn btn-danger float-right " style="margin:5px"  id="cl" ><strong>Cancel</strong></a>
+            </div>
+          </div>
+
+        <!-- End of the form -->
+        {!! Form::close() !!}
+      </div>
+>>>>>>> 206a9a968d3025b9b6f8f6ff92d83fba67ec0a91
 @endsection

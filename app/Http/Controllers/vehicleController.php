@@ -49,7 +49,7 @@ class vehicleController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created vehicle in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -94,7 +94,9 @@ class vehicleController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * This function reads the state change of a vehicle and create a
+     * service record according to the charges and cost it takes
+     * And update the Stock data as stock data spend to the service
      *
      * *@param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -112,15 +114,18 @@ class vehicleController extends Controller
         $vehicle->status=$request->input('status');
         $vehicle->save();
         Alert::success('Your changes are saved.','Done!');
-            // Getting the user to notify
-        $user = User::find($vehicle->cId);
 
-        // Creating the subject and the msg of the Notification
-        $subject = "One of your Vehicle service Finished!";
-        $msg = "Your Vehicle with No. $vehicle->vehicleNo has been finished servicing.";
-        // Nofifying the User
-        $user->notify(new SingleUser($subject,$msg));
+
         if ($vehicle->status == '2'){
+              // Getting the user to notify
+          $user = User::find($vehicle->cId);
+
+          // Creating the subject and the msg of the Notification
+          $subject = "One of your Vehicle service Finished!";
+          $msg = "Your Vehicle with No. $vehicle->vehicleNo has been finished servicing.";
+          // Nofifying the User
+          $user->notify(new SingleUser($subject,$msg));
+
           // updateting stocks by iterating on $items
           $noOfStockItems = (int)$request->input('count');
           $stockNames = array();
@@ -174,15 +179,6 @@ class vehicleController extends Controller
           $service->vehicleNo = $vehicle->vehicleNo;
           $service->isBilled = '0';
           $service->save();
-          // Notifying the customer as there service finished
-          // Getting the user to notify
-          $user = User::find($vehicle->cId);
-
-          // Creating the subject and the msg of the Notification
-          $subject = "One of your Vehicle service Finished!";
-          $msg = "Your Vehicle with No. $vehicle->vehicleNo has been finished servicing.";
-          // Nofifying the User
-          $user->notify(new SingleUser($subject,$msg));
         }
         return redirect('vehicles');
     }
@@ -223,7 +219,7 @@ class vehicleController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified vehicle from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -237,6 +233,7 @@ class vehicleController extends Controller
         return redirect('vehicles');
     }
 
+    // Load a vehicle for edditing view
     public function find($id)
     {
         //edit view
@@ -245,6 +242,8 @@ class vehicleController extends Controller
         ->with('customer',Customer::all())
         ->with('vehicle',$v);
     }
+
+    // Processing search query and returning relavant vehicles
     public function search(){
         //search function
         $q=Input::get('q');
@@ -279,6 +278,7 @@ class vehicleController extends Controller
         }
     }
 
+    // Load thw my vehicle view of customers with list of their registered  vehicles
     public function myVehicles(){
       // Getting the id of the customer
       if (Auth::check()){
@@ -289,6 +289,7 @@ class vehicleController extends Controller
       }
     }
 
+    // Function to notify user in case of a service finish
     public function searviceFinishNotifier($vehicle){
       // Getting the user to notify
       $user = User::find($vehicle->cId);
